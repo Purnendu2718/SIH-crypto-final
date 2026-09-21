@@ -1,0 +1,649 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/ForensicDrawer.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=476ce045"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import {
+  Layers,
+  Scale,
+  Percent,
+  CheckCircle2,
+  AlertTriangle,
+  Flame,
+  TrendingDown
+} from "/node_modules/.vite/deps/lucide-react.js?v=476ce045";
+const ATTRIBUTION_FACTOR_META = {
+  sweep_label_match: {
+    label: "Sweep / Label Match",
+    weight: 0.35,
+    desc: "Direct consolidation into verified VASP hot wallet address infrastructure."
+  },
+  path_proximity: {
+    label: "Path Proximity",
+    weight: 0.2,
+    desc: "Inverse hop distance to recipient entity (degrades monotonically over hops)."
+  },
+  deposit_pattern_similarity: {
+    label: "Deposit Pattern Match",
+    weight: 0.15,
+    desc: "Transfer value retention, single-deposit thresholds, and gas-sweep signatures."
+  },
+  temporal_correlation: {
+    label: "Temporal Correlation",
+    weight: 0.15,
+    desc: "Execution latency between theft event and exchange deposit (rapid sweep correlation)."
+  },
+  co_spend_cluster: {
+    label: "Co-Spend / Cluster Match",
+    weight: 0.1,
+    desc: "Common-input ownership clustering and shared deposit forwarders."
+  },
+  behavioral: {
+    label: "Behavioral Heuristics",
+    weight: 0.05,
+    desc: "Automated script routing vs manual transfer behavioral indicators."
+  }
+};
+export const ForensicDrawer = ({
+  attribution,
+  typologies = [],
+  taint,
+  risk,
+  isOpen,
+  onClose
+}) => {
+  if (!isOpen) return null;
+  const confidence = attribution?.confidence ?? 0;
+  const band = attribution?.confidence_band ?? "INSUFFICIENT_EVIDENCE";
+  const breakdown = attribution?.score_breakdown || {};
+  const getBandBadge = (b) => {
+    switch (b) {
+      case "VERY_HIGH":
+        return "bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
+      case "HIGH":
+        return "bg-blue-500/10 text-blue-400 border-blue-500/30";
+      case "MEDIUM":
+        return "bg-amber-500/10 text-amber-400 border-amber-500/30";
+      case "INSUFFICIENT_EVIDENCE":
+      default:
+        return "bg-rose-500/10 text-rose-400 border-rose-500/30";
+    }
+  };
+  const getRiskColor = (level) => {
+    switch (level) {
+      case "CRITICAL":
+        return "text-rose-400 bg-rose-500/10 border-rose-500/30";
+      case "HIGH":
+        return "text-amber-400 bg-amber-500/10 border-amber-500/30";
+      case "MEDIUM":
+        return "text-yellow-400 bg-yellow-500/10 border-yellow-500/30";
+      case "LOW":
+      default:
+        return "text-emerald-400 bg-emerald-500/10 border-emerald-500/30";
+    }
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: "fixed inset-y-0 right-0 w-full max-w-xl bg-[#0f172a] border-l border-slate-800 shadow-2xl z-50 flex flex-col animate-in slide-in-from-right duration-300", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/80 backdrop-blur", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-2.5", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "p-2 bg-blue-600/20 border border-blue-500/30 rounded-lg text-blue-400", children: /* @__PURE__ */ jsxDEV(Scale, { className: "w-5 h-5" }, void 0, false, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 122,
+          columnNumber: 13
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 121,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("h3", { className: "text-sm font-bold text-white tracking-wide", children: "Forensic Attribution & Evidence Engine" }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 125,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-[11px] text-slate-400 font-mono", children: "Explainable Decision Support Matrix (SIH26183)" }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 128,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 124,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+        lineNumber: 120,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          onClick: onClose,
+          className: "p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors text-sm font-bold",
+          children: "×"
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 134,
+          columnNumber: 9
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+      lineNumber: 119,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "flex-1 overflow-y-auto p-5 space-y-6 text-xs", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "p-4 rounded-xl border border-slate-800 bg-slate-900/60 shadow-lg", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-3", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "text-slate-400 uppercase tracking-wider text-[10px] font-semibold", children: "Attributed Destination Off-Ramp" }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 147,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: `px-2 py-0.5 rounded-full border text-[10px] font-mono font-bold ${getBandBadge(band)}`, children: [
+            band.replace("_", " "),
+            " • ",
+            Math.round(confidence * 100),
+            "%"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 150,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 146,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-baseline space-x-3 mb-2", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xl font-bold text-white tracking-tight", children: attribution?.matched_entity || "Insufficient Evidence" }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 156,
+            columnNumber: 13
+          }, this),
+          attribution?.rule_fired && /* @__PURE__ */ jsxDEV("span", { className: "text-[10px] font-mono text-blue-400 bg-blue-950/40 px-2 py-0.5 rounded border border-blue-800/40", children: [
+            "Rule: ",
+            attribution.rule_fired
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 160,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 155,
+          columnNumber: 11
+        }, this),
+        attribution?.rule_fired === "ROOT_ADDRESS_IS_KNOWN_ENTITY" && /* @__PURE__ */ jsxDEV("div", { className: "mt-2 p-3 rounded-lg bg-emerald-950/40 border border-emerald-500/50 text-emerald-300 text-[11px] flex items-center space-x-2", children: [
+          /* @__PURE__ */ jsxDEV(CheckCircle2, { className: "w-4 h-4 shrink-0 text-emerald-400" }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 168,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { children: [
+            /* @__PURE__ */ jsxDEV("strong", { children: "Root-Entity Direct Match:" }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 170,
+              columnNumber: 17
+            }, this),
+            " This address belongs directly to verified entity ",
+            /* @__PURE__ */ jsxDEV("strong", { children: attribution.matched_entity }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 170,
+              columnNumber: 109
+            }, this),
+            " (0 hops required). Outward tracing was bypassed."
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 169,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 167,
+          columnNumber: 11
+        }, this),
+        band === "INSUFFICIENT_EVIDENCE" && attribution?.rule_fired !== "ROOT_ADDRESS_IS_KNOWN_ENTITY" && /* @__PURE__ */ jsxDEV("div", { className: "mt-2 p-2.5 rounded-lg bg-rose-950/30 border border-rose-800/40 text-rose-300 text-[11px] flex items-center space-x-2", children: [
+          /* @__PURE__ */ jsxDEV(AlertTriangle, { className: "w-4 h-4 shrink-0 text-rose-400" }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 177,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { children: [
+            /* @__PURE__ */ jsxDEV("strong", { children: "Non-Negotiable Principle:" }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 179,
+              columnNumber: 17
+            }, this),
+            ' Confidence is below threshold (0.40). The system strictly returns "Insufficient Evidence" rather than forcing an ungrounded guess.'
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 178,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 176,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+        lineNumber: 145,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-2", children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center space-x-1.5", children: [
+            /* @__PURE__ */ jsxDEV(Percent, { className: "w-3.5 h-3.5 text-blue-400" }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 189,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Explainable 6-Factor Weight Breakdown" }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 190,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 188,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "text-[10px] text-slate-500 font-mono", children: "Sum = Weighted Confidence" }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 192,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 187,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "border border-slate-800 rounded-xl overflow-hidden bg-slate-950/50", children: /* @__PURE__ */ jsxDEV("table", { className: "w-full text-left font-mono", children: [
+          /* @__PURE__ */ jsxDEV("thead", { className: "bg-slate-900/90 text-slate-400 text-[10px] border-b border-slate-800 uppercase", children: /* @__PURE__ */ jsxDEV("tr", { children: [
+            /* @__PURE__ */ jsxDEV("th", { className: "px-3 py-2", children: "Forensic Criterion" }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 199,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("th", { className: "px-2 py-2 text-center", children: "Weight" }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 200,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("th", { className: "px-2 py-2 text-center", children: "Score" }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 201,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("th", { className: "px-3 py-2 text-right", children: "Contribution" }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 202,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 198,
+            columnNumber: 17
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 197,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("tbody", { className: "divide-y divide-slate-800/60 text-[11px]", children: Object.entries(ATTRIBUTION_FACTOR_META).map(([key, meta]) => {
+            const score = typeof breakdown[key] === "number" ? breakdown[key] : key === "sweep_label_match" ? confidence >= 0.65 ? 1 : 0 : 0.5;
+            const contribution = score * meta.weight;
+            return /* @__PURE__ */ jsxDEV("tr", { className: "hover:bg-slate-900/40 transition-colors", children: [
+              /* @__PURE__ */ jsxDEV("td", { className: "px-3 py-2 font-sans", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "font-medium text-slate-200", children: meta.label }, void 0, false, {
+                  fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                  lineNumber: 212,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-[10px] text-slate-500", children: meta.desc }, void 0, false, {
+                  fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                  lineNumber: 213,
+                  columnNumber: 25
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                lineNumber: 211,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("td", { className: "px-2 py-2 text-center text-slate-400 font-mono", children: [
+                Math.round(meta.weight * 100),
+                "%"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                lineNumber: 215,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("td", { className: "px-2 py-2 text-center", children: /* @__PURE__ */ jsxDEV("span", { className: `px-1.5 py-0.5 rounded text-[10px] ${score >= 0.8 ? "bg-emerald-500/10 text-emerald-400" : score >= 0.4 ? "bg-blue-500/10 text-blue-400" : "bg-slate-800 text-slate-400"}`, children: [
+                (score * 100).toFixed(0),
+                "%"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                lineNumber: 219,
+                columnNumber: 25
+              }, this) }, void 0, false, {
+                fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                lineNumber: 218,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("td", { className: "px-3 py-2 text-right font-mono font-bold text-white", children: [
+                "+",
+                (contribution * 100).toFixed(1),
+                "%"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                lineNumber: 223,
+                columnNumber: 23
+              }, this)
+            ] }, key, true, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 210,
+              columnNumber: 21
+            }, this);
+          }) }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 205,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 196,
+          columnNumber: 13
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 195,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+        lineNumber: 186,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-2", children: /* @__PURE__ */ jsxDEV("h4", { className: "text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center space-x-1.5", children: [
+          /* @__PURE__ */ jsxDEV(Layers, { className: "w-3.5 h-3.5 text-purple-400" }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 238,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { children: [
+            "Detected Money Laundering Typologies (",
+            typologies.length,
+            ")"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 239,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 237,
+          columnNumber: 13
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 236,
+          columnNumber: 11
+        }, this),
+        typologies.length === 0 ? /* @__PURE__ */ jsxDEV("div", { className: "p-3.5 rounded-xl border border-slate-800 bg-slate-900/30 text-slate-400 flex items-center space-x-2", children: [
+          /* @__PURE__ */ jsxDEV(CheckCircle2, { className: "w-4 h-4 text-emerald-400" }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 245,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { children: "No obfuscation patterns detected. Direct fund flow path observed." }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 246,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 244,
+          columnNumber: 11
+        }, this) : /* @__PURE__ */ jsxDEV("div", { className: "space-y-2", children: typologies.map(
+          (t, idx) => /* @__PURE__ */ jsxDEV(
+            "div",
+            {
+              className: "p-3 rounded-xl border border-slate-800 bg-slate-900/40 flex items-start justify-between",
+              children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "flex items-start space-x-2.5", children: [
+                  /* @__PURE__ */ jsxDEV("div", { className: "p-1.5 rounded-lg bg-purple-950/60 border border-purple-500/30 text-purple-400 mt-0.5", children: /* @__PURE__ */ jsxDEV(Flame, { className: "w-3.5 h-3.5" }, void 0, false, {
+                    fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                    lineNumber: 257,
+                    columnNumber: 23
+                  }, this) }, void 0, false, {
+                    fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                    lineNumber: 256,
+                    columnNumber: 21
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { children: [
+                    /* @__PURE__ */ jsxDEV("div", { className: "font-bold text-white font-mono", children: t.typology }, void 0, false, {
+                      fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                      lineNumber: 260,
+                      columnNumber: 23
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("div", { className: "text-[11px] text-slate-400 mt-0.5", children: t.description || `Structural laundering pattern detected between hops ${t.hop_start ?? 0} and ${t.hop_end ?? "end"}.` }, void 0, false, {
+                      fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                      lineNumber: 261,
+                      columnNumber: 23
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                    lineNumber: 259,
+                    columnNumber: 21
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                  lineNumber: 255,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV("span", { className: "text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20", children: [
+                  "Hops ",
+                  t.hop_start ?? 0,
+                  " → ",
+                  t.hop_end ?? "—"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                  lineNumber: 266,
+                  columnNumber: 19
+                }, this)
+              ]
+            },
+            idx,
+            true,
+            {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 251,
+              columnNumber: 13
+            },
+            this
+          )
+        ) }, void 0, false, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 249,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+        lineNumber: 235,
+        columnNumber: 9
+      }, this),
+      taint && /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-2", children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center space-x-1.5", children: [
+            /* @__PURE__ */ jsxDEV(TrendingDown, { className: "w-3.5 h-3.5 text-rose-400" }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 280,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "FIFO Taint Contamination Accounting" }, void 0, false, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 281,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 279,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "text-[10px] font-mono text-rose-400 font-bold", children: [
+            taint.final_taint_percentage.toFixed(1),
+            "% Contaminated"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 283,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 278,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-4 rounded-xl border border-slate-800 bg-slate-900/40", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "w-full bg-slate-800 rounded-full h-2 mb-3 overflow-hidden", children: /* @__PURE__ */ jsxDEV(
+            "div",
+            {
+              className: "bg-rose-500 h-full rounded-full transition-all duration-500",
+              style: { width: `${Math.min(100, Math.max(0, taint.final_taint_percentage))}%` }
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 290,
+              columnNumber: 17
+            },
+            this
+          ) }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 289,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-2 gap-3 text-mono text-[11px]", children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "p-2 rounded-lg bg-slate-950/60 border border-slate-800", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "text-slate-400 text-[10px]", children: "Tainted Value" }, void 0, false, {
+                fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                lineNumber: 298,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "font-bold text-rose-400 mt-0.5", children: taint.final_tainted_value.toLocaleString() }, void 0, false, {
+                fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                lineNumber: 299,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 297,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "p-2 rounded-lg bg-slate-950/60 border border-slate-800", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "text-slate-400 text-[10px]", children: "Clean Co-mingled" }, void 0, false, {
+                fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                lineNumber: 304,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "font-bold text-emerald-400 mt-0.5", children: taint.clean_value.toLocaleString() }, void 0, false, {
+                fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+                lineNumber: 305,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+              lineNumber: 303,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 296,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 288,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+        lineNumber: 277,
+        columnNumber: 9
+      }, this),
+      risk && /* @__PURE__ */ jsxDEV("div", { className: "p-4 rounded-xl border border-slate-800 bg-slate-900/60", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-2", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "text-xs font-bold text-slate-300 uppercase tracking-wider", children: "Composite Forensic Risk Score" }, void 0, false, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 318,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: `px-2 py-0.5 rounded-full border text-[10px] font-mono font-bold ${getRiskColor(risk.risk_level)}`, children: [
+            risk.risk_level,
+            " • ",
+            risk.composite_score,
+            "/100"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+            lineNumber: 321,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 317,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-[11px] text-slate-300 mt-2 leading-relaxed", children: risk.explanation }, void 0, false, {
+          fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+          lineNumber: 326,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+        lineNumber: 316,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+      lineNumber: 143,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx",
+    lineNumber: 117,
+    columnNumber: 5
+  }, this);
+};
+_c = ForensicDrawer;
+var _c;
+$RefreshReg$(_c, "ForensicDrawer");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Shann/Downloads/PURNENDU/sih3-cld/frontend/src/components/ForensicDrawer.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBc0dZOzs7Ozs7Ozs7Ozs7Ozs7O0FBckdaO0FBQUEsRUFDRUE7QUFBQUEsRUFDQUM7QUFBQUEsRUFDQUM7QUFBQUEsRUFDQUM7QUFBQUEsRUFDQUM7QUFBQUEsRUFDQUM7QUFBQUEsRUFDQUM7QUFBQUEsT0FDSztBQVlQLE1BQU1DLDBCQUEyRjtBQUFBLEVBQy9GQyxtQkFBbUI7QUFBQSxJQUNqQkMsT0FBTztBQUFBLElBQ1BDLFFBQVE7QUFBQSxJQUNSQyxNQUFNO0FBQUEsRUFDUjtBQUFBLEVBQ0FDLGdCQUFnQjtBQUFBLElBQ2RILE9BQU87QUFBQSxJQUNQQyxRQUFRO0FBQUEsSUFDUkMsTUFBTTtBQUFBLEVBQ1I7QUFBQSxFQUNBRSw0QkFBNEI7QUFBQSxJQUMxQkosT0FBTztBQUFBLElBQ1BDLFFBQVE7QUFBQSxJQUNSQyxNQUFNO0FBQUEsRUFDUjtBQUFBLEVBQ0FHLHNCQUFzQjtBQUFBLElBQ3BCTCxPQUFPO0FBQUEsSUFDUEMsUUFBUTtBQUFBLElBQ1JDLE1BQU07QUFBQSxFQUNSO0FBQUEsRUFDQUksa0JBQWtCO0FBQUEsSUFDaEJOLE9BQU87QUFBQSxJQUNQQyxRQUFRO0FBQUEsSUFDUkMsTUFBTTtBQUFBLEVBQ1I7QUFBQSxFQUNBSyxZQUFZO0FBQUEsSUFDVlAsT0FBTztBQUFBLElBQ1BDLFFBQVE7QUFBQSxJQUNSQyxNQUFNO0FBQUEsRUFDUjtBQUNGO0FBRU8sYUFBTU0saUJBQWdEQSxDQUFDO0FBQUEsRUFDNURDO0FBQUFBLEVBQ0FDLGFBQWE7QUFBQSxFQUNiQztBQUFBQSxFQUNBQztBQUFBQSxFQUNBQztBQUFBQSxFQUNBQztBQUNGLE1BQU07QUFDSixNQUFJLENBQUNELE9BQVEsUUFBTztBQUVwQixRQUFNRSxhQUFhTixhQUFhTSxjQUFjO0FBQzlDLFFBQU1DLE9BQU9QLGFBQWFRLG1CQUFtQjtBQUM3QyxRQUFNQyxZQUFZVCxhQUFhVSxtQkFBbUIsQ0FBQztBQUVuRCxRQUFNQyxlQUFlQSxDQUFDQyxNQUFjO0FBQ2xDLFlBQVFBLEdBQUM7QUFBQSxNQUNQLEtBQUs7QUFDSCxlQUFPO0FBQUEsTUFDVCxLQUFLO0FBQ0gsZUFBTztBQUFBLE1BQ1QsS0FBSztBQUNILGVBQU87QUFBQSxNQUNULEtBQUs7QUFBQSxNQUNMO0FBQ0UsZUFBTztBQUFBLElBQ1g7QUFBQSxFQUNGO0FBRUEsUUFBTUMsZUFBZUEsQ0FBQ0MsVUFBbUI7QUFDdkMsWUFBUUEsT0FBSztBQUFBLE1BQ1gsS0FBSztBQUNILGVBQU87QUFBQSxNQUNULEtBQUs7QUFDSCxlQUFPO0FBQUEsTUFDVCxLQUFLO0FBQ0gsZUFBTztBQUFBLE1BQ1QsS0FBSztBQUFBLE1BQ0w7QUFDRSxlQUFPO0FBQUEsSUFDWDtBQUFBLEVBQ0Y7QUFFQSxTQUNFLHVCQUFDLFNBQUksV0FBVSw0SkFFYjtBQUFBLDJCQUFDLFNBQUksV0FBVSxpR0FDYjtBQUFBLDZCQUFDLFNBQUksV0FBVSxpQ0FDYjtBQUFBLCtCQUFDLFNBQUksV0FBVSx5RUFDYixpQ0FBQyxTQUFNLFdBQVUsYUFBakI7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUEwQixLQUQ1QjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBRUE7QUFBQSxRQUNBLHVCQUFDLFNBQ0M7QUFBQSxpQ0FBQyxRQUFHLFdBQVUsOENBQTRDLHNEQUExRDtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUVBO0FBQUEsVUFDQSx1QkFBQyxPQUFFLFdBQVUsd0NBQXNDLDhEQUFuRDtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUVBO0FBQUEsYUFORjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBT0E7QUFBQSxXQVhGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFZQTtBQUFBLE1BRUE7QUFBQSxRQUFDO0FBQUE7QUFBQSxVQUNDLFNBQVNUO0FBQUFBLFVBQ1QsV0FBVTtBQUFBLFVBQXlHO0FBQUE7QUFBQSxRQUZySDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFLQTtBQUFBLFNBcEJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FxQkE7QUFBQSxJQUdBLHVCQUFDLFNBQUksV0FBVSxnREFFYjtBQUFBLDZCQUFDLFNBQUksV0FBVSxvRUFDYjtBQUFBLCtCQUFDLFNBQUksV0FBVSwwQ0FDYjtBQUFBLGlDQUFDLFVBQUssV0FBVSxxRUFBbUUsK0NBQW5GO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBRUE7QUFBQSxVQUNBLHVCQUFDLFVBQUssV0FBVyxtRUFBbUVNLGFBQWFKLElBQUksQ0FBQyxJQUNuR0E7QUFBQUEsaUJBQUtRLFFBQVEsS0FBSyxHQUFHO0FBQUEsWUFBRTtBQUFBLFlBQVNDLEtBQUtDLE1BQU1YLGFBQWEsR0FBRztBQUFBLFlBQUU7QUFBQSxlQURoRTtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUVBO0FBQUEsYUFORjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBT0E7QUFBQSxRQUVBLHVCQUFDLFNBQUksV0FBVSxzQ0FDYjtBQUFBLGlDQUFDLFNBQUksV0FBVSwrQ0FDWk4sdUJBQWFrQixrQkFBa0IsMkJBRGxDO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBRUE7QUFBQSxVQUNDbEIsYUFBYW1CLGNBQ1osdUJBQUMsVUFBSyxXQUFVLG9HQUFrRztBQUFBO0FBQUEsWUFDekduQixZQUFZbUI7QUFBQUEsZUFEckI7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFFQTtBQUFBLGFBUEo7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQVNBO0FBQUEsUUFFQ25CLGFBQWFtQixlQUFlLGtDQUMzQix1QkFBQyxTQUFJLFdBQVUsK0hBQ2I7QUFBQSxpQ0FBQyxnQkFBYSxXQUFVLHVDQUF4QjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUEyRDtBQUFBLFVBQzNELHVCQUFDLFVBQ0M7QUFBQSxtQ0FBQyxZQUFPLHlDQUFSO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBQWlDO0FBQUEsWUFBUztBQUFBLFlBQWtELHVCQUFDLFlBQVFuQixzQkFBWWtCLGtCQUFyQjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUFvQztBQUFBLFlBQVM7QUFBQSxlQUQzSTtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUVBO0FBQUEsYUFKRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBS0E7QUFBQSxRQUdEWCxTQUFTLDJCQUEyQlAsYUFBYW1CLGVBQWUsa0NBQy9ELHVCQUFDLFNBQUksV0FBVSx3SEFDYjtBQUFBLGlDQUFDLGlCQUFjLFdBQVUsb0NBQXpCO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQXlEO0FBQUEsVUFDekQsdUJBQUMsVUFDQztBQUFBLG1DQUFDLFlBQU8seUNBQVI7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFBaUM7QUFBQSxZQUFTO0FBQUEsZUFENUM7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFFQTtBQUFBLGFBSkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUtBO0FBQUEsV0FwQ0o7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQXNDQTtBQUFBLE1BR0EsdUJBQUMsU0FDQztBQUFBLCtCQUFDLFNBQUksV0FBVSwwQ0FDYjtBQUFBLGlDQUFDLFFBQUcsV0FBVSwyRkFDWjtBQUFBLG1DQUFDLFdBQVEsV0FBVSwrQkFBbkI7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFBOEM7QUFBQSxZQUM5Qyx1QkFBQyxVQUFLLHFEQUFOO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBQTJDO0FBQUEsZUFGN0M7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFHQTtBQUFBLFVBQ0EsdUJBQUMsVUFBSyxXQUFVLHdDQUF1Qyx5Q0FBdkQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFBZ0Y7QUFBQSxhQUxsRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBTUE7QUFBQSxRQUVBLHVCQUFDLFNBQUksV0FBVSxzRUFDYixpQ0FBQyxXQUFNLFdBQVUsOEJBQ2Y7QUFBQSxpQ0FBQyxXQUFNLFdBQVUsa0ZBQ2YsaUNBQUMsUUFDQztBQUFBLG1DQUFDLFFBQUcsV0FBVSxhQUFZLGtDQUExQjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUE0QztBQUFBLFlBQzVDLHVCQUFDLFFBQUcsV0FBVSx5QkFBd0Isc0JBQXRDO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBQTRDO0FBQUEsWUFDNUMsdUJBQUMsUUFBRyxXQUFVLHlCQUF3QixxQkFBdEM7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFBMkM7QUFBQSxZQUMzQyx1QkFBQyxRQUFHLFdBQVUsd0JBQXVCLDRCQUFyQztBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUFpRDtBQUFBLGVBSm5EO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBS0EsS0FORjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQU9BO0FBQUEsVUFDQSx1QkFBQyxXQUFNLFdBQVUsNENBQ2RDLGlCQUFPQyxRQUFRaEMsdUJBQXVCLEVBQUVpQyxJQUFJLENBQUMsQ0FBQ0MsS0FBS0MsSUFBSSxNQUFNO0FBQzVELGtCQUFNQyxRQUFRLE9BQU9oQixVQUFVYyxHQUFHLE1BQU0sV0FBV2QsVUFBVWMsR0FBRyxJQUFLQSxRQUFRLHNCQUF1QmpCLGNBQWMsT0FBTyxJQUFNLElBQU87QUFDdEksa0JBQU1vQixlQUFlRCxRQUFRRCxLQUFLaEM7QUFDbEMsbUJBQ0UsdUJBQUMsUUFBYSxXQUFVLDJDQUN0QjtBQUFBLHFDQUFDLFFBQUcsV0FBVSx1QkFDWjtBQUFBLHVDQUFDLFNBQUksV0FBVSw4QkFBOEJnQyxlQUFLakMsU0FBbEQ7QUFBQTtBQUFBO0FBQUE7QUFBQSx1QkFBd0Q7QUFBQSxnQkFDeEQsdUJBQUMsU0FBSSxXQUFVLDhCQUE4QmlDLGVBQUsvQixRQUFsRDtBQUFBO0FBQUE7QUFBQTtBQUFBLHVCQUF1RDtBQUFBLG1CQUZ6RDtBQUFBO0FBQUE7QUFBQTtBQUFBLHFCQUdBO0FBQUEsY0FDQSx1QkFBQyxRQUFHLFdBQVUsa0RBQ1h1QjtBQUFBQSxxQkFBS0MsTUFBTU8sS0FBS2hDLFNBQVMsR0FBRztBQUFBLGdCQUFFO0FBQUEsbUJBRGpDO0FBQUE7QUFBQTtBQUFBO0FBQUEscUJBRUE7QUFBQSxjQUNBLHVCQUFDLFFBQUcsV0FBVSx5QkFDWixpQ0FBQyxVQUFLLFdBQVcscUNBQXFDaUMsU0FBUyxNQUFNLHVDQUF1Q0EsU0FBUyxNQUFNLGlDQUFpQyw2QkFBNkIsSUFDckxBO0FBQUFBLHlCQUFRLEtBQUtFLFFBQVEsQ0FBQztBQUFBLGdCQUFFO0FBQUEsbUJBRDVCO0FBQUE7QUFBQTtBQUFBO0FBQUEscUJBRUEsS0FIRjtBQUFBO0FBQUE7QUFBQTtBQUFBLHFCQUlBO0FBQUEsY0FDQSx1QkFBQyxRQUFHLFdBQVUsdURBQXFEO0FBQUE7QUFBQSxpQkFDOURELGVBQWUsS0FBS0MsUUFBUSxDQUFDO0FBQUEsZ0JBQUU7QUFBQSxtQkFEcEM7QUFBQTtBQUFBO0FBQUE7QUFBQSxxQkFFQTtBQUFBLGlCQWZPSixLQUFUO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBZ0JBO0FBQUEsVUFFSixDQUFDLEtBdkJIO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBd0JBO0FBQUEsYUFqQ0Y7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQWtDQSxLQW5DRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBb0NBO0FBQUEsV0E3Q0Y7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQThDQTtBQUFBLE1BR0EsdUJBQUMsU0FDQztBQUFBLCtCQUFDLFNBQUksV0FBVSwwQ0FDYixpQ0FBQyxRQUFHLFdBQVUsMkZBQ1o7QUFBQSxpQ0FBQyxVQUFPLFdBQVUsaUNBQWxCO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQStDO0FBQUEsVUFDL0MsdUJBQUMsVUFBSztBQUFBO0FBQUEsWUFBdUN0QixXQUFXMkI7QUFBQUEsWUFBTztBQUFBLGVBQS9EO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQWdFO0FBQUEsYUFGbEU7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUdBLEtBSkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUtBO0FBQUEsUUFFQzNCLFdBQVcyQixXQUFXLElBQ3JCLHVCQUFDLFNBQUksV0FBVSx1R0FDYjtBQUFBLGlDQUFDLGdCQUFhLFdBQVUsOEJBQXhCO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQWtEO0FBQUEsVUFDbEQsdUJBQUMsVUFBSyxpRkFBTjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUF1RTtBQUFBLGFBRnpFO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFHQSxJQUVBLHVCQUFDLFNBQUksV0FBVSxhQUNaM0IscUJBQVdxQjtBQUFBQSxVQUFJLENBQUNPLEdBQUdDLFFBQ2xCO0FBQUEsWUFBQztBQUFBO0FBQUEsY0FFQyxXQUFVO0FBQUEsY0FFVjtBQUFBLHVDQUFDLFNBQUksV0FBVSxnQ0FDYjtBQUFBLHlDQUFDLFNBQUksV0FBVSx3RkFDYixpQ0FBQyxTQUFNLFdBQVUsaUJBQWpCO0FBQUE7QUFBQTtBQUFBO0FBQUEseUJBQThCLEtBRGhDO0FBQUE7QUFBQTtBQUFBO0FBQUEseUJBRUE7QUFBQSxrQkFDQSx1QkFBQyxTQUNDO0FBQUEsMkNBQUMsU0FBSSxXQUFVLGtDQUFrQ0QsWUFBRUUsWUFBbkQ7QUFBQTtBQUFBO0FBQUE7QUFBQSwyQkFBNEQ7QUFBQSxvQkFDNUQsdUJBQUMsU0FBSSxXQUFVLHFDQUNaRixZQUFFRyxlQUFlLHVEQUF1REgsRUFBRUksYUFBYSxDQUFDLFFBQVFKLEVBQUVLLFdBQVcsS0FBSyxPQURySDtBQUFBO0FBQUE7QUFBQTtBQUFBLDJCQUVBO0FBQUEsdUJBSkY7QUFBQTtBQUFBO0FBQUE7QUFBQSx5QkFLQTtBQUFBLHFCQVRGO0FBQUE7QUFBQTtBQUFBO0FBQUEsdUJBVUE7QUFBQSxnQkFDQSx1QkFBQyxVQUFLLFdBQVUsMEdBQXdHO0FBQUE7QUFBQSxrQkFDaEhMLEVBQUVJLGFBQWE7QUFBQSxrQkFBRTtBQUFBLGtCQUFTSixFQUFFSyxXQUFXO0FBQUEscUJBRC9DO0FBQUE7QUFBQTtBQUFBO0FBQUEsdUJBRUE7QUFBQTtBQUFBO0FBQUEsWUFoQktKO0FBQUFBLFlBRFA7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxVQWtCQTtBQUFBLFFBQ0QsS0FyQkg7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQXNCQTtBQUFBLFdBcENKO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFzQ0E7QUFBQSxNQUdDNUIsU0FDQyx1QkFBQyxTQUNDO0FBQUEsK0JBQUMsU0FBSSxXQUFVLDBDQUNiO0FBQUEsaUNBQUMsUUFBRyxXQUFVLDJGQUNaO0FBQUEsbUNBQUMsZ0JBQWEsV0FBVSwrQkFBeEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFBbUQ7QUFBQSxZQUNuRCx1QkFBQyxVQUFLLG1EQUFOO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBQXlDO0FBQUEsZUFGM0M7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFHQTtBQUFBLFVBQ0EsdUJBQUMsVUFBSyxXQUFVLGlEQUNiQTtBQUFBQSxrQkFBTWlDLHVCQUF1QlIsUUFBUSxDQUFDO0FBQUEsWUFBRTtBQUFBLGVBRDNDO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBRUE7QUFBQSxhQVBGO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFRQTtBQUFBLFFBRUEsdUJBQUMsU0FBSSxXQUFVLDBEQUNiO0FBQUEsaUNBQUMsU0FBSSxXQUFVLDZEQUNiO0FBQUEsWUFBQztBQUFBO0FBQUEsY0FDQyxXQUFVO0FBQUEsY0FDVixPQUFPLEVBQUVTLE9BQU8sR0FBR3BCLEtBQUtxQixJQUFJLEtBQUtyQixLQUFLc0IsSUFBSSxHQUFHcEMsTUFBTWlDLHNCQUFzQixDQUFDLENBQUMsSUFBSTtBQUFBO0FBQUEsWUFGakY7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFVBRW1GLEtBSHJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBS0E7QUFBQSxVQUVBLHVCQUFDLFNBQUksV0FBVSxnREFDYjtBQUFBLG1DQUFDLFNBQUksV0FBVSwwREFDYjtBQUFBLHFDQUFDLFNBQUksV0FBVSw4QkFBNkIsNkJBQTVDO0FBQUE7QUFBQTtBQUFBO0FBQUEscUJBQXlEO0FBQUEsY0FDekQsdUJBQUMsU0FBSSxXQUFVLGtDQUNaakMsZ0JBQU1xQyxvQkFBb0JDLGVBQWUsS0FENUM7QUFBQTtBQUFBO0FBQUE7QUFBQSxxQkFFQTtBQUFBLGlCQUpGO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBS0E7QUFBQSxZQUNBLHVCQUFDLFNBQUksV0FBVSwwREFDYjtBQUFBLHFDQUFDLFNBQUksV0FBVSw4QkFBNkIsZ0NBQTVDO0FBQUE7QUFBQTtBQUFBO0FBQUEscUJBQTREO0FBQUEsY0FDNUQsdUJBQUMsU0FBSSxXQUFVLHFDQUNadEMsZ0JBQU11QyxZQUFZRCxlQUFlLEtBRHBDO0FBQUE7QUFBQTtBQUFBO0FBQUEscUJBRUE7QUFBQSxpQkFKRjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUtBO0FBQUEsZUFaRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQWFBO0FBQUEsYUFyQkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQXNCQTtBQUFBLFdBakNGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFrQ0E7QUFBQSxNQUlEckMsUUFDQyx1QkFBQyxTQUFJLFdBQVUsMERBQ2I7QUFBQSwrQkFBQyxTQUFJLFdBQVUsMENBQ2I7QUFBQSxpQ0FBQyxVQUFLLFdBQVUsNkRBQTJELDZDQUEzRTtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUVBO0FBQUEsVUFDQSx1QkFBQyxVQUFLLFdBQVcsbUVBQW1FVSxhQUFhVixLQUFLdUMsVUFBVSxDQUFDLElBQzlHdkM7QUFBQUEsaUJBQUt1QztBQUFBQSxZQUFXO0FBQUEsWUFBU3ZDLEtBQUt3QztBQUFBQSxZQUFnQjtBQUFBLGVBRGpEO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBRUE7QUFBQSxhQU5GO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFPQTtBQUFBLFFBRUEsdUJBQUMsT0FBRSxXQUFVLG1EQUNWeEMsZUFBS3lDLGVBRFI7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUVBO0FBQUEsV0FaRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBYUE7QUFBQSxTQTFMSjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBNExBO0FBQUEsT0F0TkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQXVOQTtBQUVKO0FBQUVDLEtBcFFXOUM7QUFBNkMsSUFBQThDO0FBQUEsYUFBQUEsSUFBQSIsIm5hbWVzIjpbIkxheWVycyIsIlNjYWxlIiwiUGVyY2VudCIsIkNoZWNrQ2lyY2xlMiIsIkFsZXJ0VHJpYW5nbGUiLCJGbGFtZSIsIlRyZW5kaW5nRG93biIsIkFUVFJJQlVUSU9OX0ZBQ1RPUl9NRVRBIiwic3dlZXBfbGFiZWxfbWF0Y2giLCJsYWJlbCIsIndlaWdodCIsImRlc2MiLCJwYXRoX3Byb3hpbWl0eSIsImRlcG9zaXRfcGF0dGVybl9zaW1pbGFyaXR5IiwidGVtcG9yYWxfY29ycmVsYXRpb24iLCJjb19zcGVuZF9jbHVzdGVyIiwiYmVoYXZpb3JhbCIsIkZvcmVuc2ljRHJhd2VyIiwiYXR0cmlidXRpb24iLCJ0eXBvbG9naWVzIiwidGFpbnQiLCJyaXNrIiwiaXNPcGVuIiwib25DbG9zZSIsImNvbmZpZGVuY2UiLCJiYW5kIiwiY29uZmlkZW5jZV9iYW5kIiwiYnJlYWtkb3duIiwic2NvcmVfYnJlYWtkb3duIiwiZ2V0QmFuZEJhZGdlIiwiYiIsImdldFJpc2tDb2xvciIsImxldmVsIiwicmVwbGFjZSIsIk1hdGgiLCJyb3VuZCIsIm1hdGNoZWRfZW50aXR5IiwicnVsZV9maXJlZCIsIk9iamVjdCIsImVudHJpZXMiLCJtYXAiLCJrZXkiLCJtZXRhIiwic2NvcmUiLCJjb250cmlidXRpb24iLCJ0b0ZpeGVkIiwibGVuZ3RoIiwidCIsImlkeCIsInR5cG9sb2d5IiwiZGVzY3JpcHRpb24iLCJob3Bfc3RhcnQiLCJob3BfZW5kIiwiZmluYWxfdGFpbnRfcGVyY2VudGFnZSIsIndpZHRoIiwibWluIiwibWF4IiwiZmluYWxfdGFpbnRlZF92YWx1ZSIsInRvTG9jYWxlU3RyaW5nIiwiY2xlYW5fdmFsdWUiLCJyaXNrX2xldmVsIiwiY29tcG9zaXRlX3Njb3JlIiwiZXhwbGFuYXRpb24iLCJfYyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJGb3JlbnNpY0RyYXdlci50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7XG4gIExheWVycyxcbiAgU2NhbGUsXG4gIFBlcmNlbnQsXG4gIENoZWNrQ2lyY2xlMixcbiAgQWxlcnRUcmlhbmdsZSxcbiAgRmxhbWUsXG4gIFRyZW5kaW5nRG93bixcbn0gZnJvbSAnbHVjaWRlLXJlYWN0JztcbmltcG9ydCB7IEF0dHJpYnV0aW9uQnJlYWtkb3duLCBUeXBvbG9neUhpdCwgVGFpbnRSZXN1bHQsIFJpc2tBc3Nlc3NtZW50IH0gZnJvbSAnLi4vbGliL2FwaSc7XG5cbmludGVyZmFjZSBGb3JlbnNpY0RyYXdlclByb3BzIHtcbiAgYXR0cmlidXRpb24/OiBBdHRyaWJ1dGlvbkJyZWFrZG93bjtcbiAgdHlwb2xvZ2llcz86IFR5cG9sb2d5SGl0W107XG4gIHRhaW50PzogVGFpbnRSZXN1bHQ7XG4gIHJpc2s/OiBSaXNrQXNzZXNzbWVudDtcbiAgaXNPcGVuOiBib29sZWFuO1xuICBvbkNsb3NlOiAoKSA9PiB2b2lkO1xufVxuXG5jb25zdCBBVFRSSUJVVElPTl9GQUNUT1JfTUVUQTogUmVjb3JkPHN0cmluZywgeyBsYWJlbDogc3RyaW5nOyB3ZWlnaHQ6IG51bWJlcjsgZGVzYzogc3RyaW5nIH0+ID0ge1xuICBzd2VlcF9sYWJlbF9tYXRjaDoge1xuICAgIGxhYmVsOiAnU3dlZXAgLyBMYWJlbCBNYXRjaCcsXG4gICAgd2VpZ2h0OiAwLjM1LFxuICAgIGRlc2M6ICdEaXJlY3QgY29uc29saWRhdGlvbiBpbnRvIHZlcmlmaWVkIFZBU1AgaG90IHdhbGxldCBhZGRyZXNzIGluZnJhc3RydWN0dXJlLicsXG4gIH0sXG4gIHBhdGhfcHJveGltaXR5OiB7XG4gICAgbGFiZWw6ICdQYXRoIFByb3hpbWl0eScsXG4gICAgd2VpZ2h0OiAwLjIwLFxuICAgIGRlc2M6ICdJbnZlcnNlIGhvcCBkaXN0YW5jZSB0byByZWNpcGllbnQgZW50aXR5IChkZWdyYWRlcyBtb25vdG9uaWNhbGx5IG92ZXIgaG9wcykuJyxcbiAgfSxcbiAgZGVwb3NpdF9wYXR0ZXJuX3NpbWlsYXJpdHk6IHtcbiAgICBsYWJlbDogJ0RlcG9zaXQgUGF0dGVybiBNYXRjaCcsXG4gICAgd2VpZ2h0OiAwLjE1LFxuICAgIGRlc2M6ICdUcmFuc2ZlciB2YWx1ZSByZXRlbnRpb24sIHNpbmdsZS1kZXBvc2l0IHRocmVzaG9sZHMsIGFuZCBnYXMtc3dlZXAgc2lnbmF0dXJlcy4nLFxuICB9LFxuICB0ZW1wb3JhbF9jb3JyZWxhdGlvbjoge1xuICAgIGxhYmVsOiAnVGVtcG9yYWwgQ29ycmVsYXRpb24nLFxuICAgIHdlaWdodDogMC4xNSxcbiAgICBkZXNjOiAnRXhlY3V0aW9uIGxhdGVuY3kgYmV0d2VlbiB0aGVmdCBldmVudCBhbmQgZXhjaGFuZ2UgZGVwb3NpdCAocmFwaWQgc3dlZXAgY29ycmVsYXRpb24pLicsXG4gIH0sXG4gIGNvX3NwZW5kX2NsdXN0ZXI6IHtcbiAgICBsYWJlbDogJ0NvLVNwZW5kIC8gQ2x1c3RlciBNYXRjaCcsXG4gICAgd2VpZ2h0OiAwLjEwLFxuICAgIGRlc2M6ICdDb21tb24taW5wdXQgb3duZXJzaGlwIGNsdXN0ZXJpbmcgYW5kIHNoYXJlZCBkZXBvc2l0IGZvcndhcmRlcnMuJyxcbiAgfSxcbiAgYmVoYXZpb3JhbDoge1xuICAgIGxhYmVsOiAnQmVoYXZpb3JhbCBIZXVyaXN0aWNzJyxcbiAgICB3ZWlnaHQ6IDAuMDUsXG4gICAgZGVzYzogJ0F1dG9tYXRlZCBzY3JpcHQgcm91dGluZyB2cyBtYW51YWwgdHJhbnNmZXIgYmVoYXZpb3JhbCBpbmRpY2F0b3JzLicsXG4gIH0sXG59O1xuXG5leHBvcnQgY29uc3QgRm9yZW5zaWNEcmF3ZXI6IFJlYWN0LkZDPEZvcmVuc2ljRHJhd2VyUHJvcHM+ID0gKHtcbiAgYXR0cmlidXRpb24sXG4gIHR5cG9sb2dpZXMgPSBbXSxcbiAgdGFpbnQsXG4gIHJpc2ssXG4gIGlzT3BlbixcbiAgb25DbG9zZSxcbn0pID0+IHtcbiAgaWYgKCFpc09wZW4pIHJldHVybiBudWxsO1xuXG4gIGNvbnN0IGNvbmZpZGVuY2UgPSBhdHRyaWJ1dGlvbj8uY29uZmlkZW5jZSA/PyAwO1xuICBjb25zdCBiYW5kID0gYXR0cmlidXRpb24/LmNvbmZpZGVuY2VfYmFuZCA/PyAnSU5TVUZGSUNJRU5UX0VWSURFTkNFJztcbiAgY29uc3QgYnJlYWtkb3duID0gYXR0cmlidXRpb24/LnNjb3JlX2JyZWFrZG93biB8fCB7fTtcblxuICBjb25zdCBnZXRCYW5kQmFkZ2UgPSAoYjogc3RyaW5nKSA9PiB7XG4gICAgc3dpdGNoIChiKSB7XG4gICAgICBjYXNlICdWRVJZX0hJR0gnOlxuICAgICAgICByZXR1cm4gJ2JnLWVtZXJhbGQtNTAwLzEwIHRleHQtZW1lcmFsZC00MDAgYm9yZGVyLWVtZXJhbGQtNTAwLzMwJztcbiAgICAgIGNhc2UgJ0hJR0gnOlxuICAgICAgICByZXR1cm4gJ2JnLWJsdWUtNTAwLzEwIHRleHQtYmx1ZS00MDAgYm9yZGVyLWJsdWUtNTAwLzMwJztcbiAgICAgIGNhc2UgJ01FRElVTSc6XG4gICAgICAgIHJldHVybiAnYmctYW1iZXItNTAwLzEwIHRleHQtYW1iZXItNDAwIGJvcmRlci1hbWJlci01MDAvMzAnO1xuICAgICAgY2FzZSAnSU5TVUZGSUNJRU5UX0VWSURFTkNFJzpcbiAgICAgIGRlZmF1bHQ6XG4gICAgICAgIHJldHVybiAnYmctcm9zZS01MDAvMTAgdGV4dC1yb3NlLTQwMCBib3JkZXItcm9zZS01MDAvMzAnO1xuICAgIH1cbiAgfTtcblxuICBjb25zdCBnZXRSaXNrQ29sb3IgPSAobGV2ZWw/OiBzdHJpbmcpID0+IHtcbiAgICBzd2l0Y2ggKGxldmVsKSB7XG4gICAgICBjYXNlICdDUklUSUNBTCc6XG4gICAgICAgIHJldHVybiAndGV4dC1yb3NlLTQwMCBiZy1yb3NlLTUwMC8xMCBib3JkZXItcm9zZS01MDAvMzAnO1xuICAgICAgY2FzZSAnSElHSCc6XG4gICAgICAgIHJldHVybiAndGV4dC1hbWJlci00MDAgYmctYW1iZXItNTAwLzEwIGJvcmRlci1hbWJlci01MDAvMzAnO1xuICAgICAgY2FzZSAnTUVESVVNJzpcbiAgICAgICAgcmV0dXJuICd0ZXh0LXllbGxvdy00MDAgYmcteWVsbG93LTUwMC8xMCBib3JkZXIteWVsbG93LTUwMC8zMCc7XG4gICAgICBjYXNlICdMT1cnOlxuICAgICAgZGVmYXVsdDpcbiAgICAgICAgcmV0dXJuICd0ZXh0LWVtZXJhbGQtNDAwIGJnLWVtZXJhbGQtNTAwLzEwIGJvcmRlci1lbWVyYWxkLTUwMC8zMCc7XG4gICAgfVxuICB9O1xuXG4gIHJldHVybiAoXG4gICAgPGRpdiBjbGFzc05hbWU9XCJmaXhlZCBpbnNldC15LTAgcmlnaHQtMCB3LWZ1bGwgbWF4LXcteGwgYmctWyMwZjE3MmFdIGJvcmRlci1sIGJvcmRlci1zbGF0ZS04MDAgc2hhZG93LTJ4bCB6LTUwIGZsZXggZmxleC1jb2wgYW5pbWF0ZS1pbiBzbGlkZS1pbi1mcm9tLXJpZ2h0IGR1cmF0aW9uLTMwMFwiPlxuICAgICAgey8qIEhlYWRlciAqL31cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC01IGJvcmRlci1iIGJvcmRlci1zbGF0ZS04MDAgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIGJnLXNsYXRlLTkwMC84MCBiYWNrZHJvcC1ibHVyXCI+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0yLjVcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtMiBiZy1ibHVlLTYwMC8yMCBib3JkZXIgYm9yZGVyLWJsdWUtNTAwLzMwIHJvdW5kZWQtbGcgdGV4dC1ibHVlLTQwMFwiPlxuICAgICAgICAgICAgPFNjYWxlIGNsYXNzTmFtZT1cInctNSBoLTVcIiAvPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwidGV4dC1zbSBmb250LWJvbGQgdGV4dC13aGl0ZSB0cmFja2luZy13aWRlXCI+XG4gICAgICAgICAgICAgIEZvcmVuc2ljIEF0dHJpYnV0aW9uICZhbXA7IEV2aWRlbmNlIEVuZ2luZVxuICAgICAgICAgICAgPC9oMz5cbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtWzExcHhdIHRleHQtc2xhdGUtNDAwIGZvbnQtbW9ub1wiPlxuICAgICAgICAgICAgICBFeHBsYWluYWJsZSBEZWNpc2lvbiBTdXBwb3J0IE1hdHJpeCAoU0lIMjYxODMpXG4gICAgICAgICAgICA8L3A+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIDxidXR0b25cbiAgICAgICAgICBvbkNsaWNrPXtvbkNsb3NlfVxuICAgICAgICAgIGNsYXNzTmFtZT1cInAtMS41IHRleHQtc2xhdGUtNDAwIGhvdmVyOnRleHQtd2hpdGUgcm91bmRlZC1sZyBob3ZlcjpiZy1zbGF0ZS04MDAgdHJhbnNpdGlvbi1jb2xvcnMgdGV4dC1zbSBmb250LWJvbGRcIlxuICAgICAgICA+XG4gICAgICAgICAgJnRpbWVzO1xuICAgICAgICA8L2J1dHRvbj5cbiAgICAgIDwvZGl2PlxuXG4gICAgICB7LyogQ29udGVudCBTY3JvbGxhYmxlICovfVxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4LTEgb3ZlcmZsb3cteS1hdXRvIHAtNSBzcGFjZS15LTYgdGV4dC14c1wiPlxuICAgICAgICB7LyogQXR0cmlidXRpb24gT3ZlcnZpZXcgQ2FyZCAqL31cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTQgcm91bmRlZC14bCBib3JkZXIgYm9yZGVyLXNsYXRlLTgwMCBiZy1zbGF0ZS05MDAvNjAgc2hhZG93LWxnXCI+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gbWItM1wiPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1zbGF0ZS00MDAgdXBwZXJjYXNlIHRyYWNraW5nLXdpZGVyIHRleHQtWzEwcHhdIGZvbnQtc2VtaWJvbGRcIj5cbiAgICAgICAgICAgICAgQXR0cmlidXRlZCBEZXN0aW5hdGlvbiBPZmYtUmFtcFxuICAgICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPXtgcHgtMiBweS0wLjUgcm91bmRlZC1mdWxsIGJvcmRlciB0ZXh0LVsxMHB4XSBmb250LW1vbm8gZm9udC1ib2xkICR7Z2V0QmFuZEJhZGdlKGJhbmQpfWB9PlxuICAgICAgICAgICAgICB7YmFuZC5yZXBsYWNlKCdfJywgJyAnKX0gJmJ1bGw7IHtNYXRoLnJvdW5kKGNvbmZpZGVuY2UgKiAxMDApfSVcbiAgICAgICAgICAgIDwvc3Bhbj5cbiAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1iYXNlbGluZSBzcGFjZS14LTMgbWItMlwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhsIGZvbnQtYm9sZCB0ZXh0LXdoaXRlIHRyYWNraW5nLXRpZ2h0XCI+XG4gICAgICAgICAgICAgIHthdHRyaWJ1dGlvbj8ubWF0Y2hlZF9lbnRpdHkgfHwgJ0luc3VmZmljaWVudCBFdmlkZW5jZSd9XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIHthdHRyaWJ1dGlvbj8ucnVsZV9maXJlZCAmJiAoXG4gICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtWzEwcHhdIGZvbnQtbW9ubyB0ZXh0LWJsdWUtNDAwIGJnLWJsdWUtOTUwLzQwIHB4LTIgcHktMC41IHJvdW5kZWQgYm9yZGVyIGJvcmRlci1ibHVlLTgwMC80MFwiPlxuICAgICAgICAgICAgICAgIFJ1bGU6IHthdHRyaWJ1dGlvbi5ydWxlX2ZpcmVkfVxuICAgICAgICAgICAgICA8L3NwYW4+XG4gICAgICAgICAgICApfVxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAge2F0dHJpYnV0aW9uPy5ydWxlX2ZpcmVkID09PSAnUk9PVF9BRERSRVNTX0lTX0tOT1dOX0VOVElUWScgJiYgKFxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtdC0yIHAtMyByb3VuZGVkLWxnIGJnLWVtZXJhbGQtOTUwLzQwIGJvcmRlciBib3JkZXItZW1lcmFsZC01MDAvNTAgdGV4dC1lbWVyYWxkLTMwMCB0ZXh0LVsxMXB4XSBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTJcIj5cbiAgICAgICAgICAgICAgPENoZWNrQ2lyY2xlMiBjbGFzc05hbWU9XCJ3LTQgaC00IHNocmluay0wIHRleHQtZW1lcmFsZC00MDBcIiAvPlxuICAgICAgICAgICAgICA8c3Bhbj5cbiAgICAgICAgICAgICAgICA8c3Ryb25nPlJvb3QtRW50aXR5IERpcmVjdCBNYXRjaDo8L3N0cm9uZz4gVGhpcyBhZGRyZXNzIGJlbG9uZ3MgZGlyZWN0bHkgdG8gdmVyaWZpZWQgZW50aXR5IDxzdHJvbmc+e2F0dHJpYnV0aW9uLm1hdGNoZWRfZW50aXR5fTwvc3Ryb25nPiAoMCBob3BzIHJlcXVpcmVkKS4gT3V0d2FyZCB0cmFjaW5nIHdhcyBieXBhc3NlZC5cbiAgICAgICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgKX1cblxuICAgICAgICAgIHtiYW5kID09PSAnSU5TVUZGSUNJRU5UX0VWSURFTkNFJyAmJiBhdHRyaWJ1dGlvbj8ucnVsZV9maXJlZCAhPT0gJ1JPT1RfQUREUkVTU19JU19LTk9XTl9FTlRJVFknICYmIChcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibXQtMiBwLTIuNSByb3VuZGVkLWxnIGJnLXJvc2UtOTUwLzMwIGJvcmRlciBib3JkZXItcm9zZS04MDAvNDAgdGV4dC1yb3NlLTMwMCB0ZXh0LVsxMXB4XSBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTJcIj5cbiAgICAgICAgICAgICAgPEFsZXJ0VHJpYW5nbGUgY2xhc3NOYW1lPVwidy00IGgtNCBzaHJpbmstMCB0ZXh0LXJvc2UtNDAwXCIgLz5cbiAgICAgICAgICAgICAgPHNwYW4+XG4gICAgICAgICAgICAgICAgPHN0cm9uZz5Ob24tTmVnb3RpYWJsZSBQcmluY2lwbGU6PC9zdHJvbmc+IENvbmZpZGVuY2UgaXMgYmVsb3cgdGhyZXNob2xkICgwLjQwKS4gVGhlIHN5c3RlbSBzdHJpY3RseSByZXR1cm5zIFwiSW5zdWZmaWNpZW50IEV2aWRlbmNlXCIgcmF0aGVyIHRoYW4gZm9yY2luZyBhbiB1bmdyb3VuZGVkIGd1ZXNzLlxuICAgICAgICAgICAgICA8L3NwYW4+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICApfVxuICAgICAgICA8L2Rpdj5cblxuICAgICAgICB7LyogRXhwbGFpbmFibGUgNi1GYWN0b3IgV2VpZ2h0ZWQgU2NvcmluZyBUYWJsZSAqL31cbiAgICAgICAgPGRpdj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBtYi0yXCI+XG4gICAgICAgICAgICA8aDQgY2xhc3NOYW1lPVwidGV4dC14cyBmb250LWJvbGQgdGV4dC1zbGF0ZS0yMDAgdXBwZXJjYXNlIHRyYWNraW5nLXdpZGVyIGZsZXggaXRlbXMtY2VudGVyIHNwYWNlLXgtMS41XCI+XG4gICAgICAgICAgICAgIDxQZXJjZW50IGNsYXNzTmFtZT1cInctMy41IGgtMy41IHRleHQtYmx1ZS00MDBcIiAvPlxuICAgICAgICAgICAgICA8c3Bhbj5FeHBsYWluYWJsZSA2LUZhY3RvciBXZWlnaHQgQnJlYWtkb3duPC9zcGFuPlxuICAgICAgICAgICAgPC9oND5cbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtWzEwcHhdIHRleHQtc2xhdGUtNTAwIGZvbnQtbW9ub1wiPlN1bSA9IFdlaWdodGVkIENvbmZpZGVuY2U8L3NwYW4+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItc2xhdGUtODAwIHJvdW5kZWQteGwgb3ZlcmZsb3ctaGlkZGVuIGJnLXNsYXRlLTk1MC81MFwiPlxuICAgICAgICAgICAgPHRhYmxlIGNsYXNzTmFtZT1cInctZnVsbCB0ZXh0LWxlZnQgZm9udC1tb25vXCI+XG4gICAgICAgICAgICAgIDx0aGVhZCBjbGFzc05hbWU9XCJiZy1zbGF0ZS05MDAvOTAgdGV4dC1zbGF0ZS00MDAgdGV4dC1bMTBweF0gYm9yZGVyLWIgYm9yZGVyLXNsYXRlLTgwMCB1cHBlcmNhc2VcIj5cbiAgICAgICAgICAgICAgICA8dHI+XG4gICAgICAgICAgICAgICAgICA8dGggY2xhc3NOYW1lPVwicHgtMyBweS0yXCI+Rm9yZW5zaWMgQ3JpdGVyaW9uPC90aD5cbiAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJweC0yIHB5LTIgdGV4dC1jZW50ZXJcIj5XZWlnaHQ8L3RoPlxuICAgICAgICAgICAgICAgICAgPHRoIGNsYXNzTmFtZT1cInB4LTIgcHktMiB0ZXh0LWNlbnRlclwiPlNjb3JlPC90aD5cbiAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJweC0zIHB5LTIgdGV4dC1yaWdodFwiPkNvbnRyaWJ1dGlvbjwvdGg+XG4gICAgICAgICAgICAgICAgPC90cj5cbiAgICAgICAgICAgICAgPC90aGVhZD5cbiAgICAgICAgICAgICAgPHRib2R5IGNsYXNzTmFtZT1cImRpdmlkZS15IGRpdmlkZS1zbGF0ZS04MDAvNjAgdGV4dC1bMTFweF1cIj5cbiAgICAgICAgICAgICAgICB7T2JqZWN0LmVudHJpZXMoQVRUUklCVVRJT05fRkFDVE9SX01FVEEpLm1hcCgoW2tleSwgbWV0YV0pID0+IHtcbiAgICAgICAgICAgICAgICAgIGNvbnN0IHNjb3JlID0gdHlwZW9mIGJyZWFrZG93bltrZXldID09PSAnbnVtYmVyJyA/IGJyZWFrZG93bltrZXldIDogKGtleSA9PT0gJ3N3ZWVwX2xhYmVsX21hdGNoJyA/IChjb25maWRlbmNlID49IDAuNjUgPyAxLjAgOiAwLjApIDogMC41KTtcbiAgICAgICAgICAgICAgICAgIGNvbnN0IGNvbnRyaWJ1dGlvbiA9IHNjb3JlICogbWV0YS53ZWlnaHQ7XG4gICAgICAgICAgICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgICAgICAgICA8dHIga2V5PXtrZXl9IGNsYXNzTmFtZT1cImhvdmVyOmJnLXNsYXRlLTkwMC80MCB0cmFuc2l0aW9uLWNvbG9yc1wiPlxuICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJweC0zIHB5LTIgZm9udC1zYW5zXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvbnQtbWVkaXVtIHRleHQtc2xhdGUtMjAwXCI+e21ldGEubGFiZWx9PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtWzEwcHhdIHRleHQtc2xhdGUtNTAwXCI+e21ldGEuZGVzY308L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICA8L3RkPlxuICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJweC0yIHB5LTIgdGV4dC1jZW50ZXIgdGV4dC1zbGF0ZS00MDAgZm9udC1tb25vXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICB7TWF0aC5yb3VuZChtZXRhLndlaWdodCAqIDEwMCl9JVxuICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cInB4LTIgcHktMiB0ZXh0LWNlbnRlclwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPXtgcHgtMS41IHB5LTAuNSByb3VuZGVkIHRleHQtWzEwcHhdICR7c2NvcmUgPj0gMC44ID8gJ2JnLWVtZXJhbGQtNTAwLzEwIHRleHQtZW1lcmFsZC00MDAnIDogc2NvcmUgPj0gMC40ID8gJ2JnLWJsdWUtNTAwLzEwIHRleHQtYmx1ZS00MDAnIDogJ2JnLXNsYXRlLTgwMCB0ZXh0LXNsYXRlLTQwMCd9YH0+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIHsoc2NvcmUgKiAxMDApLnRvRml4ZWQoMCl9JVxuICAgICAgICAgICAgICAgICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cInB4LTMgcHktMiB0ZXh0LXJpZ2h0IGZvbnQtbW9ubyBmb250LWJvbGQgdGV4dC13aGl0ZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgK3soY29udHJpYnV0aW9uICogMTAwKS50b0ZpeGVkKDEpfSVcbiAgICAgICAgICAgICAgICAgICAgICA8L3RkPlxuICAgICAgICAgICAgICAgICAgICA8L3RyPlxuICAgICAgICAgICAgICAgICAgKTtcbiAgICAgICAgICAgICAgICB9KX1cbiAgICAgICAgICAgICAgPC90Ym9keT5cbiAgICAgICAgICAgIDwvdGFibGU+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIHsvKiBMYXVuZGVyaW5nIFR5cG9sb2dpZXMgKi99XG4gICAgICAgIDxkaXY+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gbWItMlwiPlxuICAgICAgICAgICAgPGg0IGNsYXNzTmFtZT1cInRleHQteHMgZm9udC1ib2xkIHRleHQtc2xhdGUtMjAwIHVwcGVyY2FzZSB0cmFja2luZy13aWRlciBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTEuNVwiPlxuICAgICAgICAgICAgICA8TGF5ZXJzIGNsYXNzTmFtZT1cInctMy41IGgtMy41IHRleHQtcHVycGxlLTQwMFwiIC8+XG4gICAgICAgICAgICAgIDxzcGFuPkRldGVjdGVkIE1vbmV5IExhdW5kZXJpbmcgVHlwb2xvZ2llcyAoe3R5cG9sb2dpZXMubGVuZ3RofSk8L3NwYW4+XG4gICAgICAgICAgICA8L2g0PlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAge3R5cG9sb2dpZXMubGVuZ3RoID09PSAwID8gKFxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTMuNSByb3VuZGVkLXhsIGJvcmRlciBib3JkZXItc2xhdGUtODAwIGJnLXNsYXRlLTkwMC8zMCB0ZXh0LXNsYXRlLTQwMCBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTJcIj5cbiAgICAgICAgICAgICAgPENoZWNrQ2lyY2xlMiBjbGFzc05hbWU9XCJ3LTQgaC00IHRleHQtZW1lcmFsZC00MDBcIiAvPlxuICAgICAgICAgICAgICA8c3Bhbj5ObyBvYmZ1c2NhdGlvbiBwYXR0ZXJucyBkZXRlY3RlZC4gRGlyZWN0IGZ1bmQgZmxvdyBwYXRoIG9ic2VydmVkLjwvc3Bhbj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICkgOiAoXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNwYWNlLXktMlwiPlxuICAgICAgICAgICAgICB7dHlwb2xvZ2llcy5tYXAoKHQsIGlkeCkgPT4gKFxuICAgICAgICAgICAgICAgIDxkaXZcbiAgICAgICAgICAgICAgICAgIGtleT17aWR4fVxuICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwicC0zIHJvdW5kZWQteGwgYm9yZGVyIGJvcmRlci1zbGF0ZS04MDAgYmctc2xhdGUtOTAwLzQwIGZsZXggaXRlbXMtc3RhcnQganVzdGlmeS1iZXR3ZWVuXCJcbiAgICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtc3RhcnQgc3BhY2UteC0yLjVcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTEuNSByb3VuZGVkLWxnIGJnLXB1cnBsZS05NTAvNjAgYm9yZGVyIGJvcmRlci1wdXJwbGUtNTAwLzMwIHRleHQtcHVycGxlLTQwMCBtdC0wLjVcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8RmxhbWUgY2xhc3NOYW1lPVwidy0zLjUgaC0zLjVcIiAvPlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LXdoaXRlIGZvbnQtbW9ub1wiPnt0LnR5cG9sb2d5fTwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1bMTFweF0gdGV4dC1zbGF0ZS00MDAgbXQtMC41XCI+XG4gICAgICAgICAgICAgICAgICAgICAgICB7dC5kZXNjcmlwdGlvbiB8fCBgU3RydWN0dXJhbCBsYXVuZGVyaW5nIHBhdHRlcm4gZGV0ZWN0ZWQgYmV0d2VlbiBob3BzICR7dC5ob3Bfc3RhcnQgPz8gMH0gYW5kICR7dC5ob3BfZW5kID8/ICdlbmQnfS5gfVxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1bMTBweF0gZm9udC1tb25vIHB4LTIgcHktMC41IHJvdW5kZWQgYmctcHVycGxlLTUwMC8xMCB0ZXh0LXB1cnBsZS0zMDAgYm9yZGVyIGJvcmRlci1wdXJwbGUtNTAwLzIwXCI+XG4gICAgICAgICAgICAgICAgICAgIEhvcHMge3QuaG9wX3N0YXJ0ID8/IDB9ICZyYXJyOyB7dC5ob3BfZW5kID8/ICfigJQnfVxuICAgICAgICAgICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICApKX1cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICl9XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIHsvKiBGSUZPIFRhaW50IEFjY291bnRpbmcgKi99XG4gICAgICAgIHt0YWludCAmJiAoXG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIG1iLTJcIj5cbiAgICAgICAgICAgICAgPGg0IGNsYXNzTmFtZT1cInRleHQteHMgZm9udC1ib2xkIHRleHQtc2xhdGUtMjAwIHVwcGVyY2FzZSB0cmFja2luZy13aWRlciBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTEuNVwiPlxuICAgICAgICAgICAgICAgIDxUcmVuZGluZ0Rvd24gY2xhc3NOYW1lPVwidy0zLjUgaC0zLjUgdGV4dC1yb3NlLTQwMFwiIC8+XG4gICAgICAgICAgICAgICAgPHNwYW4+RklGTyBUYWludCBDb250YW1pbmF0aW9uIEFjY291bnRpbmc8L3NwYW4+XG4gICAgICAgICAgICAgIDwvaDQ+XG4gICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtWzEwcHhdIGZvbnQtbW9ubyB0ZXh0LXJvc2UtNDAwIGZvbnQtYm9sZFwiPlxuICAgICAgICAgICAgICAgIHt0YWludC5maW5hbF90YWludF9wZXJjZW50YWdlLnRvRml4ZWQoMSl9JSBDb250YW1pbmF0ZWRcbiAgICAgICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC00IHJvdW5kZWQteGwgYm9yZGVyIGJvcmRlci1zbGF0ZS04MDAgYmctc2xhdGUtOTAwLzQwXCI+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidy1mdWxsIGJnLXNsYXRlLTgwMCByb3VuZGVkLWZ1bGwgaC0yIG1iLTMgb3ZlcmZsb3ctaGlkZGVuXCI+XG4gICAgICAgICAgICAgICAgPGRpdlxuICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiYmctcm9zZS01MDAgaC1mdWxsIHJvdW5kZWQtZnVsbCB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi01MDBcIlxuICAgICAgICAgICAgICAgICAgc3R5bGU9e3sgd2lkdGg6IGAke01hdGgubWluKDEwMCwgTWF0aC5tYXgoMCwgdGFpbnQuZmluYWxfdGFpbnRfcGVyY2VudGFnZSkpfSVgIH19XG4gICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJncmlkIGdyaWQtY29scy0yIGdhcC0zIHRleHQtbW9ubyB0ZXh0LVsxMXB4XVwiPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0yIHJvdW5kZWQtbGcgYmctc2xhdGUtOTUwLzYwIGJvcmRlciBib3JkZXItc2xhdGUtODAwXCI+XG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtc2xhdGUtNDAwIHRleHQtWzEwcHhdXCI+VGFpbnRlZCBWYWx1ZTwvZGl2PlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb250LWJvbGQgdGV4dC1yb3NlLTQwMCBtdC0wLjVcIj5cbiAgICAgICAgICAgICAgICAgICAge3RhaW50LmZpbmFsX3RhaW50ZWRfdmFsdWUudG9Mb2NhbGVTdHJpbmcoKX1cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0yIHJvdW5kZWQtbGcgYmctc2xhdGUtOTUwLzYwIGJvcmRlciBib3JkZXItc2xhdGUtODAwXCI+XG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtc2xhdGUtNDAwIHRleHQtWzEwcHhdXCI+Q2xlYW4gQ28tbWluZ2xlZDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb250LWJvbGQgdGV4dC1lbWVyYWxkLTQwMCBtdC0wLjVcIj5cbiAgICAgICAgICAgICAgICAgICAge3RhaW50LmNsZWFuX3ZhbHVlLnRvTG9jYWxlU3RyaW5nKCl9XG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgKX1cblxuICAgICAgICB7LyogQ29tcG9zaXRlIFJpc2sgU2NvcmUgKi99XG4gICAgICAgIHtyaXNrICYmIChcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtNCByb3VuZGVkLXhsIGJvcmRlciBib3JkZXItc2xhdGUtODAwIGJnLXNsYXRlLTkwMC82MFwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gbWItMlwiPlxuICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LXhzIGZvbnQtYm9sZCB0ZXh0LXNsYXRlLTMwMCB1cHBlcmNhc2UgdHJhY2tpbmctd2lkZXJcIj5cbiAgICAgICAgICAgICAgICBDb21wb3NpdGUgRm9yZW5zaWMgUmlzayBTY29yZVxuICAgICAgICAgICAgICA8L3NwYW4+XG4gICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT17YHB4LTIgcHktMC41IHJvdW5kZWQtZnVsbCBib3JkZXIgdGV4dC1bMTBweF0gZm9udC1tb25vIGZvbnQtYm9sZCAke2dldFJpc2tDb2xvcihyaXNrLnJpc2tfbGV2ZWwpfWB9PlxuICAgICAgICAgICAgICAgIHtyaXNrLnJpc2tfbGV2ZWx9ICZidWxsOyB7cmlzay5jb21wb3NpdGVfc2NvcmV9LzEwMFxuICAgICAgICAgICAgICA8L3NwYW4+XG4gICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1bMTFweF0gdGV4dC1zbGF0ZS0zMDAgbXQtMiBsZWFkaW5nLXJlbGF4ZWRcIj5cbiAgICAgICAgICAgICAge3Jpc2suZXhwbGFuYXRpb259XG4gICAgICAgICAgICA8L3A+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICl9XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbiAgKTtcbn07XG4iXSwiZmlsZSI6IkM6L1VzZXJzL1NoYW5uL0Rvd25sb2Fkcy9QVVJORU5EVS9zaWgzLWNsZC9mcm9udGVuZC9zcmMvY29tcG9uZW50cy9Gb3JlbnNpY0RyYXdlci50c3gifQ==

@@ -1,0 +1,2211 @@
+{
+  "actors": [
+    {
+      "id": "1inch",
+      "aliases": [
+        "1inch_lop",
+        "1inchlop"
+      ],
+      "label": "1inch Network",
+      "jurisdictions": [
+        "KN"
+      ],
+      "categories": [
+        "exchange",
+        "defi_dex"
+      ],
+      "uri": "1inch.io",
+      "context": {
+        "uris": [
+          "app.1inch.io"
+        ],
+        "coingecko_ids": [
+          "1inch",
+          "one_inch_liquidity_protocol"
+        ],
+        "defilama_ids": [
+          "1inch",
+          "1inch-network one_inch_liquidity_protocol"
+        ],
+        "refs": [
+          "api.llama.fi/protocol/1inch-network",
+          "api.coingecko.com/api/v3/exchanges/one_inch_liquidity_protocol",
+          "www.crunchbase.com/organization/1inch-limited"
+        ],
+        "images": [
+          "icons.llama.fi/1inch-network.jpg",
+          "assets.coingecko.com/markets/images/611/small/1inch-liquidity-protocol.png?1608873020"
+        ],
+        "twitter_handle": "1inchNetwork",
+        "github_organisation": "1inch",
+        "aliases": [
+          "1inch_lop",
+          "1inchlop"
+        ]
+      }
+    },
+    {
+      "id": "aave",
+      "label": "Aave v1/2/3/arc",
+      "jurisdictions": [],
+      "categories": [
+        "organization",
+        "defi_lending"
+      ],
+      "uri": "aave.com",
+      "context": {
+        "coingecko_ids": [
+          "aave"
+        ],
+        "defilama_ids": [
+          "aave-v2",
+          "aave-v1",
+          "aave",
+          "aave-v3",
+          "aave-arc"
+        ],
+        "refs": [
+          "api.llama.fi/protocol/aave-v1",
+          "api.llama.fi/protocol/aave-v3",
+          "api.llama.fi/protocol/aave-v2",
+          "api.llama.fi/protocol/aave-arc"
+        ],
+        "images": [
+          "icons.llama.fi/aave-v2.png",
+          "icons.llama.fi/aave-v3.png",
+          "icons.llama.fi/aave-v1.jpg",
+          "icons.llama.fi/aave-arc.jpg"
+        ],
+        "twitter_handle": "AaveAave"
+      }
+    },
+    {
+      "id": "binance",
+      "label": "Binance",
+      "jurisdictions": [
+        "MT",
+        "CA",
+        "US",
+        "FR",
+        "LT",
+        "PL",
+        "AE",
+        "BH",
+        "CY",
+        "AU",
+        "NZ",
+        "IT",
+        "KY",
+        "ES",
+        "KZ",
+        "ZA"
+      ],
+      "categories": [
+        "organization",
+        "exchange",
+        "mining_service"
+      ],
+      "uri": "binance.com",
+      "context": {
+        "uris": [
+          "www.binance.us",
+          "www.binance.com",
+          "www.trbinance.com"
+        ],
+        "coingecko_ids": [
+          "binance_dex_mini",
+          "binance_us",
+          "binance"
+        ],
+        "defilama_ids": [
+          "binance-us",
+          "binance",
+          "binance-cex"
+        ],
+        "refs": [
+          "api.coingecko.com/api/v3/exchanges/binance_dex_mini",
+          "www.crunchbase.com/organization/binance",
+          "api.llama.fi/protocol/binance-us",
+          "api.coingecko.com/api/v3/exchanges/binance_us",
+          "api.llama.fi/protocol/binance-cex",
+          "api.coingecko.com/api/v3/exchanges/binance",
+          "www.walletexplorer.com/wallet/Binance.com",
+          "cer.live/exchange/binance",
+          "cer.live/exchange/binance_us",
+          "reddit.com/r/BinanceUS",
+          "reddit.com/r/binance",
+          "instagram.com/binance_us",
+          "linkedin.com/company/40797589",
+          "facebook.com/BinanceUS",
+          "facebook.com/binanceexchange",
+          "medium.com/binanceexchange",
+          "btc.com/stats/pool/Binance%20Pool",
+          "www.binancezh.sh/en",
+          "pool.binancezh.sh/en"
+        ],
+        "notes": [
+          "cryptostats: binance US in the US. Binance at Cayman islands. Cryptowisser: malta"
+        ],
+        "images": [
+          "assets.coingecko.com/markets/images/52/small/binance.jpg?1519353250",
+          "assets.coingecko.com/markets/images/469/small/Binance.png?1568875842",
+          "missing_small.png",
+          "icons.llama.fi/binance-us.jpg",
+          "icons.llama.fi/binance-cex.jpg",
+          "coin-images.coingecko.com/markets/images/52/small/binance.jpg?1706864274",
+          "coin-images.coingecko.com/markets/images/469/small/Binance.png?1706864454"
+        ],
+        "twitter_handle": "BinanceUS,binance,binancezh",
+        "legal_name": "Binance Holdings Limited",
+        "active": true,
+        "year_established": 2017,
+        "coingecko_trust_score": 10,
+        "coingecko_trust_score_rank": 1,
+        "description": "One of the world\u2019s largest cryptocurrency exchanges by trading volume, offering a wide range of services including spot, futures, and staking options.",
+        "coingecko_has_trading_incentive": false,
+        "aliases": [
+          "binanceus",
+          "binance_us"
+        ]
+      },
+      "aliases": [
+        "binanceus",
+        "binance_us"
+      ]
+    },
+    {
+      "id": "bitwise",
+      "label": "bitwise",
+      "jurisdictions": [
+        "US"
+      ],
+      "categories": [
+        "service"
+      ],
+      "uri": "bitwiseinvestments.com",
+      "context": {
+        "uris": [
+          "bitbetf.com"
+        ],
+        "refs": [
+          "https://www.forbes.com/sites/digital-assets/2024/01/25/bitwise-become-first-to-disclose-bitcoin-etf-holdings-address"
+        ],
+        "notes": [
+          "Bitwise Bitcoin ET"
+        ],
+        "active": true
+      }
+    },
+    {
+      "id": "blenderio",
+      "label": "blender.io",
+      "uri": "blender.io",
+      "categories": [
+        "mixing_service"
+      ],
+      "context": {
+        "refs": [
+          "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506"
+        ]
+      }
+    },
+    {
+      "id": "chatex",
+      "label": "Chatex",
+      "categories": [
+        "service",
+        "defi",
+        "exchange",
+        "sanction"
+      ],
+      "jurisdictions": [
+        "EE",
+        "RU"
+      ],
+      "uri": "chatex.com",
+      "context": {
+        "notes": [
+          "Telegram Trading Chat"
+        ],
+        "refs": [
+          "golden.com/wiki/Chatex-NYBR346",
+          "glasschain.org/provider/Chatex%20Russia",
+          "www.crunchbase.com/organization/chatex",
+          "coinmarketcap.com/currencies/chatex",
+          "etherscan.io/token/0x2ff385dda9a9d22df0e606e0dac977548c67d1e6"
+        ],
+        "twitter_handle": "Chatex_bot"
+      }
+    },
+    {
+      "id": "chipmixer",
+      "label": "ChipMixer",
+      "jurisdictions": [
+        "VN"
+      ],
+      "categories": [
+        "mixing_service"
+      ],
+      "uri": "chipmixer.com"
+    },
+    {
+      "id": "coinbase",
+      "label": "Coinbase",
+      "jurisdictions": [
+        "US"
+      ],
+      "categories": [
+        "exchange"
+      ],
+      "uri": "www.coinbase.com",
+      "context": {
+        "coingecko_ids": [
+          "gdax",
+          "coinbase-wrapped-staked-eth",
+          "coinbase_international"
+        ],
+        "defilama_ids": [
+          "coinbase-wrapped-staked-eth"
+        ],
+        "refs": [
+          "api.coingecko.com/api/v3/exchanges/gdax",
+          "coinmarketcap.com/exchanges/coinbase-exchange/",
+          "www.crunchbase.com/organization/coinbase",
+          "www.cryptowisser.com/exchange/coinbase",
+          "api.llama.fi/protocol/coinbase-wrapped-staked-eth",
+          "www.theasianbanker.com/publication/virtual-currency-services",
+          "cer.live/exchange/gdax",
+          "api.coingecko.com/api/v3/exchanges/coinbase_international"
+        ],
+        "images": [
+          "assets.coingecko.com/markets/images/23/small/Coinbase_Coin_Primary.png?1621471875",
+          "icons.llama.fi/coinbase-wrapped-staked-eth.png",
+          "coin-images.coingecko.com/markets/images/23/small/Coinbase_Coin_Primary.png?1706864258",
+          "coin-images.coingecko.com/markets/images/1385/small/coinbase.png?1706865394"
+        ],
+        "notes": [
+          "Coinbase Wrapped Staked ETH",
+          "Coinbase Exchange"
+        ],
+        "legal_name": "Coinbase, Inc.",
+        "active": true,
+        "start_activity": "2012",
+        "twitter_handle": "coinbase",
+        "uris": [
+          "international.coinbase.com"
+        ],
+        "year_established": 2012,
+        "coingecko_trust_score": 10,
+        "coingecko_trust_score_rank": 3,
+        "description": "A leading U.S.-based exchange known for its regulatory compliance, user-friendly interface, and support for fiat-to-crypto transactions.",
+        "coingecko_has_trading_incentive": false,
+        "aliases": [
+          "baseusdc",
+          "coinbase_prime",
+          "coinbaseprime",
+          "coinbase_international"
+        ]
+      },
+      "aliases": [
+        "baseusdc",
+        "coinbase_prime",
+        "coinbaseprime",
+        "coinbase_international"
+      ]
+    },
+    {
+      "id": "compound",
+      "label": "Compound",
+      "jurisdictions": [],
+      "categories": [
+        "organization",
+        "defi_lending"
+      ],
+      "uri": "compound.finance",
+      "context": {
+        "uris": [
+          "v3-app.compound.finance"
+        ],
+        "defilama_ids": [
+          "compound",
+          "compound-v3"
+        ],
+        "refs": [
+          "api.llama.fi/protocol/compound",
+          "api.llama.fi/protocol/compound-v3"
+        ],
+        "images": [
+          "icons.llama.fi/compound.png",
+          "icons.llama.fi/compound-v3.png"
+        ],
+        "twitter_handle": "compoundfinance"
+      }
+    },
+    {
+      "id": "curve",
+      "label": "Curve Finance",
+      "jurisdictions": [
+        "CH"
+      ],
+      "categories": [
+        "organization",
+        "defi_dex",
+        "exchange"
+      ],
+      "uri": "curve.fi",
+      "context": {
+        "uris": [
+          "xdai.curve.fi",
+          "www.curve.fi",
+          "arbitrum.curve.fi",
+          "ftm.curve.fi",
+          "avax.curve.fi",
+          "moonbeam.curve.fi",
+          "optimism.curve.fi",
+          "polygon.curve.fi",
+          "curve.finance"
+        ],
+        "coingecko_ids": [
+          "curve-dao-token",
+          "curve_xdai",
+          "curve_arbitrum",
+          "curve_ethereum",
+          "curve_fantom",
+          "curve_avalanche",
+          "curve_moonbeam",
+          "curve_optimism",
+          "curve_polygon",
+          "curve-monad",
+          "curve-base",
+          "curve-plasma",
+          "curve-gnosis",
+          "curve-fraxtal",
+          "curve-tac",
+          "curve-plume",
+          "curve-etherlink",
+          "curve-xdc",
+          "curve-hyperevm",
+          "curve-sonic",
+          "curve-bsc",
+          "curve-taiko",
+          "curve-celo"
+        ],
+        "defilama_ids": [
+          "curve",
+          "curvefinance"
+        ],
+        "refs": [
+          "api.coingecko.com/api/v3/exchanges/curve_xdai",
+          "api.coingecko.com/api/v3/exchanges/curve_arbitrum",
+          "api.coingecko.com/api/v3/exchanges/curve_ethereum",
+          "api.coingecko.com/api/v3/exchanges/curve_avalanche",
+          "api.coingecko.com/api/v3/exchanges/curve_fantom",
+          "api.coingecko.com/api/v3/exchanges/curve_moonbeam",
+          "api.coingecko.com/api/v3/exchanges/curve_optimism",
+          "api.coingecko.com/api/v3/exchanges/curve_polygon",
+          "api.llama.fi/protocol/curve",
+          "coinmarketcap.com/exchanges/curve-finance/",
+          "api.coingecko.com/api/v3/exchanges/curve-monad",
+          "api.coingecko.com/api/v3/exchanges/curve-base",
+          "api.coingecko.com/api/v3/exchanges/curve-plasma",
+          "api.coingecko.com/api/v3/exchanges/curve-gnosis",
+          "api.coingecko.com/api/v3/exchanges/curve-fraxtal",
+          "api.coingecko.com/api/v3/exchanges/curve-tac",
+          "api.coingecko.com/api/v3/exchanges/curve-plume",
+          "api.coingecko.com/api/v3/exchanges/curve-etherlink",
+          "api.coingecko.com/api/v3/exchanges/curve-xdc",
+          "api.coingecko.com/api/v3/exchanges/curve-hyperevm",
+          "api.coingecko.com/api/v3/exchanges/curve-sonic",
+          "api.coingecko.com/api/v3/exchanges/curve-bsc",
+          "api.coingecko.com/api/v3/exchanges/curve-taiko",
+          "api.coingecko.com/api/v3/exchanges/curve-celo"
+        ],
+        "images": [
+          "icons.llama.fi/curve.png",
+          "assets.coingecko.com/markets/images/930/small/W1sQNVWo_400x400.jpeg?1660125046",
+          "assets.coingecko.com/markets/images/538/small/Curve.png?1591605481",
+          "coin-images.coingecko.com/markets/images/538/small/Curve.png?1706864506",
+          "coin-images.coingecko.com/markets/images/931/small/W1sQNVWo_400x400.jpeg?1706864926",
+          "coin-images.coingecko.com/markets/images/921/small/Curve.png?1706864917",
+          "coin-images.coingecko.com/markets/images/924/small/Curve.png?1706864920",
+          "coin-images.coingecko.com/markets/images/926/small/Curve.png?1706864922",
+          "coin-images.coingecko.com/markets/images/927/small/W1sQNVWo_400x400.jpeg?1706864922",
+          "coin-images.coingecko.com/markets/images/22160/small/open-uri20251125-23-8dx6vv.?1764055355",
+          "coin-images.coingecko.com/markets/images/1634/small/CurveFi_32.png?1718177643",
+          "coin-images.coingecko.com/markets/images/22110/small/open-uri20250926-30-u83tvm.?1758852897",
+          "coin-images.coingecko.com/markets/images/11921/small/curve.jpg?1742886351",
+          "coin-images.coingecko.com/markets/images/1633/small/CurveFi_32.png?1718177158",
+          "coin-images.coingecko.com/markets/images/22009/small/curve-finance.jpeg?1753153950",
+          "coin-images.coingecko.com/markets/images/21982/small/curve.jpg?1750655641",
+          "coin-images.coingecko.com/markets/images/22025/small/curve.jpg?1754555073",
+          "coin-images.coingecko.com/markets/images/21978/small/curve.jpg?1750213610",
+          "coin-images.coingecko.com/markets/images/21961/small/curve.jpg?1748490978",
+          "coin-images.coingecko.com/markets/images/11908/small/curve.jpg?1741769775",
+          "coin-images.coingecko.com/markets/images/1551/small/curve-dao-token-crv-logo.png?1713152923",
+          "coin-images.coingecko.com/markets/images/21983/small/curve-logo.jpeg?1750743932",
+          "coin-images.coingecko.com/markets/images/1377/small/curve.png?1706865390"
+        ],
+        "twitter_handle": "CurveFinance",
+        "notes": [
+          "chains: Xdai, Ethereum, Arbitrum, Fantom, Avalanche, Moonbeam, Polygon"
+        ],
+        "coingecko_trust_score": 6,
+        "coingecko_trust_score_rank": 202,
+        "coingecko_has_trading_incentive": false,
+        "aliases": [
+          "wasabi",
+          "curvellamalend",
+          "curve-monad",
+          "curve-base",
+          "curve-plasma",
+          "curve-gnosis",
+          "curve-fraxtal",
+          "curve-tac",
+          "curve-plume",
+          "curve-etherlink",
+          "curve-xdc",
+          "curve-hyperevm",
+          "curve-sonic",
+          "curve-bsc",
+          "curve-taiko",
+          "curve-celo"
+        ]
+      },
+      "aliases": [
+        "wasabi",
+        "curvellamalend",
+        "curve-monad",
+        "curve-base",
+        "curve-plasma",
+        "curve-gnosis",
+        "curve-fraxtal",
+        "curve-tac",
+        "curve-plume",
+        "curve-etherlink",
+        "curve-xdc",
+        "curve-hyperevm",
+        "curve-sonic",
+        "curve-bsc",
+        "curve-taiko",
+        "curve-celo"
+      ]
+    },
+    {
+      "id": "huobi",
+      "aliases": [
+        "htx"
+      ],
+      "label": "Huobi",
+      "jurisdictions": [
+        "SC"
+      ],
+      "categories": [
+        "organization",
+        "exchange",
+        "mining_service"
+      ],
+      "uri": "huobi.com",
+      "context": {
+        "uris": [
+          "www.huobi.com",
+          "hbg.com"
+        ],
+        "coingecko_ids": [
+          "huobi"
+        ],
+        "defilama_ids": [
+          "huobi"
+        ],
+        "refs": [
+          "www.cryptowisser.com/exchange/huobi/",
+          "api.coingecko.com/api/v3/exchanges/huobi",
+          "api.llama.fi/protocol/huobi",
+          "www.walletexplorer.com/wallet/Huobi.com",
+          "cer.live/exchange/huobi",
+          "cer.live/exchange/huobi_korea",
+          "btc.com/stats/pool/Huobi.pool"
+        ],
+        "notes": [
+          "cryptostats: also seychelles. Crunchbase: china"
+        ],
+        "images": [
+          "assets.coingecko.com/markets/images/25/small/logo_V_colour_black.png?1669177364",
+          "icons.llama.fi/huobi.jpg",
+          "coin-images.coingecko.com/markets/images/25/small/htx.png?1721712842"
+        ],
+        "twitter_handle": "HuobiGlobal",
+        "legal_name": "Huobi Global Limited",
+        "active": true,
+        "year_established": 2013,
+        "coingecko_trust_score": 9,
+        "coingecko_trust_score_rank": 10,
+        "description": "HTX (previously Huobi) is a leading cryptocurrency exchange recognized for its strong security measures and a wide range of trading options. With a user-friendly interface and high liquidity, it caters to both novice and experienced traders while offering various incentives like staking and referral programs.",
+        "coingecko_has_trading_incentive": false,
+        "aliases": [
+          "htx"
+        ]
+      }
+    },
+    {
+      "id": "hydramarket",
+      "label": "Hydra Market",
+      "uri": "https://hydramarket.co/",
+      "categories": [
+        "dark_web",
+        "market"
+      ],
+      "jurisdictions": [
+        "RU"
+      ],
+      "context": {
+        "refs": [
+          "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220405"
+        ],
+        "active": false
+      }
+    },
+    {
+      "id": "kraken",
+      "label": "Kraken",
+      "jurisdictions": [
+        "US"
+      ],
+      "categories": [
+        "organization",
+        "exchange"
+      ],
+      "uri": "kraken.com",
+      "context": {
+        "uris": [
+          "r.kraken.com"
+        ],
+        "coingecko_ids": [
+          "kraken"
+        ],
+        "defilama_ids": [
+          "kraken"
+        ],
+        "refs": [
+          "www.crunchbase.com/organization/kraken",
+          "api.coingecko.com/api/v3/exchanges/kraken",
+          "www.walletexplorer.com/wallet/Kraken.com",
+          "www.theasianbanker.com/publication/virtual-currency-services",
+          "cer.live/exchange/kraken"
+        ],
+        "images": [
+          "assets.coingecko.com/markets/images/29/small/kraken.jpg?1584251255",
+          "coin-images.coingecko.com/markets/images/29/small/kraken.jpg?1706864265"
+        ],
+        "legal_name": "Payward, Inc.",
+        "active": true,
+        "twitter_handle": "krakenfx",
+        "year_established": 2011,
+        "coingecko_trust_score": 10,
+        "coingecko_trust_score_rank": 7,
+        "description": "Kraken is a San Francisco-based cryptocurrency exchange, offering a wide range of trading services for various cryptocurrencies and known for its robust security and regulatory compliance efforts.",
+        "coingecko_has_trading_incentive": false
+      }
+    },
+    {
+      "id": "lazarusgroup",
+      "label": "Lazarus Group",
+      "uri": "https://home.treasury.gov/news/press-releases/sm774",
+      "categories": [
+        "phishing",
+        "ransomware",
+        "sanction",
+        "service_hack"
+      ],
+      "context": {
+        "notes": [
+          {
+            "Monikers": "Guardians of Peace or Whois Team, Hidden Cobra, Zinc"
+          },
+          {
+            "Believed to consist of two units": "BlueNorOff and AndAriel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sideshift",
+      "label": "SideShift",
+      "jurisdictions": [],
+      "categories": [
+        "organization",
+        "mixing_service"
+      ],
+      "uri": "sideshift.ai",
+      "context": {
+        "coingecko_ids": [
+          "sideshift-token"
+        ],
+        "defilama_ids": [
+          "sideshift"
+        ],
+        "refs": [
+          "api.llama.fi/protocol/sideshift",
+          "www.crunchbase.com/organization/sideshift-ai",
+          "golden.com/wiki/SideShift.ai-W39W3B8"
+        ],
+        "images": [
+          "icons.llama.fi/sideshift.png"
+        ],
+        "twitter_handle": "sideshiftai",
+        "aliases": [
+          "sideshiftai"
+        ]
+      },
+      "aliases": [
+        "sideshiftai"
+      ]
+    },
+    {
+      "id": "sinbadio",
+      "label": "sinbad.io",
+      "uri": "sinbad.io",
+      "categories": [
+        "mixing_service"
+      ],
+      "context": {
+        "refs": [
+          "https://ofac.treasury.gov/recent-actions/20231129"
+        ]
+      }
+    },
+    {
+      "id": "sushiswap",
+      "label": "Sushiswap",
+      "jurisdictions": [
+        "JP"
+      ],
+      "categories": [
+        "organization",
+        "defi_dex",
+        "exchange",
+        "defi_lending",
+        "payment_processor"
+      ],
+      "uri": "sushi.com",
+      "context": {
+        "notes": [
+          "Services Celo/Kashi/Furo/Trident/BentoBox",
+          "BSC",
+          "xDai",
+          "Fantom",
+          "Harmony",
+          "Avalanche",
+          "Arbitrum Nova",
+          "Arbitrum One",
+          "Polygon POS"
+        ],
+        "uris": [
+          "www.sushi.com",
+          "app.sushi.com"
+        ],
+        "coingecko_ids": [
+          "sushiswap_arbitrum",
+          "sushiswap_xdai",
+          "sushiswap_arbitrum_nova",
+          "sushiswap",
+          "sushiswap_bsc",
+          "sushiswap_avalanche",
+          "sushi",
+          "sushiswap_harmony",
+          "sushiswap_fantom",
+          "sushiswap_polygon_pos",
+          "sushiswap_celo",
+          "sushiswap-v3-katana",
+          "sushiswap-v3-ethereum",
+          "sushiswap-v3-arbitrum",
+          "sushiswap-v3-base",
+          "sushiswap-v3-polygon",
+          "sushiswap-v3-hemi",
+          "sushiswap-v3-stellar",
+          "sushiswap-v3-filecoin",
+          "sushiswap-v3-gnosis",
+          "sushiswap-v3-optimism",
+          "sushiswap-v3-bsc",
+          "sushiswap-v2-base",
+          "sushiswap-v3-thundercore",
+          "sushiswap-v3-scroll",
+          "sushiswap-v3-linea",
+          "sushiswap-v3-skale",
+          "sushiswap-aptos",
+          "sushiswap-v3-sonic",
+          "sushiswap-v3-arbitrum-nova",
+          "sushiswap-v3-rootstock",
+          "sushiswap-v3-polygon-zkevm"
+        ],
+        "defilama_ids": [
+          "sushiswap",
+          "sushi-kashi",
+          "sushi-trident",
+          "sushi-bentobox",
+          "sushi-furo"
+        ],
+        "refs": [
+          "api.coingecko.com/api/v3/exchanges/sushiswap_bsc",
+          "api.coingecko.com/api/v3/exchanges/sushiswap_xdai",
+          "api.coingecko.com/api/v3/exchanges/sushiswap",
+          "api.coingecko.com/api/v3/exchanges/sushiswap_avalanche",
+          "api.coingecko.com/api/v3/exchanges/sushiswap_celo",
+          "api.llama.fi/protocol/sushiswap",
+          "api.coingecko.com/api/v3/exchanges/sushiswap_arbitrum_nova",
+          "api.coingecko.com/api/v3/exchanges/sushiswap_arbitrum",
+          "api.coingecko.com/api/v3/exchanges/sushiswap_polygon_pos",
+          "api.coingecko.com/api/v3/exchanges/sushiswap_harmony",
+          "api.coingecko.com/api/v3/exchanges/sushiswap_fantom",
+          "api.llama.fi/protocol/sushi-kashi",
+          "api.llama.fi/protocol/sushi-bentobox",
+          "api.llama.fi/protocol/sushi-trident",
+          "api.llama.fi/protocol/sushi-furo",
+          "www.crunchbase.com/organization/sushiswap",
+          "coinmarketcap.com/exchanges/sushiswap/",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-katana",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-ethereum",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-arbitrum",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-base",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-polygon",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-hemi",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-stellar",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-filecoin",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-gnosis",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-optimism",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-bsc",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v2-base",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-thundercore",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-scroll",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-linea",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-skale",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-aptos",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-sonic",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-arbitrum-nova",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-rootstock",
+          "api.coingecko.com/api/v3/exchanges/sushiswap-v3-polygon-zkevm"
+        ],
+        "images": [
+          "assets.coingecko.com/markets/images/944/small/sushiswap-arbitrum-nova.png?1661179683",
+          "assets.coingecko.com/markets/images/677/small/sushiswap-fantom.png?1621508759",
+          "assets.coingecko.com/markets/images/700/small/sushiswap.png?1630817471",
+          "assets.coingecko.com/markets/images/576/small/2048x2048_Logo.png?1609208464",
+          "assets.coingecko.com/markets/images/701/small/sushiswap3.png?1631339015",
+          "assets.coingecko.com/markets/images/668/small/sushiswap-polygon-matic.png?1620476993",
+          "assets.coingecko.com/markets/images/720/small/sushiswap-polygon-matic.png?1634201163",
+          "assets.coingecko.com/markets/images/780/small/sushiswap-avalanche.png?1661179731",
+          "icons.llama.fi/sushi-kashi.png",
+          "icons.llama.fi/sushiswap.png",
+          "assets.coingecko.com/markets/images/678/small/512x512_Logo_no_chop.png?1621847591",
+          "assets.coingecko.com/markets/images/728/small/sushiswap.png?1635786149",
+          "icons.llama.fi/sushi-bentobox.png",
+          "icons.llama.fi/sushi-trident.png",
+          "icons.llama.fi/sushi-furo.png",
+          "coin-images.coingecko.com/markets/images/668/small/sushiswap-polygon-matic.png?1706864611",
+          "coin-images.coingecko.com/markets/images/701/small/sushiswap3.png?1706864653",
+          "coin-images.coingecko.com/markets/images/678/small/512x512_Logo_no_chop.png?1706864622",
+          "coin-images.coingecko.com/markets/images/720/small/sushiswap-polygon-matic.png?1706864678",
+          "coin-images.coingecko.com/markets/images/700/small/sushiswap.png?1706864652",
+          "coin-images.coingecko.com/markets/images/944/small/sushiswap-arbitrum-nova.png?1706864937",
+          "coin-images.coingecko.com/markets/images/780/small/sushiswap-avalanche.png?1706864814",
+          "coin-images.coingecko.com/markets/images/728/small/sushiswap.png?1706864688",
+          "coin-images.coingecko.com/markets/images/677/small/sushiswap-fantom.png?1706864621",
+          "coin-images.coingecko.com/markets/images/576/small/2048x2048_Logo.png?1706864530",
+          "coin-images.coingecko.com/markets/images/21990/small/sushiswap-sushi-logo.png?1751496477",
+          "coin-images.coingecko.com/markets/images/1340/small/sushiswap.png?1706865342",
+          "coin-images.coingecko.com/markets/images/1162/small/sushiswap.png?1706865177",
+          "coin-images.coingecko.com/markets/images/1203/small/lFs3rTxB_400x400.png?1706865213",
+          "coin-images.coingecko.com/markets/images/1163/small/sushiswap.png?1706865178",
+          "coin-images.coingecko.com/markets/images/21991/small/sushiswap.jpg?1751513864",
+          "coin-images.coingecko.com/markets/images/22236/small/open-uri20260331-5844-aukatf.?1774921802",
+          "coin-images.coingecko.com/markets/images/1672/small/sushiswap-sushi-logo.png?1721789413",
+          "coin-images.coingecko.com/markets/images/11926/small/sushiswap.jpg?1743997448",
+          "coin-images.coingecko.com/markets/images/1161/small/sushiswap.png?1706865176",
+          "coin-images.coingecko.com/markets/images/1164/small/sushiswap.png?1706865179",
+          "coin-images.coingecko.com/markets/images/1322/small/sushiswap.png?1706865326",
+          "coin-images.coingecko.com/markets/images/1177/small/sushiswap.png?1706865190",
+          "coin-images.coingecko.com/markets/images/1493/small/sushiswap-sushi-logo.png?1710145206",
+          "coin-images.coingecko.com/markets/images/1277/small/sushiswap.png?1706865276",
+          "coin-images.coingecko.com/markets/images/1665/small/sushiswap.png?1720687290",
+          "coin-images.coingecko.com/markets/images/1687/small/sushiswap.png?1723426231",
+          "coin-images.coingecko.com/markets/images/11818/small/sushiswap.jpg?1736506528",
+          "coin-images.coingecko.com/markets/images/1179/small/sushiswap.png?1706865192",
+          "coin-images.coingecko.com/markets/images/21989/small/sushiswap-sushi-logo.png?1751444804",
+          "coin-images.coingecko.com/markets/images/1178/small/sushiswap.png?1706865191"
+        ],
+        "twitter_handle": "SushiSwap",
+        "coingecko_trust_score": 6,
+        "coingecko_trust_score_rank": 150,
+        "description": "Sushiswap on Polygon POS (formerly MATIC) is a DeFi protocol providing services such as swap, earn, yield, launchpad, and more!",
+        "coingecko_has_trading_incentive": false
+      }
+    },
+    {
+      "id": "tornado",
+      "aliases": [
+        "tornadocash"
+      ],
+      "label": "Tornado Cash",
+      "jurisdictions": [],
+      "categories": [
+        "organization",
+        "mixing_service"
+      ],
+      "uri": "tornado.cash",
+      "context": {
+        "coingecko_ids": [
+          "tornado-cash"
+        ],
+        "defilama_ids": [
+          "tornado",
+          "tornado-cash"
+        ],
+        "refs": [
+          "api.llama.fi/protocol/tornado-cash",
+          "home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220808"
+        ],
+        "images": [
+          "icons.llama.fi/tornado-cash.jpg"
+        ],
+        "twitter_handle": "TornadoCash",
+        "aliases": [
+          "tornadocash"
+        ]
+      }
+    },
+    {
+      "id": "uniswap",
+      "label": "Uniswap",
+      "jurisdictions": [
+        "US"
+      ],
+      "categories": [
+        "organization",
+        "defi_dex",
+        "exchange"
+      ],
+      "uri": "uniswap.org",
+      "context": {
+        "uris": [
+          "app.uniswap.org"
+        ],
+        "notes": [
+          "Ethereum",
+          "Optimism",
+          "Arbitrum One",
+          "Polygon"
+        ],
+        "coingecko_ids": [
+          "uniswap_v2",
+          "uniswap_v3",
+          "uniswap",
+          "uniswap_v3_arbitrum",
+          "uniswap_v3_optimism",
+          "uniswap_v3_polygon_pos",
+          "uniswap-bsc",
+          "uniswap-v4-monad",
+          "uniswap-v3-avalanche",
+          "uniswap_v3_celo",
+          "uniswap-v3-x-layer",
+          "uniswap-v4-ethereum",
+          "uniswap-v3-base",
+          "uniswap-v4-arbitrum",
+          "uniswap-v4-polygon",
+          "uniswap-v4-base",
+          "uniswap-v4-unichain",
+          "uniswap-v4-avalanche",
+          "uniswap-v3-monad",
+          "uniswap-v2-base",
+          "uniswap-v4-x-layer",
+          "uniswap-v4-soneium",
+          "uniswap-v4-celo",
+          "uniswap-v4-world-chain",
+          "uniswap-v2-monad",
+          "uniswap-v4-bsc",
+          "uniswap-v4-optimism",
+          "uniswap-v3-world-chain",
+          "uniswap-v2-polygon",
+          "uniswap-v3-abstract",
+          "uniswap-v3-unichain",
+          "uniswap-v2-arbitrum",
+          "uniswap-v3-zksync",
+          "uniswap-v2-abstract",
+          "uniswap-v2-bsc",
+          "uniswap-v3-blast",
+          "uniswap-v2-optimism",
+          "uniswap-v3-zora",
+          "uniswap-v2-world-chain",
+          "uniswap-v2-unichain"
+        ],
+        "defilama_ids": [
+          "uniswap-v2",
+          "uniswap-v3",
+          "uniswap",
+          "uniswap-v1"
+        ],
+        "refs": [
+          "api.llama.fi/protocol/uniswap-v2",
+          "api.llama.fi/protocol/uniswap-v3",
+          "api.coingecko.com/api/v3/exchanges/uniswap_v2",
+          "api.llama.fi/protocol/uniswap-v1",
+          "api.coingecko.com/api/v3/exchanges/uniswap_v3",
+          "api.coingecko.com/api/v3/exchanges/uniswap_v3_optimism",
+          "api.coingecko.com/api/v3/exchanges/uniswap_v3_arbitrum",
+          "api.coingecko.com/api/v3/exchanges/uniswap_v3_polygon_pos",
+          "www.crunchbase.com/organization/uniswap-labs",
+          "coinmarketcap.com/exchanges/uniswap-v3/",
+          "coinmarketcap.com/exchanges/uniswap-v2/",
+          "coinmarketcap.com/exchanges/uniswap-v1/",
+          "api.coingecko.com/api/v3/exchanges/uniswap-bsc",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-monad",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v3-avalanche",
+          "api.coingecko.com/api/v3/exchanges/uniswap_v3_celo",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v3-x-layer",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-ethereum",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v3-base",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-arbitrum",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-polygon",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-base",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-unichain",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-avalanche",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v3-monad",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v2-base",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-x-layer",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-soneium",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-celo",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-world-chain",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v2-monad",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-bsc",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v4-optimism",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v3-world-chain",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v2-polygon",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v3-abstract",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v3-unichain",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v2-arbitrum",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v3-zksync",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v2-abstract",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v2-bsc",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v3-blast",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v2-optimism",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v3-zora",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v2-world-chain",
+          "api.coingecko.com/api/v3/exchanges/uniswap-v2-unichain"
+        ],
+        "images": [
+          "icons.llama.fi/uniswap-v3.png",
+          "icons.llama.fi/uniswap-v2.png",
+          "assets.coingecko.com/markets/images/725/small/uniswap-v3.png?1634896204",
+          "assets.coingecko.com/markets/images/702/small/uniswap-v3.png?1631616149",
+          "assets.coingecko.com/markets/images/535/small/256x256_Black-1.png?1590893262",
+          "icons.llama.fi/uniswap-v1.png",
+          "assets.coingecko.com/markets/images/665/small/uniswap-v3.png?1620241698",
+          "assets.coingecko.com/markets/images/752/small/uniswap-polygon.png?1640329417",
+          "coin-images.coingecko.com/markets/images/665/small/uniswap-v3.png?1706864608",
+          "coin-images.coingecko.com/markets/images/702/small/uniswap-v3.png?1706864655",
+          "coin-images.coingecko.com/markets/images/752/small/uniswap-polygon.png?1706864784",
+          "coin-images.coingecko.com/markets/images/535/small/256x256_Black-1.png?1706864503",
+          "coin-images.coingecko.com/markets/images/725/small/uniswap-v3.png?1706864684",
+          "coin-images.coingecko.com/markets/images/1092/small/uniswap.jpeg?1706865113",
+          "coin-images.coingecko.com/markets/images/22157/small/open-uri20251124-2328-7jr04q.?1763999816",
+          "coin-images.coingecko.com/markets/images/1182/small/uniswap.jpeg?1706865195",
+          "coin-images.coingecko.com/markets/images/1099/small/uniswap.jpeg?1706865119",
+          "coin-images.coingecko.com/markets/images/22190/small/open-uri20260116-54-oc2lg.?1768534109",
+          "coin-images.coingecko.com/markets/images/11846/small/uniswap.jpg?1738640275",
+          "coin-images.coingecko.com/markets/images/1212/small/uniswap-v3.jpg?1706865221",
+          "coin-images.coingecko.com/markets/images/11848/small/uniswap.jpg?1738644318",
+          "coin-images.coingecko.com/markets/images/11843/small/uniswap.jpg?1738305111",
+          "coin-images.coingecko.com/markets/images/11842/small/uniswap.jpg?1738304945",
+          "coin-images.coingecko.com/markets/images/11868/small/uniswap.jpg?1739417852",
+          "coin-images.coingecko.com/markets/images/11849/small/uniswap.jpg?1738650782",
+          "coin-images.coingecko.com/markets/images/22150/small/open-uri20251124-2602-etrpnv.?1763995526",
+          "coin-images.coingecko.com/markets/images/1472/small/uniswap.png?1709698489",
+          "coin-images.coingecko.com/markets/images/22193/small/open-uri20260122-22-tqe11o.?1769053036",
+          "coin-images.coingecko.com/markets/images/22172/small/open-uri20251201-59-lui6uh.?1764593971",
+          "coin-images.coingecko.com/markets/images/22215/small/open-uri20260224-54-i5r1j6.?1771898618",
+          "coin-images.coingecko.com/markets/images/22013/small/uniswap.jpg?1753330911",
+          "coin-images.coingecko.com/markets/images/22151/small/open-uri20251124-2602-1zhmm3.?1763995596",
+          "coin-images.coingecko.com/markets/images/11850/small/uniswap.jpg?1738650855",
+          "coin-images.coingecko.com/markets/images/11847/small/uniswap.jpg?1738643915",
+          "coin-images.coingecko.com/markets/images/11735/small/uniswap-v3.jpg?1729213593",
+          "coin-images.coingecko.com/markets/images/1487/small/uniswapv2.jpeg?1710130219",
+          "coin-images.coingecko.com/markets/images/11840/small/uniswap.jpg?1738034098",
+          "coin-images.coingecko.com/markets/images/11864/small/uniswap.jpg?1739326967",
+          "coin-images.coingecko.com/markets/images/1474/small/uniswapv2.jpeg?1709718772",
+          "coin-images.coingecko.com/markets/images/1663/small/uniswap-v3.jpg?1720395951",
+          "coin-images.coingecko.com/markets/images/11841/small/uniswap.jpg?1738035948",
+          "coin-images.coingecko.com/markets/images/1475/small/uniswapv2.jpeg?1709720998",
+          "coin-images.coingecko.com/markets/images/1547/small/uniswap-uni-logo.png?1712382624",
+          "coin-images.coingecko.com/markets/images/1486/small/uniswapv2.jpeg?1710130044",
+          "coin-images.coingecko.com/markets/images/1662/small/uniswap-v3.jpg?1720395755",
+          "coin-images.coingecko.com/markets/images/11884/small/uniswap.jpg?1740468706",
+          "coin-images.coingecko.com/markets/images/11863/small/uniswap.jpg?1739324196"
+        ],
+        "twitter_handle": "Uniswap",
+        "year_established": 2023,
+        "coingecko_trust_score": 6,
+        "coingecko_trust_score_rank": 93,
+        "coingecko_has_trading_incentive": false
+      }
+    },
+    {
+      "id": "wallstreetmarket",
+      "label": "Wall Street Market",
+      "uri": "www.bka.de/DE/Presse/Listenseite_Pressemitteilungen/2019/Presse2019/190503_WallStreetMarket.html",
+      "categories": [
+        "market",
+        "dark_web"
+      ],
+      "context": {
+        "active": false,
+        "refs": [
+          "glasschain.org/provider/Wall%20Street%20Market",
+          "de.wikipedia.org/wiki/Wall_Street_Market"
+        ]
+      }
+    },
+    {
+      "id": "whirlwind",
+      "label": "Whirlwind",
+      "jurisdictions": [],
+      "categories": [
+        "mixing_service"
+      ],
+      "uri": "whirlwind.cash"
+    }
+  ],
+  "labels": [
+    {
+      "address": "1NDyJtNTjmwk5xPNhjgAMu4HDHigtobu1s",
+      "chain": "BTC",
+      "label": "binance.com",
+      "actor_id": "binance",
+      "source_url": "https://www.coindesk.com/hackers-steal-40-7-million-in-bitcoin-from-crypto-exchange-binance",
+      "last_modified": "2019-07-03",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3CTPRyUbCKkByGmAVvDV6ReZXT1WfV3UPd",
+      "chain": "BTC",
+      "label": "binance.com",
+      "actor_id": "binance",
+      "source_url": "https://www.coindesk.com/hackers-steal-40-7-million-in-bitcoin-from-crypto-exchange-binance",
+      "last_modified": "2019-07-03",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3NDzzVxiLBUs1WPvVGRfCYDTAD2Ua2PvW4",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "32fbAZMTaQxNd2fAue1PgsiPgWfcsHBQQt",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3GMfGEDYMTq9G8dEHet1zLtUFJwYwSNa3Y",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "39AALn7eTjdPzLb99hHhD6F7J8QWB3R2Rd",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3N3YSDvp4cbhEgNGabQxTN39kEzJmwG8Ah",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "37g6WgqedzZx6nx51tYgssNG8Hnknyj5nL",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3HQDRyzwm82MFmLWtmyikDM9JQEtVT6vAp",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3FBgeJdhiBe22UoSpp51Vd8dPHVa2A4wZX",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "34pFGsSYbWEritXncW9unZtQQE9dKSvKku",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3JLyyLbwciWAC6re87D7mRknXakR4YbnUd",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3DCCgmyKozcZkFBzYb1A2x8abZCpAUTPPk",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "38LjCapRrJEW7w2zwbyS15P9D9UGPjWS44",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "15PggTG7YhJKiE6B16vkKzA1YDTZipXEX4",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3QAdoc1rDCt8dii1GVPJXvvK6CEJLzCRZw",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3HupEUfKmMhvhXqf8TMoPAyqDcRC1kpe65",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3F6bbvS1krsc1qR8FsbTDfYQyvkMm3QvmR",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3QJyT8nThEQakbfqgX86YjCK1Sp9hfNCUW",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "34ETiHfQWEYFCCaXmEeQWVmhFH5vz2JMvd",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3MTRvM5QrYZHKo8gh5qKcrPK3RLjxcDCZE",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3J19qffPT6mxQUcV6k5yVURGZtdhpdGr4y",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3LDbNuDkKmLae5r3a5icPA5CQg2Y8F7ogW",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3PyzSbFj3hbQQjTzDzyLSgvFVDjB7yw4Cj",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "36XqYWGvUQwBrYLRVuegN4pJJJSPWL1WEu",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3K35dyL85fR9ht7UgzPfd1gLRRXQtNTqE3",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "33KKjn4exdBJQkTtdWxqpdVsWxrw3LareG",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3LhnVMcBq4gsR7aDaRr9XmUo17CuYBV4FN",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3EUjqe9UpmyXCFd6jeu69hoTzndMRfxw9M",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3JHMz3mTna1gVCZSPp8NgRFiY7phkv5mA8",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3EPqGUw2q89pwPZ1UF8FJspE2AyojSTjdu",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "32DaxSzUhLBHY2WGSWQYiBSHnRsfQZrrRp",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3ANWhUnHujdwbw2jEuGSRH6bvFsD9BqEy9",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3MvQ4gThF4mmuo49p4dBNchcmFHBRZnYfx",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "31t4nEpcwyQJT1VuXdAoQZTT5givRDPsNP",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3Q5dGfLKkWqWSwYtbMUyc8xGjN5LrRviK4",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3B4G1M8eF3cThbeMwhEWkKzczw9QoNTGak",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "32PsiT8itBrEF84ebdaF82yBUEcz5Wc6uY",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3MD3riFB6U8PykypF6qkvSj8R2SGdUDPn3",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "34kEYgpijvCmjvahRXXQEnBH76UGJVx2wg",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "35hh9dg3wSvUJz9vFk1FsezLE5Fx3Hudk2",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "38ncxqt932N9CcfNfYuHGZgCyR85hDkWBW",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3QEjBiPzw6WZUL4MYMmMU6DY1Y25aVbpQu",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3GYbbYkvqvjF5oYhaKCgQYCvcVE1JENk6J",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3JUwAS7seL3fh5hxWh9fu3HCiEzjuQLTfg",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3GSXNXzyCDoQ1Rhsc7F1jjjFe7DGcHHdcM",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "3BazbaTP8ELJUEfPBV9z5HXEdgBziV9p7W",
+      "chain": "BTC",
+      "label": "Blender.io",
+      "actor_id": "blenderio",
+      "source_url": "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220506",
+      "last_modified": "2022-05-16",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "1CKVszDdUp4ymGceAZpGzYEFr4RPNHYqaM",
+      "chain": "BTC",
+      "label": "BITB Bitcoin ETF holdings address",
+      "actor_id": "bitwise",
+      "source_url": "https://www.forbes.com/sites/digital-assets/2024/01/25/bitwise-become-first-to-disclose-bitcoin-etf-holdings-address/",
+      "last_modified": "2023-01-26",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x119c71D3BbAC22029622cbaEc24854d3D32D2828",
+      "chain": "ETH",
+      "label": "1inch_LimitOrderProtocolV3",
+      "actor_id": "1inch",
+      "source_url": "https://docs.1inch.io",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x1111111254fb6c44bAC0beD2854e76F90643097d",
+      "chain": "ETH",
+      "label": "1inch_AggregationRouterV4",
+      "actor_id": "1inch",
+      "source_url": "https://docs.1inch.io",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x1111111254EEB25477B68fb85Ed929f73A960582",
+      "chain": "ETH",
+      "label": "1inch_AggregationRouterV5",
+      "actor_id": "1inch",
+      "source_url": "https://docs.1inch.io",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x07D91f5fb9Bf7798734C3f606dB065549F6893bb",
+      "chain": "ETH",
+      "label": "1inch_SpotPriceAggregator",
+      "actor_id": "1inch",
+      "source_url": "https://docs.1inch.io",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xca76ebd8617a03126b6fb84f9b1c1a0fb71c2633",
+      "chain": "ETH",
+      "label": "aave_EmergencyAdmin",
+      "actor_id": "aave",
+      "source_url": "https://docs.aave.com/developers/v/2.0/deployed-contracts/deployed-contracts",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xEFFC18fC3b7eb8E676dac549E0c693ad50D1Ce31",
+      "chain": "ETH",
+      "label": "aave_WETHGateway",
+      "actor_id": "aave",
+      "source_url": "https://docs.aave.com/developers/v/2.0/deployed-contracts/deployed-contracts",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xd784927Ff2f95ba542BfC824c8a8a98F3495f6b5",
+      "chain": "ETH",
+      "label": "aave_IncentivesController",
+      "actor_id": "aave",
+      "source_url": "https://docs.aave.com/developers/v/2.0/deployed-contracts/deployed-contracts",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x30375522F67a6308630d49A694ca1491fA2D3BC6",
+      "chain": "ETH",
+      "label": "aave_UiPoolDataProvider",
+      "actor_id": "aave",
+      "source_url": "https://docs.aave.com/developers/v/2.0/deployed-contracts/deployed-contracts",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xD01ab9a6577E1D84F142e44D49380e23A340387d",
+      "chain": "ETH",
+      "label": "aave_UiIncentiveDataProvider",
+      "actor_id": "aave",
+      "source_url": "https://docs.aave.com/developers/v/2.0/deployed-contracts/deployed-contracts",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xAcc030EF66f9dFEAE9CbB0cd1B25654b82cFA8d5",
+      "chain": "ETH",
+      "label": "aave_amm_LendingPoolAddressesProvider",
+      "actor_id": "aave",
+      "source_url": "https://docs.aave.com/developers/v/2.0/deployed-contracts/amm-market",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x7937d4799803fbbe595ed57278bc4ca21f3bffcb",
+      "chain": "ETH",
+      "label": "aave_amm_LendingPool",
+      "actor_id": "aave",
+      "source_url": "https://docs.aave.com/developers/v/2.0/deployed-contracts/amm-market",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x23a875ede3f1030138701683e42e9b16a7f87768",
+      "chain": "ETH",
+      "label": "aave_amm_LendingPoolConfigurator",
+      "actor_id": "aave",
+      "source_url": "https://docs.aave.com/developers/v/2.0/deployed-contracts/amm-market",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xc443AD9DDE3cecfB9dfC5736578f447aFE3590ba",
+      "chain": "ETH",
+      "label": "aave_amm_ProtocolDataProvider",
+      "actor_id": "aave",
+      "source_url": "https://docs.aave.com/developers/v/2.0/deployed-contracts/amm-market",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x1C4a4e31231F71Fc34867D034a9E68f6fC798249",
+      "chain": "ETH",
+      "label": "aave_amm_WETHGateway",
+      "actor_id": "aave",
+      "source_url": "https://docs.aave.com/developers/v/2.0/deployed-contracts/amm-market",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x6FdfafB66d39cD72CFE7984D3Bbcc76632faAb00",
+      "chain": "ETH",
+      "label": "aave_arc_PermissionedLendingPoolAddressesProvider",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/arc",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x37D7306019a38Af123e4b245Eb6C28AF552e0bB0",
+      "chain": "ETH",
+      "label": "aave_arc_PermissionedLendingPool",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/arc",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x837696219c9a3775a856bebc02db1fa918c8a46e",
+      "chain": "ETH",
+      "label": "aave_arc_LendingPoolCollateralManager",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/arc",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x4e1c7865e7be78a7748724fa0409e88dc14e67aa",
+      "chain": "ETH",
+      "label": "aave_arc_LendingPoolConfigurator",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/arc",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xF4a1F5fEA79C3609514A417425971FadC10eCfBE",
+      "chain": "ETH",
+      "label": "aave_arc_PermissionManager",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/arc",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xfa3c34d734fe0106c87917683ca45dffbe3b3b00",
+      "chain": "ETH",
+      "label": "aave_arc_LendingRateOracle",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/arc",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xb8a7bc0d13b1f5460513040a97f404b4fea7d2f3",
+      "chain": "ETH",
+      "label": "aave_arc_PriceOracle",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/arc",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x71B53fC437cCD988b1b89B1D4605c3c3d0C810ea",
+      "chain": "ETH",
+      "label": "aave_arc_ProtocolDataProvider",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/arc",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xD51E46B02eCB71357cBdf661E2789EC787d94Af9",
+      "chain": "ETH",
+      "label": "aave_arc_PermissionedWETHGateway",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/arc",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xAce1d11d836cb3F51Ef658FD4D353fFb3c301218",
+      "chain": "ETH",
+      "label": "aave_arc_AaveArcTimelockExecutor",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/arc",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xB953a066377176092879a151C07798B3946EEa4b",
+      "chain": "ETH",
+      "label": "aave_rwa_PermissionedLendingPoolAddressesProvider",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x34a828dE39F2A47F203B4905F80ABd5742dD3405",
+      "chain": "ETH",
+      "label": "aave_rwa_PermissionedLendingPoolAddressProviderRegistry",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xA1a8c33C9a9a9DE231b13a2271a7C09c11C849F1",
+      "chain": "ETH",
+      "label": "aave_rwa_PermissionedLendingPool",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xD9DEAC430aD83245DABA48305ec22B7d028AA6E3",
+      "chain": "ETH",
+      "label": "aave_rwa_LendingPoolCollateralManager",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x88CDc0eADB647156c81778d51dE17BC9f969956C",
+      "chain": "ETH",
+      "label": "aave_rwa_LendingPoolConfigurator",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xB4A760B14ebb26AE6f9Ce16A601D936dC575caaf",
+      "chain": "ETH",
+      "label": "aave_rwa_PermissionManager",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xf20E5fe26811f7336a8A637C42b6e8913B291868",
+      "chain": "ETH",
+      "label": "aave_rwa_AaveOracle",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xe69DE09Cd274242DDD7004794a4b00EbE9B65fEA",
+      "chain": "ETH",
+      "label": "aave_rwa_AaveProtocolDataProvider",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x77B59b07b87689a6D27adE063FB1D08C7Fe52F0b",
+      "chain": "ETH",
+      "label": "aave_rwa_IncentivesController",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x32523719C98c00ff1833109258Ce12550930483e",
+      "chain": "ETH",
+      "label": "aave_rwa_RWAMarketOracle",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x7FdbD3A61249Cb2F3268B82d8eF23f5095B5E874",
+      "chain": "ETH",
+      "label": "aave_rwa_UiPoolDataProvider",
+      "actor_id": "aave",
+      "source_url": "https://aave-arc.gitbook.io/docs/deployed-contracts/rwa",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x7713DD9Ca933848F6819F38B8352D9A15EA73F67",
+      "chain": "ETH",
+      "label": "compound_cFEI",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x041171993284df560249b57358f931d9eb7b925d",
+      "chain": "ETH",
+      "label": "compound_cUSDP",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x046728da7cb8272284238bd3e47909823d63a58d",
+      "chain": "ETH",
+      "label": "compound_Proposal72PriceFeed",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xdCbDb7306c6Ff46f77B349188dC18cEd9DF30299",
+      "chain": "ETH",
+      "label": "compound_CompoundLens",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974",
+      "chain": "ETH",
+      "label": "compound_Pair_LINK_ETH",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11",
+      "chain": "ETH",
+      "label": "compound_Pair_DAI_ETH",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xbb2b8038a1640196fbe3e38816f3e67cba72d940",
+      "chain": "ETH",
+      "label": "compound_Pair_WBTC_ETH",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc",
+      "chain": "ETH",
+      "label": "compound_Pair_ETH_USDC",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xc3d688B66703497DAA19211EEdff47f25384cdc3",
+      "chain": "ETH",
+      "label": "compound_cUSDCv3",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3",
+      "chain": "ETH",
+      "label": "compound_Configurator",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779",
+      "chain": "ETH",
+      "label": "compound_Compoundv3Admin",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x1B0e765F6224C21223AeA2af16c1C46E38885a40",
+      "chain": "ETH",
+      "label": "compound_Compoundv3Rewards",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
+      "chain": "ETH",
+      "label": "compound_Bulker",
+      "actor_id": "compound",
+      "source_url": "https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x4c0947B16FB1f755A2D32EC21A0c4181f711C500",
+      "chain": "ETH",
+      "label": "curvefinance_Emergency-Token",
+      "actor_id": "curve",
+      "source_url": "https://curve.readthedocs.io/ref-addresses.html",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xB9fC157394Af804a3578134A6585C0dc9cc990d4",
+      "chain": "ETH",
+      "label": "curvefinance_MetaPool-Factory.vy",
+      "actor_id": "curve",
+      "source_url": "https://curve.readthedocs.io/ref-addresses.html",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x5F890841f657d90E081bAbdB532A05996Af79Fe6",
+      "chain": "ETH",
+      "label": "curvefinance_3pool-MetaImplementationUSD.vy",
+      "actor_id": "curve",
+      "source_url": "https://curve.readthedocs.io/ref-addresses.html",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x2f956eee002b0debd468cf2e0490d1aec65e027f",
+      "chain": "ETH",
+      "label": "curvefinance_sBTC-MetaImplementationBTC.vy",
+      "actor_id": "curve",
+      "source_url": "https://curve.readthedocs.io/ref-addresses.html",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xF5BCE5077908a1b7370B9ae04AdC565EBd643966",
+      "chain": "ETH",
+      "label": "sushiswap_BentoBoxV1",
+      "actor_id": "sushiswap",
+      "source_url": "https://dev.sushi.com/docs/Developers/Deployment%20Addresses",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x6cbfbB38498Df0E1e7A4506593cDB02db9001564",
+      "chain": "ETH",
+      "label": "sushiswap_PeggedOracleV1",
+      "actor_id": "sushiswap",
+      "source_url": "https://dev.sushi.com/docs/Developers/Deployment%20Addresses",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x2cBA6Ab6574646Badc84F0544d05059e57a5dc42",
+      "chain": "ETH",
+      "label": "sushiswap_KashiPairMediumRisk",
+      "actor_id": "sushiswap",
+      "source_url": "https://dev.sushi.com/docs/Developers/Deployment%20Addresses",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x36e2FCCCc59e5747Ff63a03ea2e5C0c2C14911e7",
+      "chain": "ETH",
+      "label": "sushiswap_SushiBar",
+      "actor_id": "sushiswap",
+      "source_url": "https://dev.sushi.com/docs/Developers/Deployment%20Addresses",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x5ad6211CD3fdE39A9cECB5df6f380b8263d1e277",
+      "chain": "ETH",
+      "label": "sushiswap_SushiMaker",
+      "actor_id": "sushiswap",
+      "source_url": "https://dev.sushi.com/docs/Developers/Deployment%20Addresses",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x011E52E4E40CF9498c79273329E8827b21E2e581",
+      "chain": "ETH",
+      "label": "sushiswap_SushiXSwap",
+      "actor_id": "sushiswap",
+      "source_url": "https://dev.sushi.com/docs/Developers/Deployment%20Addresses",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x4ab2FC6e258a0cA7175D05fF10C5cF798A672cAE",
+      "chain": "ETH",
+      "label": "sushiswap_FuroStream",
+      "actor_id": "sushiswap",
+      "source_url": "https://dev.sushi.com/docs/Developers/Deployment%20Addresses",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xf30CF8D373D78D7964A2F7793b730BF7ae0970a8",
+      "chain": "ETH",
+      "label": "sushiswap_FuroStreamRouter",
+      "actor_id": "sushiswap",
+      "source_url": "https://dev.sushi.com/docs/Developers/Deployment%20Addresses",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x0689640d190b10765f09310fCfE9C670eDe4E25B",
+      "chain": "ETH",
+      "label": "sushiswap_FuroVesting",
+      "actor_id": "sushiswap",
+      "source_url": "https://dev.sushi.com/docs/Developers/Deployment%20Addresses",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x312A8E33d78d3Ab79E62971E86e5e8c9c5E28D64",
+      "chain": "ETH",
+      "label": "sushiswap_FuroVestingRouter",
+      "actor_id": "sushiswap",
+      "source_url": "https://dev.sushi.com/docs/Developers/Deployment%20Addresses",
+      "last_modified": "2023-01-05",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x1a9C8182C09F50C8318d769245beA52c32BE35BC",
+      "chain": "ETH",
+      "label": "uniswap_UniswapV2UNITimelock",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F",
+      "chain": "ETH",
+      "label": "uniswap_UniswapV2UNIGovernorAplhaV1",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xC4e172459f1E7939D522503B81AFAaC1014CE6F6",
+      "chain": "ETH",
+      "label": "uniswap_UniswapV2UNIGovernorAlphaV2",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x408ED6354d4973f66138C91495F2f2FCbd8724C3",
+      "chain": "ETH",
+      "label": "uniswap_UniswapV2UNIGovernorBravo",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x090D4613473dEE047c3f2706764f49E0821D256e",
+      "chain": "ETH",
+      "label": "uniswap_UNIMerkleDistributor",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x3032Ab3Fa8C01d786D29dAdE018d7f2017918e12",
+      "chain": "ETH",
+      "label": "uniswap_StakingRewardsFactory",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x6c3e4cb2e96b01f4b866965a91ed4437839a121a",
+      "chain": "ETH",
+      "label": "uniswap_UniswapV2ETHUSDTUNIPool",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x7FBa4B8Dc5E7616e59622806932DBea72537A56b",
+      "chain": "ETH",
+      "label": "uniswap_UniswapV2ETHUSDCUNIPool",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xa1484C3aa22a66C62b77E0AE78E15258bd0cB711",
+      "chain": "ETH",
+      "label": "uniswap_UniswapV2ETHDAIUNIPool",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xCA35e32e7926b96A9988f61d510E038108d8068e",
+      "chain": "ETH",
+      "label": "uniswap_UniswapV2ETHWBTCUNIPool",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x4750c43867EF5F89869132ecCF19B9b6C4286E1a",
+      "chain": "ETH",
+      "label": "uniswap_UniswapProtocolTreasuryVester1",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xe3953D9d317B834592aB58AB2c7A6aD22b54075D",
+      "chain": "ETH",
+      "label": "uniswap_UniswapProtocolTreasuryVester2",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x4b4e140D1f131fdaD6fb59C13AF796fD194e4135",
+      "chain": "ETH",
+      "label": "uniswap_UniswapProtocolTreasuryVester3",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x3D30B1aB88D487B0F3061F40De76845Bec3F1e94",
+      "chain": "ETH",
+      "label": "uniswap_UniswapProtocolTreasuryVester4",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0x18e433c7Bf8A2E1d0197CE5d8f9AFAda1A771360",
+      "chain": "ETH",
+      "label": "uniswap_FeeToSetterVester",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    },
+    {
+      "address": "0xDAF819c2437a82f9e01f6586207ebF961a7f0970",
+      "chain": "ETH",
+      "label": "uniswap_FeeTo",
+      "actor_id": "uniswap",
+      "source_url": "https://docs.uniswap.org/concepts/governance/overview",
+      "last_modified": "2023-01-09",
+      "tag_source": "GRAPHSENSE_TAGPACK"
+    }
+  ]
+}

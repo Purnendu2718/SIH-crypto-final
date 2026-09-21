@@ -1,0 +1,395 @@
+{
+  "version": "1.0.0",
+  "description": "Seeded offline scenario data for CryptoTrace Sentinel (SIH26183). All addresses marked FIXTURE are illustrative fixture data, not verified real addresses.",
+  "vasp_directory": [
+    {
+      "entity_name": "CoinDCX",
+      "registered_entity": "Neblio Technologies Pvt. Ltd.",
+      "chain": "ETH",
+      "hot_wallet_addresses": [
+        "0xCoinDCX_HotWallet_ETH_FIXTURE_1",
+        "0xCoinDCX_HotWallet_ETH_FIXTURE_2"
+      ],
+      "fiu_ind_registered": true,
+      "sla_hours": 12,
+      "nodal_contact": "nodal.officer@coindcx.com",
+      "address_note": "Illustrative fixture data, not verified real addresses"
+    },
+    {
+      "entity_name": "WazirX",
+      "registered_entity": "Zanmai Labs Pvt. Ltd.",
+      "chain": "ETH",
+      "hot_wallet_addresses": [
+        "0xWazirX_HotWallet_ETH_FIXTURE_1",
+        "TR7WazirX_HotWallet_TRX_FIXTURE_1"
+      ],
+      "fiu_ind_registered": true,
+      "sla_hours": 24,
+      "nodal_contact": "nodal@wazirx.com",
+      "address_note": "Illustrative fixture data, not verified real addresses"
+    },
+    {
+      "entity_name": "ZebPay",
+      "registered_entity": "Awlencan Innovations India Ltd.",
+      "chain": "TRON",
+      "hot_wallet_addresses": [
+        "TR7ZebPay_HotWallet_TRX_FIXTURE_1",
+        "0xZebPay_HotWallet_ETH_FIXTURE_1"
+      ],
+      "fiu_ind_registered": true,
+      "sla_hours": 24,
+      "nodal_contact": "compliance-nodal@zebpay.com",
+      "address_note": "Illustrative fixture data, not verified real addresses"
+    },
+    {
+      "entity_name": "CoinSwitch",
+      "registered_entity": "Bitcipher Labs LLP",
+      "chain": "ETH",
+      "hot_wallet_addresses": [
+        "0xCoinSwitch_HotWallet_ETH_FIXTURE_1"
+      ],
+      "fiu_ind_registered": true,
+      "sla_hours": 12,
+      "nodal_contact": "nodal@coinswitch.co",
+      "address_note": "Illustrative fixture data, not verified real addresses"
+    },
+    {
+      "entity_name": "Mudrex",
+      "registered_entity": "Mudrex Technologies Pvt. Ltd.",
+      "chain": "ETH",
+      "hot_wallet_addresses": [
+        "0xMudrex_HotWallet_ETH_FIXTURE_1"
+      ],
+      "fiu_ind_registered": true,
+      "sla_hours": 24,
+      "nodal_contact": "legal@mudrex.com",
+      "address_note": "Illustrative fixture data, not verified real addresses"
+    },
+    {
+      "entity_name": "Giottus",
+      "registered_entity": "Giottus Technologies Pvt. Ltd.",
+      "chain": "ETH",
+      "hot_wallet_addresses": [
+        "0xGiottus_HotWallet_ETH_FIXTURE_1"
+      ],
+      "fiu_ind_registered": true,
+      "sla_hours": 24,
+      "nodal_contact": "compliance@giottus.com",
+      "address_note": "Illustrative fixture data, not verified real addresses"
+    },
+    {
+      "entity_name": "Binance Cold Storage",
+      "registered_entity": "Binance Holdings Ltd.",
+      "chain": "BTC",
+      "hot_wallet_addresses": [
+        "34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo"
+      ],
+      "fiu_ind_registered": false,
+      "sla_hours": 12,
+      "nodal_contact": "nodal.compliance@binance.com",
+      "address_note": "Illustrative fixture data, not verified real addresses"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scenario_1",
+      "name": "Direct Sweep to Labeled Exchange Hot Wallet",
+      "suspect_address": "0x71C8364f9b81A0789C1a5619A07EbfA5fB22910A",
+      "chain": "ETH",
+      "expected_hop_count": 2,
+      "expected_destination": "CoinDCX",
+      "expected_destination_address": "0xCoinDCX_HotWallet_ETH_FIXTURE_1",
+      "expected_confidence_band": "HIGH",
+      "description": "Suspect sends 4.5 ETH to an intermediary deposit wallet, which is swept directly into CoinDCX Hot Wallet in 12 minutes.",
+      "transactions": [
+        {
+          "tx_hash": "0xaaa1110000000000000000000000000000000000000000000000000000000001",
+          "chain": "ETH",
+          "from_address": "0x71C8364f9b81A0789C1a5619A07EbfA5fB22910A",
+          "to_address": "0x918F4dE1a980598711E81D3962b9a764d2627E51",
+          "value": 4.5,
+          "value_inr": 1125000.0,
+          "timestamp": "2026-09-01T10:00:00Z",
+          "block_number": 19400001,
+          "is_sweep": false,
+          "metadata": { "label": "Intermediary Deposit Address" }
+        },
+        {
+          "tx_hash": "0xaaa1110000000000000000000000000000000000000000000000000000000002",
+          "chain": "ETH",
+          "from_address": "0x918F4dE1a980598711E81D3962b9a764d2627E51",
+          "to_address": "0xCoinDCX_HotWallet_ETH_FIXTURE_1",
+          "value": 4.498,
+          "value_inr": 1124500.0,
+          "timestamp": "2026-09-01T10:12:00Z",
+          "block_number": 19400060,
+          "is_sweep": true,
+          "metadata": { "sweep_pattern": "SWEEP_TO_HOT_WALLET", "exchange": "CoinDCX" }
+        }
+      ]
+    },
+    {
+      "id": "scenario_2",
+      "name": "Fan-Out into Mixer Pattern Converging at VASP",
+      "suspect_address": "0x3a9F784260D672b15Fa0e20f18837138096c7B22",
+      "chain": "ETH",
+      "expected_hop_count": 5,
+      "expected_destination": "WazirX",
+      "expected_destination_address": "0xWazirX_HotWallet_ETH_FIXTURE_1",
+      "expected_confidence_band": "MEDIUM",
+      "description": "Suspect splits 9 ETH across 3 mule addresses (Fan-Out), deposits into privacy mixer contract, withdrawn into an aggregator address, and deposited to WazirX.",
+      "transactions": [
+        {
+          "tx_hash": "0xbbb1110000000000000000000000000000000000000000000000000000000001",
+          "chain": "ETH",
+          "from_address": "0x3a9F784260D672b15Fa0e20f18837138096c7B22",
+          "to_address": "0xMule1111_PrimarySplitAddress_ETH_FIXTURE",
+          "value": 5.0,
+          "value_inr": 1250000.0,
+          "timestamp": "2026-09-02T14:00:00Z",
+          "block_number": 19410000,
+          "is_sweep": false,
+          "metadata": { "typology": "FAN_OUT" }
+        },
+        {
+          "tx_hash": "0xbbb1110000000000000000000000000000000000000000000000000000000002",
+          "chain": "ETH",
+          "from_address": "0x3a9F784260D672b15Fa0e20f18837138096c7B22",
+          "to_address": "0xMule2222_SecondarySplit_ETH_FIXTURE",
+          "value": 2.0,
+          "value_inr": 500000.0,
+          "timestamp": "2026-09-02T14:00:00Z",
+          "block_number": 19410000,
+          "is_sweep": false,
+          "metadata": { "typology": "FAN_OUT" }
+        },
+        {
+          "tx_hash": "0xbbb1110000000000000000000000000000000000000000000000000000000003",
+          "chain": "ETH",
+          "from_address": "0x3a9F784260D672b15Fa0e20f18837138096c7B22",
+          "to_address": "0xMule3333_TertiarySplit_ETH_FIXTURE",
+          "value": 2.0,
+          "value_inr": 500000.0,
+          "timestamp": "2026-09-02T14:00:00Z",
+          "block_number": 19410000,
+          "is_sweep": false,
+          "metadata": { "typology": "FAN_OUT" }
+        },
+        {
+          "tx_hash": "0xbbb1110000000000000000000000000000000000000000000000000000000004",
+          "chain": "ETH",
+          "from_address": "0xMule1111_PrimarySplitAddress_ETH_FIXTURE",
+          "to_address": "0xTornadoCashRouter_FIXTURE_CONTRACT",
+          "value": 5.0,
+          "value_inr": 1250000.0,
+          "timestamp": "2026-09-02T14:30:00Z",
+          "block_number": 19410150,
+          "is_sweep": false,
+          "metadata": { "typology": "MIXER", "entity": "Tornado.Cash Router" }
+        },
+        {
+          "tx_hash": "0xbbb1110000000000000000000000000000000000000000000000000000000005",
+          "chain": "ETH",
+          "from_address": "0xTornadoCashRouter_FIXTURE_CONTRACT",
+          "to_address": "0xMixerRelayerOut_FIXTURE",
+          "value": 4.95,
+          "value_inr": 1237500.0,
+          "timestamp": "2026-09-02T18:00:00Z",
+          "block_number": 19411200,
+          "is_sweep": false,
+          "metadata": { "typology": "MIXER_WITHDRAWAL" }
+        },
+        {
+          "tx_hash": "0xbbb1110000000000000000000000000000000000000000000000000000000006",
+          "chain": "ETH",
+          "from_address": "0xMixerRelayerOut_FIXTURE",
+          "to_address": "0xWazirX_Deposit_Addr_FIXTURE",
+          "value": 4.90,
+          "value_inr": 1225000.0,
+          "timestamp": "2026-09-02T19:15:00Z",
+          "block_number": 19411575,
+          "is_sweep": false,
+          "metadata": { "typology": "CONVERGENCE", "exchange": "WazirX" }
+        },
+        {
+          "tx_hash": "0xbbb1110000000000000000000000000000000000000000000000000000000007",
+          "chain": "ETH",
+          "from_address": "0xWazirX_Deposit_Addr_FIXTURE",
+          "to_address": "0xWazirX_HotWallet_ETH_FIXTURE_1",
+          "value": 4.895,
+          "value_inr": 1223750.0,
+          "timestamp": "2026-09-02T19:40:00Z",
+          "block_number": 19411700,
+          "is_sweep": true,
+          "metadata": { "sweep_pattern": "SWEEP_TO_HOT_WALLET", "exchange": "WazirX" }
+        }
+      ]
+    },
+    {
+      "id": "scenario_3",
+      "name": "Cross-Chain Hop (ETH -> Bridge Contract -> TRON) Landing at VASP",
+      "suspect_address": "0x892a0194856cD192801F6281983017A8128919a0",
+      "chain": "ETH",
+      "expected_hop_count": 3,
+      "expected_destination": "ZebPay",
+      "expected_destination_address": "TR7ZebPay_HotWallet_TRX_FIXTURE_1",
+      "expected_confidence_band": "HIGH",
+      "description": "Suspect deposits 10 ETH into Stargate Bridge contract, triggering cross-chain unlock of 25,000 USDT on TRON, followed by deposit into ZebPay TRON hot wallet.",
+      "transactions": [
+        {
+          "tx_hash": "0xccc1110000000000000000000000000000000000000000000000000000000001",
+          "chain": "ETH",
+          "from_address": "0x892a0194856cD192801F6281983017A8128919a0",
+          "to_address": "0xStargateBridgeRouter_FIXTURE_CONTRACT",
+          "value": 10.0,
+          "value_inr": 2500000.0,
+          "timestamp": "2026-09-03T09:00:00Z",
+          "block_number": 19420000,
+          "is_sweep": false,
+          "metadata": {
+            "bridge_name": "Stargate Bridge Router",
+            "cross_chain_target": "TRON",
+            "cross_chain_dest": "TR7CrossChainMuleAddressFIXTURE"
+          }
+        },
+        {
+          "tx_hash": "0xccc1110000000000000000000000000000000000000000000000000000000002",
+          "chain": "TRON",
+          "from_address": "0xStargateBridgeRouter_FIXTURE_CONTRACT",
+          "to_address": "TR7CrossChainMuleAddressFIXTURE",
+          "value": 25000.0,
+          "value_inr": 2480000.0,
+          "timestamp": "2026-09-03T09:10:00Z",
+          "block_number": 64000120,
+          "is_sweep": false,
+          "metadata": {
+            "bridge_release": true,
+            "origin_chain": "ETH",
+            "token": "USDT"
+          }
+        },
+        {
+          "tx_hash": "0xccc1110000000000000000000000000000000000000000000000000000000003",
+          "chain": "TRON",
+          "from_address": "TR7CrossChainMuleAddressFIXTURE",
+          "to_address": "TR7ZebPay_HotWallet_TRX_FIXTURE_1",
+          "value": 24985.0,
+          "value_inr": 2478500.0,
+          "timestamp": "2026-09-03T09:45:00Z",
+          "block_number": 64000820,
+          "is_sweep": true,
+          "metadata": { "sweep_pattern": "SWEEP_TO_HOT_WALLET", "exchange": "ZebPay" }
+        }
+      ]
+    },
+    {
+      "id": "scenario_4",
+      "name": "Long Weakly-Connected Path Without Verified VASP Off-Ramp",
+      "suspect_address": "0x992dE819385610293751a09281754910284759A1",
+      "chain": "ETH",
+      "expected_hop_count": 8,
+      "expected_destination": "NO_CONFIDENT_OFF_RAMP",
+      "expected_destination_address": "0xUnverified_P2P_OTC_Cluster_FIXTURE",
+      "expected_confidence_band": "INSUFFICIENT_EVIDENCE",
+      "description": "Suspect funds wander through 8 peeling hops with significant balance dilution and long delays, terminating at an unverified P2P OTC address rather than an exchange hot wallet.",
+      "transactions": [
+        {
+          "tx_hash": "0xddd0010000000000000000000000000000000000000000000000000000000001",
+          "chain": "ETH",
+          "from_address": "0x992dE819385610293751a09281754910284759A1",
+          "to_address": "0xPeelHop1_Address_FIXTURE",
+          "value": 12.0,
+          "value_inr": 3000000.0,
+          "timestamp": "2026-08-10T08:00:00Z",
+          "block_number": 19200000,
+          "is_sweep": false,
+          "metadata": { "typology": "PEELING_CHAIN" }
+        },
+        {
+          "tx_hash": "0xddd0010000000000000000000000000000000000000000000000000000000002",
+          "chain": "ETH",
+          "from_address": "0xPeelHop1_Address_FIXTURE",
+          "to_address": "0xPeelHop2_Address_FIXTURE",
+          "value": 9.5,
+          "value_inr": 2375000.0,
+          "timestamp": "2026-08-14T11:00:00Z",
+          "block_number": 19225000,
+          "is_sweep": false,
+          "metadata": { "typology": "PEELING_CHAIN" }
+        },
+        {
+          "tx_hash": "0xddd0010000000000000000000000000000000000000000000000000000000003",
+          "chain": "ETH",
+          "from_address": "0xPeelHop2_Address_FIXTURE",
+          "to_address": "0xPeelHop3_Address_FIXTURE",
+          "value": 6.8,
+          "value_inr": 1700000.0,
+          "timestamp": "2026-08-19T14:30:00Z",
+          "block_number": 19255000,
+          "is_sweep": false,
+          "metadata": { "typology": "PEELING_CHAIN" }
+        },
+        {
+          "tx_hash": "0xddd0010000000000000000000000000000000000000000000000000000000004",
+          "chain": "ETH",
+          "from_address": "0xPeelHop3_Address_FIXTURE",
+          "to_address": "0xPeelHop4_Address_FIXTURE",
+          "value": 4.1,
+          "value_inr": 1025000.0,
+          "timestamp": "2026-08-25T09:10:00Z",
+          "block_number": 19290000,
+          "is_sweep": false,
+          "metadata": { "typology": "PEELING_CHAIN" }
+        },
+        {
+          "tx_hash": "0xddd0010000000000000000000000000000000000000000000000000000000005",
+          "chain": "ETH",
+          "from_address": "0xPeelHop4_Address_FIXTURE",
+          "to_address": "0xPeelHop5_Address_FIXTURE",
+          "value": 2.7,
+          "value_inr": 675000.0,
+          "timestamp": "2026-08-30T16:45:00Z",
+          "block_number": 19325000,
+          "is_sweep": false,
+          "metadata": { "typology": "PEELING_CHAIN" }
+        },
+        {
+          "tx_hash": "0xddd0010000000000000000000000000000000000000000000000000000000006",
+          "chain": "ETH",
+          "from_address": "0xPeelHop5_Address_FIXTURE",
+          "to_address": "0xPeelHop6_Address_FIXTURE",
+          "value": 1.5,
+          "value_inr": 375000.0,
+          "timestamp": "2026-09-05T12:00:00Z",
+          "block_number": 19365000,
+          "is_sweep": false,
+          "metadata": { "typology": "PEELING_CHAIN" }
+        },
+        {
+          "tx_hash": "0xddd0010000000000000000000000000000000000000000000000000000000007",
+          "chain": "ETH",
+          "from_address": "0xPeelHop6_Address_FIXTURE",
+          "to_address": "0xPeelHop7_Address_FIXTURE",
+          "value": 0.8,
+          "value_inr": 200000.0,
+          "timestamp": "2026-09-10T15:20:00Z",
+          "block_number": 19400000,
+          "is_sweep": false,
+          "metadata": { "typology": "PEELING_CHAIN" }
+        },
+        {
+          "tx_hash": "0xddd0010000000000000000000000000000000000000000000000000000000008",
+          "chain": "ETH",
+          "from_address": "0xPeelHop7_Address_FIXTURE",
+          "to_address": "0xUnverified_P2P_OTC_Cluster_FIXTURE",
+          "value": 0.35,
+          "value_inr": 87500.0,
+          "timestamp": "2026-09-15T18:00:00Z",
+          "block_number": 19430000,
+          "is_sweep": false,
+          "metadata": { "note": "Unverified OTC / Peer-to-peer wallet cluster, not a known VASP" }
+        }
+      ]
+    }
+  ]
+}

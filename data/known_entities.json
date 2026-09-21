@@ -1,0 +1,10 @@
+[
+  {
+    "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "chain": "bitcoin",
+    "label": "Satoshi Nakamoto",
+    "description": "widely attributed to Satoshi Nakamoto (genesis block reward)",
+    "source": "Bitcoin Genesis Block Coinbase (Block 0)",
+    "confidence": 0.99
+  }
+]

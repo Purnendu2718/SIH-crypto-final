@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdnList xmlns="http://www.un.org/sanctions/1.0">
+  <publshInformation>
+    <Publish_Date>2026-09-20</Publish_Date>
+    <Record_Count>5</Record_Count>
+  </publshInformation>
+  <referenceValueSets>
+    <featuretypeValues>
+      <featuretypeValue ID="1">Digital Currency Address - XBT</featuretypeValue>
+      <featuretypeValue ID="2">Digital Currency Address - ETH</featuretypeValue>
+      <featuretypeValue ID="3">Digital Currency Address - USDT</featuretypeValue>
+      <featuretypeValue ID="4">Digital Currency Address - TRX</featuretypeValue>
+      <featuretypeValue ID="5">Digital Currency Address - LTC</featuretypeValue>
+    </featuretypeValues>
+  </referenceValueSets>
+  <distinctParties>
+    <!-- Entry 1: Lazarus Group (DPRK3) -->
+    <distinctParty FixedRef="10001">
+      <profile ID="20001">
+        <identity ID="30001" Primary="true">
+          <alias FixedRef="40001" Primary="true" LowQuality="false">
+            <documentedName FixedRef="50001">
+              <documentedNamePart>
+                <value>Lazarus Group</value>
+              </documentedNamePart>
+            </documentedName>
+          </alias>
+        </identity>
+        <feature FeatureTypeID="2">
+          <featureVersion Reliability="High">
+            <versionDetail DetailTypeID="1">0x098B716B8Aaf21512996dC57EB0615e2383E2f96</versionDetail>
+          </featureVersion>
+        </feature>
+      </profile>
+      <sanctionsProgramList>
+        <sanctionsProgram>DPRK3</sanctionsProgram>
+      </sanctionsProgramList>
+    </distinctParty>
+
+    <!-- Entry 2: Tornado Cash (CYBER2) -->
+    <distinctParty FixedRef="10002">
+      <profile ID="20002">
+        <identity ID="30002" Primary="true">
+          <alias FixedRef="40002" Primary="true" LowQuality="false">
+            <documentedName FixedRef="50002">
+              <documentedNamePart>
+                <value>Tornado.Cash</value>
+              </documentedNamePart>
+            </documentedName>
+          </alias>
+        </identity>
+        <feature FeatureTypeID="2">
+          <featureVersion Reliability="High">
+            <versionDetail DetailTypeID="1">0xd90e2f925DA726b50C4Ed8D0Fb90Ad053324F31b</versionDetail>
+          </featureVersion>
+        </feature>
+        <feature FeatureTypeID="2">
+          <featureVersion Reliability="High">
+            <versionDetail DetailTypeID="1">0x8589427373D6D84E98730D7795D8f6f8731FDA16</versionDetail>
+          </featureVersion>
+        </feature>
+      </profile>
+      <sanctionsProgramList>
+        <sanctionsProgram>CYBER2</sanctionsProgram>
+      </sanctionsProgramList>
+    </distinctParty>
+
+    <!-- Entry 3: Hydra Market (RUSSIA-EO14024) -->
+    <distinctParty FixedRef="10003">
+      <profile ID="20003">
+        <identity ID="30003" Primary="true">
+          <alias FixedRef="40003" Primary="true" LowQuality="false">
+            <documentedName FixedRef="50003">
+              <documentedNamePart>
+                <value>Hydra Market</value>
+              </documentedNamePart>
+            </documentedName>
+          </alias>
+        </identity>
+        <feature FeatureTypeID="1">
+          <featureVersion Reliability="High">
+            <versionDetail DetailTypeID="1">14kr9TGwuh5Ac2ojQnTZZGcvHgUkfc18p1</versionDetail>
+          </featureVersion>
+        </feature>
+      </profile>
+      <sanctionsProgramList>
+        <sanctionsProgram>RUSSIA-EO14024</sanctionsProgram>
+      </sanctionsProgramList>
+    </distinctParty>
+
+    <!-- Entry 4: Chatex (CYBER2) -->
+    <distinctParty FixedRef="10004">
+      <profile ID="20004">
+        <identity ID="30004" Primary="true">
+          <alias FixedRef="40004" Primary="true" LowQuality="false">
+            <documentedName FixedRef="50004">
+              <documentedNamePart>
+                <value>Chatex</value>
+              </documentedNamePart>
+            </documentedName>
+          </alias>
+        </identity>
+        <feature FeatureTypeID="1">
+          <featureVersion Reliability="High">
+            <versionDetail DetailTypeID="1">1LNLbh179N4w2UpymD7e793nLg4Vd5h8C</versionDetail>
+          </featureVersion>
+        </feature>
+      </profile>
+      <sanctionsProgramList>
+        <sanctionsProgram>CYBER2</sanctionsProgram>
+      </sanctionsProgramList>
+    </distinctParty>
+
+    <!-- Entry 5: Garantex / Sinbad (RUSSIA-EO14024) -->
+    <distinctParty FixedRef="10005">
+      <profile ID="20005">
+        <identity ID="30005" Primary="true">
+          <alias FixedRef="40005" Primary="true" LowQuality="false">
+            <documentedName FixedRef="50005">
+              <documentedNamePart>
+                <value>Garantex Europe OU</value>
+              </documentedNamePart>
+            </documentedName>
+          </alias>
+        </identity>
+        <feature FeatureTypeID="4">
+          <featureVersion Reliability="High">
+            <versionDetail DetailTypeID="1">TKpJN2hL4Vw9p6kGZ9Uu6Lp3yZ6t2K9gX1</versionDetail>
+          </featureVersion>
+        </feature>
+      </profile>
+      <sanctionsProgramList>
+        <sanctionsProgram>RUSSIA-EO14024</sanctionsProgram>
+      </sanctionsProgramList>
+    </distinctParty>
+  </distinctParties>
+</sdnList>

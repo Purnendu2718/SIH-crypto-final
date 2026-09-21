@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+*.db
+*.sqlite3
+cryptotrace_dev.db
+
+# Node / Frontend
+node_modules/
+dist/
+.vite/
+
+# Environment files
+.env
+.env.local
+
+# Logs
+*.log
