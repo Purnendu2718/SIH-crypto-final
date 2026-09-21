@@ -228,3 +228,154 @@ async def stream_trace_live_query(websocket: WebSocket):
             pass
     finally:
         db.close()
+
+
+# ---------------------------------------------------------------------------
+# Server-Sent Events (SSE) Streaming Endpoints (@microsoft/fetch-event-source)
+# ---------------------------------------------------------------------------
+from fastapi.responses import StreamingResponse
+from fastapi import Query, Body, Request
+
+sse_router = APIRouter(prefix="/api/trace", tags=["Trace SSE"])
+
+
+async def sse_event_generator(
+    seed_address: str,
+    chain: str = "ETH",
+    max_hops: int = 3,
+    min_amount: float = 0.0,
+    taint_model: str = "FIFO",
+    date_from: Optional[str] = None,
+    date_to: Optional[str] = None,
+    case_id: Optional[str] = None,
+):
+    db: Session = SessionLocal()
+    try:
+        yield f"event: trace_started\ndata: {json.dumps({'start_address': seed_address, 'chain': chain, 'max_hops': max_hops, 'taint_model': taint_model, 'status': 'TRACING'})}\n\n"
+        await asyncio.sleep(0.15)
+
+        engine = TraceEngine()
+        result = engine.execute_trace(seed_address, chain, db=db)
+
+        paths = result.paths or []
+        if min_amount > 0:
+            paths = [p for p in paths if float(getattr(p, "value", 0.0)) >= min_amount]
+        if max_hops > 0:
+            paths = [p for p in paths if int(getattr(p, "hop_index", 1)) <= max_hops]
+
+        total_hops = len(paths)
+        for idx, hop in enumerate(paths):
+            from_a = getattr(hop, "from_addr", None) or getattr(hop, "from_address", "")
+            to_a = getattr(hop, "to_addr", None) or getattr(hop, "to_address", "")
+            val = float(getattr(hop, "value", 0.0))
+            tx_h = getattr(hop, "tx_hash", "")
+            hop_idx = getattr(hop, "hop_index", idx + 1)
+            hop_chain = getattr(hop, "chain", chain)
+            confs = getattr(hop, "confirmations", None)
+            low_conf = getattr(hop, "low_confirmation", False)
+            is_pend = getattr(hop, "is_pending", False)
+            bridge = detect_bridge_hop(to_address=to_a, from_address=from_a, value=val)
+
+            hop_data = {
+                "hop_index": hop_idx,
+                "from_addr": from_a,
+                "to_addr": to_a,
+                "value": val,
+                "tx_hash": tx_h,
+                "chain": hop_chain,
+                "confirmations": confs,
+                "low_confirmation": low_conf,
+                "is_pending": is_pend,
+                "is_bridge": bridge is not None,
+                "bridge_details": bridge.model_dump() if bridge else None,
+                "total_hops": total_hops,
+                "timestamp": getattr(hop, "timestamp", None) or "2026-09-20T10:00:00Z",
+            }
+            yield f"event: hop_discovered\ndata: {json.dumps(hop_data)}\n\n"
+            await asyncio.sleep(0.2)
+
+        attrib_engine = AttributionEngine()
+        attrib = attrib_engine.compute_attribution(
+            run_id=result.run_id,
+            paths=paths,
+            matched_entity=result.matched_entity,
+            matched_hot_wallet=result.matched_hot_wallet,
+            db=db,
+        )
+
+        completed_data = {
+            "status": result.status,
+            "total_hops": len(paths),
+            "matched_vasp": result.matched_entity,
+            "attribution": {
+                "matched_entity": attrib.matched_entity,
+                "confidence": attrib.confidence,
+                "confidence_band": attrib.confidence_band,
+                "rule_fired": attrib.rule_fired,
+            },
+        }
+        yield f"event: trace_completed\ndata: {json.dumps(completed_data)}\n\n"
+
+    except Exception as e:
+        logger.exception(f"SSE trace error: {e}")
+        yield f"event: error\ndata: {json.dumps({'message': str(e)})}\n\n"
+    finally:
+        db.close()
+
+
+@sse_router.get("/sse")
+@router.get("/trace/sse")
+async def stream_trace_sse_get(
+    seed_address: str = Query(...),
+    chain: str = Query("ETH"),
+    max_hops: int = Query(3),
+    min_amount: float = Query(0.0),
+    taint_model: str = Query("FIFO"),
+    date_from: Optional[str] = Query(None),
+    date_to: Optional[str] = Query(None),
+    case_id: Optional[str] = Query(None),
+):
+    """Server-Sent Events endpoint for real-time trace progress (GET)."""
+    return StreamingResponse(
+        sse_event_generator(
+            seed_address=seed_address,
+            chain=chain,
+            max_hops=max_hops,
+            min_amount=min_amount,
+            taint_model=taint_model,
+            date_from=date_from,
+            date_to=date_to,
+            case_id=case_id,
+        ),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
+    )
+
+
+@sse_router.post("/sse")
+@router.post("/trace/sse")
+async def stream_trace_sse_post(payload: dict = Body(...)):
+    """Server-Sent Events endpoint for real-time trace progress (POST)."""
+    return StreamingResponse(
+        sse_event_generator(
+            seed_address=payload.get("seed_address", "").strip(),
+            chain=payload.get("chain", "ETH"),
+            max_hops=int(payload.get("max_hops", 3)),
+            min_amount=float(payload.get("min_amount", 0.0)),
+            taint_model=payload.get("taint_model", "FIFO"),
+            date_from=payload.get("date_from"),
+            date_to=payload.get("date_to"),
+            case_id=payload.get("case_id"),
+        ),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
+    )
+

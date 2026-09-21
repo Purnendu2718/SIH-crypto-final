@@ -17,6 +17,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { api, MultiChainSearchResponse, ChainSearchResult } from '../lib/api';
+import { useAuth } from '../lib/authContext';
 
 interface AddressSearchComponentProps {
   onSelectCase?: (caseId: string) => void;
@@ -44,6 +45,7 @@ const SAMPLE_CHIPS = [
 export const AddressSearchComponent: React.FC<AddressSearchComponentProps> = ({
   className = '',
 }) => {
+  const { token } = useAuth();
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [copiedText, setCopiedText] = useState<string | null>(null);
@@ -64,7 +66,7 @@ export const AddressSearchComponent: React.FC<AddressSearchComponentProps> = ({
     setSearchError(null);
 
     try {
-      const res = await api.searchMultiChain(clean, allCandidates);
+      const res = await api.searchMultiChain(clean, allCandidates, undefined, token || undefined);
       setResponse(res);
       if (res.status === 'error' && res.validation && !res.validation.is_valid) {
         setSearchError(res.validation.error || 'Input validation failed.');
@@ -355,9 +357,14 @@ export const AddressSearchComponent: React.FC<AddressSearchComponentProps> = ({
 
               {/* Matched Entities & Labels */}
               {res.labels && res.labels.length > 0 && (
-                <div className="p-3.5 bg-blue-950/30 border border-blue-800/40 rounded-xl space-y-1.5">
-                  <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider">
-                    Attributed Entity &amp; Intelligence Labels:
+                <div className="p-3.5 bg-blue-950/30 border border-blue-800/40 rounded-xl space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider">
+                      Attributed Entity &amp; Intelligence Labels:
+                    </div>
+                    <span className="text-[10px] text-amber-300 font-mono bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30">
+                      Attribution is not proof
+                    </span>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {res.labels.map((l, lIdx) => (

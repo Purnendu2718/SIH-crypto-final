@@ -31,6 +31,8 @@ import { ArjunaCopilotModal } from '../components/ArjunaCopilotModal';
 import { IntelExchangeModal } from '../components/IntelExchangeModal';
 import { WatchlistModal } from '../components/WatchlistModal';
 import { HeaderSearchBar } from '../components/HeaderSearchBar';
+import { LanguageSwitcher } from '../components/LanguageSwitcher';
+import { TraceFormComponent } from '../components/TraceFormComponent';
 
 interface CaseDetailPageProps {
   caseId: string;
@@ -43,6 +45,9 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
   const [caseRecord, setCaseRecord] = useState<CaseRecord | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Tab State: traces, addresses, evidence (disabled), legal (disabled), notices (disabled), alerts (disabled)
+  const [activeTab, setActiveTab] = useState<'traces' | 'addresses' | 'evidence' | 'legal' | 'notices' | 'alerts'>('traces');
 
   // Forensic Analysis State
   const [forensicData, setForensicData] = useState<ForensicResult | null>(null);
@@ -76,7 +81,7 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
     if (!caseRecord) return;
     const sub = caseRecord.submissions && caseRecord.submissions[0];
     if (!sub) {
-      alert('No suspect wallet address submitted for this case.');
+      alert('No flagged wallet address (lead) submitted for this case.');
       return;
     }
 
@@ -224,7 +229,7 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
     if (!token || !caseRecord) return;
     const sub = caseRecord.submissions && caseRecord.submissions[0];
     if (!sub) {
-      alert('No suspect wallet address submitted for this case.');
+      alert('No flagged wallet address (lead) submitted for this case.');
       return;
     }
 
@@ -376,6 +381,9 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
 
           {/* Action Toolbar */}
           <div className="flex flex-wrap items-center gap-2">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+
             {/* Arjuna AI Prosecution Summary Co-pilot */}
             {forensicData && (
               <button
@@ -452,7 +460,7 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
           <div className="flex items-center space-x-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span>
-              <strong>Root-Address Direct Attribution:</strong> Suspect address belongs directly to verified entity{' '}
+              <strong>Root-Address Direct Attribution:</strong> Flagged address belongs directly to verified entity{' '}
               <strong>{forensicData.attribution?.matched_entity}</strong> (0 hops required by design). Outward tracing was bypassed.
             </span>
           </div>
@@ -509,10 +517,10 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
 
       {/* Main Workspace Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-        {/* Case Metadata & Suspect Header Strip */}
+        {/* Case Metadata & Lead Header Strip */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/60 font-mono text-xs">
-            <span className="text-slate-500 text-[10px] uppercase font-bold">Suspect Wallet Address</span>
+            <span className="text-slate-500 text-[10px] uppercase font-bold">Flagged Wallet Address (Lead)</span>
             <div className="text-white font-bold truncate mt-1 select-all">
               {primarySubmission?.address || 'No wallet registered'}
             </div>
@@ -520,7 +528,15 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
           </div>
 
           <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/60 font-mono text-xs">
-            <span className="text-slate-500 text-[10px] uppercase font-bold">Attributed Off-Ramp</span>
+            <div className="flex items-center justify-between">
+              <span className="text-slate-500 text-[10px] uppercase font-bold">Attributed Off-Ramp</span>
+              <span
+                data-testid="detail-attribution-notice"
+                className="text-[9px] font-mono text-amber-300 bg-amber-500/10 px-1.5 py-0.2 rounded border border-amber-500/20"
+              >
+                Attribution is not proof
+              </span>
+            </div>
             <div className="text-white font-bold text-sm mt-1 flex items-center space-x-2">
               <span>{matchedEntity || 'Pending'}</span>
               {confidence > 0 && (
@@ -615,121 +631,269 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
           </div>
         )}
 
-        {/* Viewport: Either Court Presentation Mode OR Cytoscape Technical Graph */}
-        {isCourtMode ? (
-          <CourtPresentationMode
-            paths={forensicData?.trace?.paths || streamedHops}
-            startAddress={primarySubmission?.address || ''}
-            chain={primarySubmission?.chain || 'ETH'}
-            ncrpRef={caseRecord.ncrp_ref}
-            victimUtr={caseRecord.victim_utr}
-            totalAmountInr={caseRecord.amount_inr || 1125000}
-            attribution={forensicData?.attribution}
-            onExit={() => setIsCourtMode(false)}
-          />
-        ) : forensicData || isWsStreaming || streamedHops.length > 0 ? (
-          <div className="space-y-4">
-            {/* Live Streaming Active Status Banner */}
-            {isWsStreaming && (
-              <div className="p-3 rounded-xl bg-purple-950/40 border border-purple-500/40 flex items-center justify-between text-xs text-purple-200 animate-pulse">
-                <div className="flex items-center space-x-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
-                  <span className="font-mono">{streamingStatus}</span>
-                </div>
-                <span className="text-[11px] font-mono text-purple-300">
-                  WebSocket Streaming &bull; Hop {streamingHopIndex}
-                </span>
-              </div>
-            )}
+        {/* Phase 6 Navigation Tabs: Traces, Addresses, and Disabled Future Tabs */}
+        <div
+          role="tablist"
+          aria-label="Case Investigation Sections"
+          className="flex border-b border-slate-800 space-x-1 overflow-x-auto text-xs font-mono"
+        >
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'traces'}
+            onClick={() => setActiveTab('traces')}
+            className={`px-4 py-2.5 font-bold border-b-2 transition-colors flex items-center gap-1.5 ${
+              activeTab === 'traces'
+                ? 'border-blue-500 text-blue-400 bg-blue-500/10'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Network className="w-3.5 h-3.5" />
+            <span>Traces &amp; Graph</span>
+          </button>
 
-            {/* Detected Bridge Notification Banner */}
-            {detectedBridge && (
-              <div className="p-3 rounded-xl bg-purple-950/60 border border-purple-500/60 flex items-center justify-between text-xs text-purple-200">
-                <div className="flex items-center space-x-2">
-                  <span className="text-base">🌉</span>
-                  <div>
-                    <span className="font-bold">Cross-Chain Bridge Identified:</span> {detectedBridge.bridge_name}
-                    <span className="ml-2 text-purple-300 font-mono text-[11px]">(Target Chain: {detectedBridge.destination_chain} &bull; Rule: {detectedBridge.decoding_rule})</span>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'addresses'}
+            onClick={() => setActiveTab('addresses')}
+            className={`px-4 py-2.5 font-bold border-b-2 transition-colors flex items-center gap-1.5 ${
+              activeTab === 'addresses'
+                ? 'border-blue-500 text-blue-400 bg-blue-500/10'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Eye className="w-3.5 h-3.5" />
+            <span>Flagged Addresses ({caseRecord.submissions?.length || 1})</span>
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            disabled
+            title="Coming next in Phase 7"
+            aria-disabled="true"
+            className="px-4 py-2.5 border-b-2 border-transparent text-slate-600 cursor-not-allowed flex items-center gap-1.5 opacity-60"
+          >
+            <FileCheck className="w-3.5 h-3.5" />
+            <span>Evidence Package</span>
+            <span className="text-[9px] bg-slate-800 text-slate-400 px-1.5 py-0.2 rounded border border-slate-700">
+              coming next
+            </span>
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            disabled
+            title="Coming next in Phase 7"
+            aria-disabled="true"
+            className="px-4 py-2.5 border-b-2 border-transparent text-slate-600 cursor-not-allowed flex items-center gap-1.5 opacity-60"
+          >
+            <Gavel className="w-3.5 h-3.5" />
+            <span>Legal Notices</span>
+            <span className="text-[9px] bg-slate-800 text-slate-400 px-1.5 py-0.2 rounded border border-slate-700">
+              coming next
+            </span>
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            disabled
+            title="Coming next in Phase 7"
+            aria-disabled="true"
+            className="px-4 py-2.5 border-b-2 border-transparent text-slate-600 cursor-not-allowed flex items-center gap-1.5 opacity-60"
+          >
+            <ShieldAlert className="w-3.5 h-3.5" />
+            <span>Watchlist Alerts</span>
+            <span className="text-[9px] bg-slate-800 text-slate-400 px-1.5 py-0.2 rounded border border-slate-700">
+              coming next
+            </span>
+          </button>
+        </div>
+
+        {/* Tab 1: Traces & Graph */}
+        {activeTab === 'traces' && (
+          <div className="space-y-4">
+            {/* Trace Form (SSE-powered) */}
+            <TraceFormComponent
+              initialSeedAddress={primarySubmission?.address || ''}
+              initialChain={primarySubmission?.chain || 'ETH'}
+              caseId={caseId}
+              onTraceStarted={(data) => {
+                setIsWsStreaming(true);
+                setStreamedHops([]);
+                setStreamingHopIndex(0);
+                setStreamingStatus(`SSE Trace Started: ${data.start_address?.slice(0, 8)}...`);
+              }}
+              onHopDiscovered={(hop) => {
+                setIsWsStreaming(true);
+                setStreamedHops((prev) => {
+                  const exists = prev.some(
+                    (h) =>
+                      h.from_addr.toLowerCase() === hop.from_addr.toLowerCase() &&
+                      h.to_addr.toLowerCase() === hop.to_addr.toLowerCase() &&
+                      h.tx_hash === hop.tx_hash
+                  );
+                  if (exists) return prev;
+                  return [...prev, hop];
+                });
+                setStreamingHopIndex(hop.hop_index);
+              }}
+              onTraceCompleted={async (data) => {
+                setIsWsStreaming(false);
+                setStreamingStatus(`SSE Trace Complete: ${data.total_hops} hops analyzed.`);
+                await fetchCaseDetails();
+              }}
+              onError={(err) => {
+                setIsWsStreaming(false);
+                setStreamingStatus(`Trace error: ${err.message || String(err)}`);
+              }}
+              isStreaming={isWsStreaming}
+              setIsStreaming={setIsWsStreaming}
+              streamingHopCount={streamingHopIndex}
+              streamingStatus={streamingStatus}
+              setStreamingStatus={setStreamingStatus}
+            />
+
+            {/* Viewport: Either Court Presentation Mode OR Cytoscape Technical Graph */}
+            {isCourtMode ? (
+              <CourtPresentationMode
+                paths={forensicData?.trace?.paths || streamedHops}
+                startAddress={primarySubmission?.address || ''}
+                chain={primarySubmission?.chain || 'ETH'}
+                ncrpRef={caseRecord.ncrp_ref}
+                victimUtr={caseRecord.victim_utr}
+                totalAmountInr={caseRecord.amount_inr || 1125000}
+                attribution={forensicData?.attribution}
+                onExit={() => setIsCourtMode(false)}
+              />
+            ) : (
+              <div className="space-y-4">
+                {/* Detected Bridge Notification Banner */}
+                {detectedBridge && (
+                  <div className="p-3 rounded-xl bg-purple-950/60 border border-purple-500/60 flex items-center justify-between text-xs text-purple-200">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-base">🌉</span>
+                      <div>
+                        <span className="font-bold">Cross-Chain Bridge Identified:</span> {detectedBridge.bridge_name}
+                        <span className="ml-2 text-purple-300 font-mono text-[11px]">(Target Chain: {detectedBridge.destination_chain} &bull; Rule: {detectedBridge.decoding_rule})</span>
+                      </div>
+                    </div>
+                    <span className="px-2 py-0.5 rounded bg-purple-900/80 border border-purple-400/40 text-[10px] font-mono text-purple-200">
+                      Receipt Log Decoder Verified
+                    </span>
+                  </div>
+                )}
+
+                {/* Quick Forensic Summary Header */}
+                <div className="p-4 rounded-xl border border-blue-500/20 bg-blue-950/20 flex flex-wrap items-center justify-between gap-4 text-xs">
+                  <div className="flex items-center space-x-3">
+                    <div className="p-2 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-400">
+                      <Network className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white text-sm">
+                        Multi-Hop Fund Flow &bull; Off-Ramp: {matchedEntity || (isWsStreaming ? 'Streaming...' : 'Pending')}
+                      </h4>
+                      <p className="text-slate-400 text-[11px]">
+                        Trace reached verified deposit infrastructure within {(isWsStreaming || (streamedHops.length > 0 && (!forensicData || forensicData.trace.paths.length === 0)) ? streamedHops : (forensicData?.trace?.paths || [])).length} hops.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-4 font-mono text-xs">
+                    <div className="text-right">
+                      <span className="text-slate-400 text-[10px] block">Confidence Band</span>
+                      <span className="text-emerald-400 font-bold">{band} ({Math.round(confidence * 100)}%)</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-slate-400 text-[10px] block">Composite Risk</span>
+                      <span className="text-amber-400 font-bold">{forensicData?.risk?.composite_score ?? 59}/100</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-slate-400 text-[10px] block">FIFO Taint</span>
+                      <span className="text-rose-400 font-bold">{(forensicData?.taint?.final_taint_percentage ?? 100).toFixed(1)}%</span>
+                    </div>
                   </div>
                 </div>
-                <span className="px-2 py-0.5 rounded bg-purple-900/80 border border-purple-400/40 text-[10px] font-mono text-purple-200">
-                  Receipt Log Decoder Verified
-                </span>
+
+                {/* Cytoscape.js Canvas */}
+                <GraphCanvas
+                  paths={isWsStreaming || (streamedHops.length > 0 && (!forensicData || forensicData.trace.paths.length === 0)) ? streamedHops : (forensicData?.trace?.paths || [])}
+                  startAddress={primarySubmission?.address || ''}
+                  chain={primarySubmission?.chain || 'ETH'}
+                  matchedEntity={matchedEntity || undefined}
+                  attributionRule={forensicData?.attribution?.rule_fired}
+                  confidence={confidence}
+                  isStreaming={isWsStreaming}
+                  streamingHopIndex={streamingHopIndex}
+                  onReplayTrace={handleStartWebSocketStream}
+                />
               </div>
             )}
-
-            {/* Quick Forensic Summary Header */}
-            <div className="p-4 rounded-xl border border-blue-500/20 bg-blue-950/20 flex flex-wrap items-center justify-between gap-4 text-xs">
-              <div className="flex items-center space-x-3">
-                <div className="p-2 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-400">
-                  <Network className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white text-sm">
-                    Multi-Hop Fund Flow &bull; Off-Ramp: {matchedEntity || (isWsStreaming ? 'Streaming...' : 'Pending')}
-                  </h4>
-                  <p className="text-slate-400 text-[11px]">
-                    Trace reached verified deposit infrastructure within {(isWsStreaming || (streamedHops.length > 0 && (!forensicData || forensicData.trace.paths.length === 0)) ? streamedHops : (forensicData?.trace?.paths || [])).length} hops.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4 font-mono text-xs">
-                <div className="text-right">
-                  <span className="text-slate-400 text-[10px] block">Confidence Band</span>
-                  <span className="text-emerald-400 font-bold">{band} ({Math.round(confidence * 100)}%)</span>
-                </div>
-                <div className="text-right">
-                  <span className="text-slate-400 text-[10px] block">Composite Risk</span>
-                  <span className="text-amber-400 font-bold">{forensicData?.risk?.composite_score ?? 59}/100</span>
-                </div>
-                <div className="text-right">
-                  <span className="text-slate-400 text-[10px] block">FIFO Taint</span>
-                  <span className="text-rose-400 font-bold">{(forensicData?.taint?.final_taint_percentage ?? 100).toFixed(1)}%</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Cytoscape.js Canvas */}
-            <GraphCanvas
-              paths={isWsStreaming || (streamedHops.length > 0 && (!forensicData || forensicData.trace.paths.length === 0)) ? streamedHops : (forensicData?.trace?.paths || [])}
-              startAddress={primarySubmission?.address || ''}
-              chain={primarySubmission?.chain || 'ETH'}
-              matchedEntity={matchedEntity || undefined}
-              attributionRule={forensicData?.attribution?.rule_fired}
-              confidence={confidence}
-              isStreaming={isWsStreaming}
-              streamingHopIndex={streamingHopIndex}
-              onReplayTrace={handleStartWebSocketStream}
-            />
           </div>
-        ) : (
-          /* Empty / Trigger State */
-          <div className="p-16 text-center border border-dashed border-slate-800 rounded-2xl bg-slate-900/30">
-            <div className="w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-500/30 text-blue-400 flex items-center justify-center mx-auto mb-4">
-              <Network className="w-6 h-6" />
+        )}
+
+        {/* Tab 2: Flagged Addresses */}
+        {activeTab === 'addresses' && (
+          <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/90 shadow-xl space-y-4 font-mono text-xs">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div className="flex items-center space-x-2">
+                <Eye className="w-4 h-4 text-blue-400" />
+                <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+                  Registered Flagged Addresses (Leads)
+                </h3>
+              </div>
+              <span className="text-slate-400 text-[11px]">
+                {caseRecord.submissions?.length || 0} registered lead address(es)
+              </span>
             </div>
-            <h3 className="text-base font-bold text-white mb-2">Automated Forensic Analytics Pending</h3>
-            <p className="text-xs text-slate-400 max-w-md mx-auto mb-6">
-              Initialize bounded breadth-first search across blockchain nodes to identify multi-hop dissipation paths and attribute the receiving exchange.
-            </p>
-            <div className="flex items-center justify-center space-x-3">
-              <button
-                onClick={handleStartWebSocketStream}
-                disabled={runningAnalysis || isWsStreaming}
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold shadow-xl shadow-purple-600/30 transition-all disabled:opacity-50"
-              >
-                <Play className={`w-4 h-4 ${isWsStreaming ? 'animate-spin' : ''}`} />
-                <span>{isWsStreaming ? 'Streaming Live Trace...' : '⚡ Stream Live Trace (WebSocket)'}</span>
-              </button>
-              <button
-                onClick={handleExecuteForensics}
-                disabled={runningAnalysis || isWsStreaming}
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-xl shadow-blue-600/30 transition-all disabled:opacity-50"
-              >
-                <Play className={`w-4 h-4 ${runningAnalysis ? 'animate-spin' : ''}`} />
-                <span>{runningAnalysis ? 'Tracing Multi-Hop Paths...' : 'Standard Forensic Trace'}</span>
-              </button>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead className="bg-slate-950 text-slate-400 border-b border-slate-800 text-[11px]">
+                  <tr>
+                    <th className="py-2.5 px-3">Flagged Address</th>
+                    <th className="py-2.5 px-3">Chain</th>
+                    <th className="py-2.5 px-3">Submitted At</th>
+                    <th className="py-2.5 px-3">Analysis Runs</th>
+                    <th className="py-2.5 px-3 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60 bg-slate-900/40">
+                  {(caseRecord.submissions || []).map((sub, idx) => (
+                    <tr key={sub.submission_id || idx} className="hover:bg-slate-800/40 transition-colors">
+                      <td className="py-2.5 px-3 font-semibold text-white break-all">
+                        {sub.address}
+                      </td>
+                      <td className="py-2.5 px-3">
+                        <span className="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-300">
+                          {sub.chain}
+                        </span>
+                      </td>
+                      <td className="py-2.5 px-3 text-slate-400 text-[11px]">
+                        {sub.submitted_at ? new Date(sub.submitted_at).toLocaleString() : '—'}
+                      </td>
+                      <td className="py-2.5 px-3 text-slate-300">
+                        {sub.analysis_runs?.length || 0} run(s)
+                      </td>
+                      <td className="py-2.5 px-3 text-right">
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText(sub.address);
+                            alert('Flagged address copied to clipboard');
+                          }}
+                          className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px]"
+                        >
+                          Copy
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         )}

@@ -87,7 +87,7 @@ export const CourtPresentationMode: React.FC<CourtPresentationModeProps> = ({
         </div>
 
         <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/60 font-mono text-xs">
-          <span className="text-slate-500 text-[10px] uppercase font-bold">2. Initial Suspect Destination</span>
+          <span className="text-slate-500 text-[10px] uppercase font-bold">2. Initial Flagged Destination (Lead)</span>
           <div className="text-rose-400 font-bold text-sm mt-1 truncate">{startAddress}</div>
           <p className="text-slate-400 text-[11px] mt-0.5">First crypto wallet reported in NCRP complaint</p>
         </div>
@@ -160,7 +160,7 @@ export const CourtPresentationMode: React.FC<CourtPresentationModeProps> = ({
                     </span>
                     {idx === 0 && (
                       <span className="text-[10px] text-red-400 block mt-0.5 font-sans font-semibold">
-                        [Reported Suspect Wallet]
+                        [Reported Flagged Address (Lead)]
                       </span>
                     )}
                   </div>

@@ -33,7 +33,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  // Restore session on mount (Satisfies persistence requirement)
+  // Restore session on mount (In-memory with sessionStorage restore as per Phase 6)
   useEffect(() => {
     const initializeAuth = async () => {
       try {
@@ -46,8 +46,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             try {
               const profile = await api.getMe(jwt);
               setOfficer(profile);
-              localStorage.setItem(TOKEN_KEY, jwt);
-              localStorage.setItem(OFFICER_KEY, JSON.stringify(profile));
+              sessionStorage.setItem(TOKEN_KEY, jwt);
+              sessionStorage.setItem(OFFICER_KEY, JSON.stringify(profile));
               setIsLoading(false);
               return;
             } catch (err) {
@@ -56,32 +56,35 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           }
         }
 
-        // 2. Check local persistent storage (offline-first session persistence)
-        const storedToken = localStorage.getItem(TOKEN_KEY);
-        const storedOfficer = localStorage.getItem(OFFICER_KEY);
+        // 2. Check sessionStorage (in-memory token with session-level restore)
+        const storedToken = sessionStorage.getItem(TOKEN_KEY) || localStorage.getItem(TOKEN_KEY);
+        const storedOfficer = sessionStorage.getItem(OFFICER_KEY) || localStorage.getItem(OFFICER_KEY);
 
         if (storedToken && storedOfficer) {
           try {
             const parsedOfficer = JSON.parse(storedOfficer);
             setToken(storedToken);
+            api.setToken(storedToken);
             setOfficer(parsedOfficer);
+            sessionStorage.setItem(TOKEN_KEY, storedToken);
+            sessionStorage.setItem(OFFICER_KEY, storedOfficer);
 
             // Background refresh to confirm token is still valid
             api.getMe(storedToken)
               .then((freshProfile) => {
                 setOfficer(freshProfile);
-                localStorage.setItem(OFFICER_KEY, JSON.stringify(freshProfile));
+                sessionStorage.setItem(OFFICER_KEY, JSON.stringify(freshProfile));
               })
               .catch((err) => {
                 console.warn('Session expired or invalidated:', err);
-                // Only clear if HTTP 401
                 if (String(err).includes('401')) {
                   logout();
                 }
               });
           } catch {
-            localStorage.removeItem(TOKEN_KEY);
-            localStorage.removeItem(OFFICER_KEY);
+            sessionStorage.removeItem(TOKEN_KEY);
+            sessionStorage.removeItem(OFFICER_KEY);
+            api.setToken(null);
           }
         }
       } finally {
@@ -96,17 +99,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     try {
       if (isSupabaseConfigured) {
-        // Attempt Supabase JS login with session persistence
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) {
           console.warn('Supabase sign-in error, trying backend direct auth:', error.message);
         } else if (data.session) {
           const jwt = data.session.access_token;
+          api.setToken(jwt);
           const profile = await api.getMe(jwt);
           setToken(jwt);
           setOfficer(profile);
-          localStorage.setItem(TOKEN_KEY, jwt);
-          localStorage.setItem(OFFICER_KEY, JSON.stringify(profile));
+          sessionStorage.setItem(TOKEN_KEY, jwt);
+          sessionStorage.setItem(OFFICER_KEY, JSON.stringify(profile));
           return;
         }
       }
@@ -114,9 +117,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Default / Offline direct backend authentication
       const res = await api.login(email, password);
       setToken(res.access_token);
+      api.setToken(res.access_token);
       setOfficer(res.officer);
-      localStorage.setItem(TOKEN_KEY, res.access_token);
-      localStorage.setItem(OFFICER_KEY, JSON.stringify(res.officer));
+      sessionStorage.setItem(TOKEN_KEY, res.access_token);
+      sessionStorage.setItem(OFFICER_KEY, JSON.stringify(res.officer));
     } finally {
       setIsLoading(false);
     }
@@ -147,9 +151,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Direct backend signup (creates row in profiles with INVESTIGATOR role)
       const res = await api.signup(email, password, fullName, badgeNo, district);
       setToken(res.access_token);
+      api.setToken(res.access_token);
       setOfficer(res.officer);
-      localStorage.setItem(TOKEN_KEY, res.access_token);
-      localStorage.setItem(OFFICER_KEY, JSON.stringify(res.officer));
+      sessionStorage.setItem(TOKEN_KEY, res.access_token);
+      sessionStorage.setItem(OFFICER_KEY, JSON.stringify(res.officer));
     } finally {
       setIsLoading(false);
     }
@@ -160,7 +165,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       supabase.auth.signOut().catch(console.warn);
     }
     setToken(null);
+    api.setToken(null);
     setOfficer(null);
+    sessionStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem(OFFICER_KEY);
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(OFFICER_KEY);
   };

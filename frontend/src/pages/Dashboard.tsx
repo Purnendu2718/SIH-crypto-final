@@ -21,6 +21,7 @@ import { VaspAdminModal } from '../components/VaspAdminModal';
 import { HeaderSearchBar } from '../components/HeaderSearchBar';
 import { AddressSearchModal } from '../components/AddressSearchModal';
 import { AddressSearchComponent } from '../components/AddressSearchComponent';
+import { LanguageSwitcher } from '../components/LanguageSwitcher';
 
 interface DashboardPageProps {
   onSelectCase?: (caseId: string) => void;
@@ -46,7 +47,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onSelectCase }) =>
   const [ncrpRef, setNcrpRef] = useState<string>('');
   const [victimUtr, setVictimUtr] = useState<string>('');
   const [amountInr, setAmountInr] = useState<string>('');
-  const [suspectAddress, setSuspectAddress] = useState<string>('');
+  const [flaggedAddress, setFlaggedAddress] = useState<string>('');
   const [chain, setChain] = useState<string>('ETH');
   const [submitting, setSubmitting] = useState<boolean>(false);
 
@@ -78,14 +79,14 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onSelectCase }) =>
         ncrp_ref: ncrpRef || undefined,
         victim_utr: victimUtr || undefined,
         amount_inr: amountInr ? parseFloat(amountInr) : undefined,
-        suspect_address: suspectAddress || undefined,
+        flagged_address: flaggedAddress || undefined,
         chain,
       });
       // Clear form and refresh
       setNcrpRef('');
       setVictimUtr('');
       setAmountInr('');
-      setSuspectAddress('');
+      setFlaggedAddress('');
       setIsSubmittingNew(false);
       await fetchCaseload();
       if (onSelectCase && created.case_id) {
@@ -204,6 +205,8 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onSelectCase }) =>
                 </p>
               </div>
             </div>
+
+            <LanguageSwitcher />
 
             <button
               onClick={logout}
@@ -362,7 +365,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onSelectCase }) =>
           <div className="mb-8 p-6 rounded-xl border border-blue-500/30 bg-[#0f172a] shadow-2xl animate-in fade-in">
             <h4 className="text-sm font-bold text-white mb-4 flex items-center space-x-2">
               <Plus className="w-4 h-4 text-blue-400" />
-              <span>Register Victim-Reported Suspect Wallet</span>
+              <span>Register Victim-Reported Flagged Wallet (Lead)</span>
             </h4>
             <form onSubmit={handleCreateCase} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div>
@@ -406,14 +409,14 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onSelectCase }) =>
 
               <div className="sm:col-span-2">
                 <label className="block text-xs font-medium text-slate-300 mb-1">
-                  Suspect Wallet Address
+                  Flagged Wallet Address (Lead)
                 </label>
                 <input
                   type="text"
                   required
                   placeholder="0x... or TR7NHq..."
-                  value={suspectAddress}
-                  onChange={(e) => setSuspectAddress(e.target.value)}
+                  value={flaggedAddress}
+                  onChange={(e) => setFlaggedAddress(e.target.value)}
                   className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white font-mono focus:outline-none focus:border-blue-500"
                 />
               </div>
@@ -507,7 +510,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onSelectCase }) =>
             </div>
           ) : filteredCases.length === 0 ? (
             <div className="p-12 text-center text-slate-500 text-xs">
-              No cases found in current clearance scope. Submit a suspect wallet to start.
+              No cases found in current clearance scope. Submit a flagged wallet to start.
             </div>
           ) : (
             <div className="overflow-x-auto">

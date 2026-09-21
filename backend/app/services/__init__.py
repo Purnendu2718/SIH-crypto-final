@@ -12,6 +12,7 @@ from app.services.typology import TypologyEngine, TypologyHit
 from app.services.taint_engine import TaintEngine, TaintResult
 from app.services.risk_engine import RiskEngine, RiskAssessment
 from app.services.address_validator import validate_and_detect_chain
+from app.services.adapters.fixture_adapter import FixtureAdapter
 
 
 def run_full_forensic_pipeline(
@@ -36,6 +37,17 @@ def run_full_forensic_pipeline(
 
     # Step 1: Strict Cryptographic Address Checksum Validation
     is_valid, detected_chain_or_err, validation_detail = validate_and_detect_chain(start_address)
+
+    # Offline-first fallback: recognize seeded demo scenarios
+    if not is_valid:
+        try:
+            fa = FixtureAdapter()
+            if fa.get_scenario_by_address(start_address):
+                is_valid = True
+                detected_chain_or_err = chain or "ETH"
+                validation_detail = f"FIXTURE {detected_chain_or_err}"
+        except Exception:
+            pass
 
     if not is_valid:
         failed_status = ForensicStatus("ANALYSIS_FAILED_INVALID_ADDRESS")

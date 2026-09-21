@@ -103,7 +103,7 @@ export const IntelExchangeModal: React.FC<IntelExchangeModalProps> = ({
                 </span>
               </h2>
               <p className="text-xs text-slate-400">
-                Inter-agency suspect intelligence sharing without raw address or victim PII disclosure
+                Inter-agency intelligence sharing for flagged addresses without raw address or victim PII disclosure
               </p>
             </div>
           </div>
@@ -141,7 +141,7 @@ export const IntelExchangeModal: React.FC<IntelExchangeModalProps> = ({
                 : 'border-transparent text-slate-400 hover:text-slate-300'
             }`}
           >
-            ➕ Contribute Suspect Tag
+            ➕ Contribute Flagged Address Tag
           </button>
         </div>
 
@@ -163,7 +163,7 @@ export const IntelExchangeModal: React.FC<IntelExchangeModalProps> = ({
             <form onSubmit={handleLookup} className="space-y-4">
               <div>
                 <label className="block text-xs font-medium text-slate-300 mb-1">
-                  Suspect Wallet Address (Hashed Client-Side Before Search)
+                  Flagged Wallet Address (Hashed Client-Side Before Search)
                 </label>
                 <input
                   type="text"
@@ -242,7 +242,7 @@ export const IntelExchangeModal: React.FC<IntelExchangeModalProps> = ({
             <form onSubmit={handleSubmitTag} className="space-y-4">
               <div>
                 <label className="block text-xs font-medium text-slate-300 mb-1">
-                  Suspect Wallet Address (Will be SHA-256 Hashed Locally)
+                  Flagged Wallet Address (Will be SHA-256 Hashed Locally)
                 </label>
                 <input
                   type="text"

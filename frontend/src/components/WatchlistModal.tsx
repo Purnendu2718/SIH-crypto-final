@@ -142,7 +142,7 @@ export const WatchlistModal: React.FC<WatchlistModalProps> = ({
                 </span>
               </div>
               <p className="text-xs text-slate-400">
-                Automated continuous surveillance of suspect wallets to intercept outbound off-ramp transactions
+                Automated continuous surveillance of flagged addresses to intercept outbound off-ramp transactions
               </p>
             </div>
           </div>
@@ -199,18 +199,18 @@ export const WatchlistModal: React.FC<WatchlistModalProps> = ({
           </div>
         )}
 
-        {/* Poll Results Detail Banner */}
+        {/* Real-Time Live Alert Toast Container */}
         {pollResult && pollResult.alerts_fired > 0 && (
-          <div className="mx-6 mt-4 p-4 rounded-xl border border-rose-500/40 bg-rose-950/30">
-            <div className="flex items-center gap-2 text-rose-400 font-bold text-xs mb-2">
-              <AlertTriangle className="w-4 h-4 animate-bounce" />
-              <span>OUTBOUND OFF-RAMP LIQUIDATION DETECTED ({pollResult.alerts_fired} Alerts)</span>
+          <div className="mx-6 mt-4 p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 animate-in fade-in">
+            <div className="flex items-center gap-2 text-amber-400 font-bold text-xs mb-2">
+              <AlertTriangle className="w-4 h-4 animate-pulse" />
+              <span>Surveillance Alert Triggered: {pollResult.alerts_fired} Outbound Transfer(s) Detected!</span>
             </div>
             <div className="space-y-2">
               {pollResult.alert_details.map((alert, idx) => (
                 <div key={idx} className="p-2.5 rounded-lg bg-slate-950/80 border border-slate-800 text-xs font-mono flex items-center justify-between">
                   <div>
-                    <span className="text-slate-400 text-[10px] block">Suspect Target: {alert.address}</span>
+                    <span className="text-slate-400 text-[10px] block">Flagged Target: {alert.address}</span>
                     <span className="text-white font-bold flex items-center gap-1 mt-0.5">
                       <Building2 className="w-3.5 h-3.5 text-amber-400" />
                       Destination VASP: {alert.vasp_name}
@@ -235,12 +235,12 @@ export const WatchlistModal: React.FC<WatchlistModalProps> = ({
             <form onSubmit={handleCreate} className="p-5 rounded-xl border border-blue-500/40 bg-slate-950/90 shadow-2xl text-xs space-y-4 animate-in fade-in">
               <h4 className="font-bold text-white text-sm flex items-center gap-2">
                 <Plus className="w-4 h-4 text-blue-400" />
-                <span>Enroll Suspect Wallet for Golden Hour Surveillance</span>
+                <span>Enroll Flagged Wallet for Golden Hour Surveillance</span>
               </h4>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="md:col-span-2">
-                  <label className="block text-slate-300 font-medium mb-1">Suspect Address *</label>
+                  <label className="block text-slate-300 font-medium mb-1">Flagged Address *</label>
                   <input
                     type="text"
                     required

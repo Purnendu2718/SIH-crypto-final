@@ -335,19 +335,61 @@ export interface MultiChainSearchResponse {
   demo?: boolean;
 }
 
+import { fetchEventSource } from '@microsoft/fetch-event-source';
+
 const API_BASE = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || '/api';
+export const TOKEN_STORAGE_KEY = 'cryptotrace_sentinel_token';
 
 export class ApiClient {
   private base: string;
+  private token: string | null = null;
 
   constructor(base: string = API_BASE) {
     this.base = base;
+    // In-memory token with sessionStorage restore
+    try {
+      if (typeof window !== 'undefined' && window.sessionStorage) {
+        this.token = window.sessionStorage.getItem(TOKEN_STORAGE_KEY);
+      }
+    } catch {
+      this.token = null;
+    }
+  }
+
+  setToken(token: string | null): void {
+    this.token = token;
+    try {
+      if (typeof window !== 'undefined' && window.sessionStorage) {
+        if (token) {
+          window.sessionStorage.setItem(TOKEN_STORAGE_KEY, token);
+        } else {
+          window.sessionStorage.removeItem(TOKEN_STORAGE_KEY);
+        }
+      }
+    } catch {}
+  }
+
+  getToken(): string | null {
+    if (!this.token) {
+      try {
+        if (typeof window !== 'undefined' && window.sessionStorage) {
+          this.token = window.sessionStorage.getItem(TOKEN_STORAGE_KEY);
+        }
+      } catch {}
+    }
+    return this.token;
+  }
+
+  getBaseUrl(): string {
+    return this.base;
   }
 
   private async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
     const url = `${this.base}${endpoint}`;
+    const currentToken = this.getToken();
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
+      ...(currentToken ? { Authorization: `Bearer ${currentToken}` } : {}),
       ...(options.headers as Record<string, string> || {}),
     };
 
@@ -417,12 +459,17 @@ export class ApiClient {
       amount_inr?: number;
       chain?: string;
       suspect_address?: string;
+      flagged_address?: string;
     },
   ): Promise<CaseRecord> {
+    const payload = {
+      ...data,
+      suspect_address: data.suspect_address || data.flagged_address,
+    };
     return this.request<CaseRecord>('/cases', {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}` },
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     });
   }
 
@@ -600,12 +647,18 @@ export class ApiClient {
   async searchMultiChain(
     query: string,
     allCandidates: boolean = false,
-    caseId?: string
+    caseId?: string,
+    token?: string
   ): Promise<MultiChainSearchResponse> {
     const url = `${this.base}/v1/search`;
+    const authToken = token || this.getToken();
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
+    };
     const response = await fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body: JSON.stringify({ query, all_candidates: allCandidates, case_id: caseId }),
     });
 
@@ -641,6 +694,73 @@ export class ApiClient {
     }
 
     return response.json();
+  }
+
+  async streamTraceSSE(
+    params: {
+      seedAddress: string;
+      chain?: string;
+      maxHops?: number;
+      minAmount?: number;
+      taintModel?: string;
+      dateFrom?: string;
+      dateTo?: string;
+      caseId?: string;
+    },
+    callbacks: {
+      onStarted?: (data: any) => void;
+      onHop?: (hop: TracePathItem) => void;
+      onCompleted?: (data: any) => void;
+      onError?: (err: any) => void;
+    },
+    signal?: AbortSignal
+  ): Promise<void> {
+    const authToken = this.getToken();
+    const url = `${this.base}/trace/sse`;
+
+    await fetchEventSource(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
+      },
+      body: JSON.stringify({
+        seed_address: params.seedAddress,
+        chain: params.chain || 'ETH',
+        max_hops: params.maxHops || 3,
+        min_amount: params.minAmount || 0,
+        taint_model: params.taintModel || 'FIFO',
+        date_from: params.dateFrom,
+        date_to: params.dateTo,
+        case_id: params.caseId,
+      }),
+      signal,
+      async onopen(response) {
+        if (!response.ok) {
+          throw new Error(`SSE stream connection failed (${response.status})`);
+        }
+      },
+      onmessage(msg) {
+        try {
+          const data = msg.data ? JSON.parse(msg.data) : {};
+          if (msg.event === 'trace_started') {
+            callbacks.onStarted?.(data);
+          } else if (msg.event === 'hop_discovered') {
+            callbacks.onHop?.(data);
+          } else if (msg.event === 'trace_completed') {
+            callbacks.onCompleted?.(data);
+          } else if (msg.event === 'error') {
+            callbacks.onError?.(new Error(data.message || 'Stream error'));
+          }
+        } catch (e) {
+          callbacks.onError?.(e);
+        }
+      },
+      onerror(err) {
+        callbacks.onError?.(err);
+        throw err;
+      },
+    });
   }
 
   async unifiedSearch(
