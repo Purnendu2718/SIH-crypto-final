@@ -1,9 +1,9 @@
 # CryptoTrace Sentinel (SIH26183) — Project Status
 
-## Status: Phase 6 Complete
+## Status: Phase 7 Complete
 
 ### Overview
-CryptoTrace Sentinel is an open-source, self-hostable blockchain-forensics platform for Indian law enforcement. It takes a victim-reported crypto wallet address, traces fund flow across multi-hop transactions, attributes receiving exchanges/VASPs with explainable confidence scores, detects laundering typologies, and produces court-ready evidence packages along with pre-drafted Section 94 BNSS statutory requisition notices.
+CryptoTrace Sentinel is an open-source, self-hostable blockchain-forensics platform for Indian law enforcement. It takes a victim-reported crypto wallet address, traces fund flow across multi-hop transactions, attributes receiving exchanges/VASPs with explainable confidence scores, detects laundering typologies, and produces court-ready evidence packages along with pre-drafted Section 94 BNSS statutory requisition notices and Section 63 BSA electronic record certificates.
 
 ---
 
@@ -43,13 +43,27 @@ CryptoTrace Sentinel is an open-source, self-hostable blockchain-forensics platf
     - `i18next` with `react-i18next` configured for English (`en`) and Hindi (`hi`).
     - Language switcher toggle in the shell header.
     - **Notice**: All Hindi (`hi`) strings in `frontend/src/lib/i18n.ts` are machine-translated and require human review by native Hindi-speaking law enforcement subject matter experts.
-  - **Automated Tests**:
-    - Unit tests for graph-data transformation engine (`calculateNodeSize`, `calculateEdgeWidth`, `determineCategory`, `detectCycles`, `transformTraceToGraph`, endpoints, performance collapse guard).
-    - Unit tests for API client (token in-memory, sessionStorage restore, request header injection).
-    - Unit tests for route guard and RBAC role checks (`ProtectedRoute`).
-    - Full TypeScript type-checking and production build verification (`npm run build`).
+  - **Automated Tests**: Vitest unit tests for graph transform, API client, route guard; build & type-check passing.
+- **Phase 7 — Evidence Package, Report and Integrity Verification**: Completed.
+  - **Evidence Package Endpoint**: `GET /api/v1/cases/{id}/evidence-package` (investigator role, RLS enforced) generates and exports a complete ZIP package saved under `EXPORT_DIR` (`./data/exports`).
+  - **Package Contents**:
+    - `report.pdf`: Pure Python ReportLab forensic report with case header, methods & limitations (heuristics glossary, taint assumptions, "Attribution is not proof"), trace parameters, summary of endpoints and circular cycles, table of key transfers with txids, label table with confidence and sources, and appendix with SHA-256 evidence hashes where every claim references an artifact ID.
+    - `certificate_draft.pdf`: Section 63 Bharatiya Sakshya Adhiniyam, 2023 (BSA 2023) electronic record certificate draft, stamped on every page with `"DRAFT - for review by legal counsel; verify the prescribed Schedule format before use"`, with placeholders for the person in charge and a forensic expert.
+    - `graph.json`: Serialized multi-hop graph topology state.
+    - `artifacts/`: Directory containing raw provider responses and snapshots (`raw_trace_payload.json`, `raw_transactions.json`, `vasp_directory_snapshot.json`, `case_metadata.json`).
+    - `MANIFEST.json`: Cryptographic manifest detailing every file with SHA-256 digest, byte size, scrubbed source URL without API keys, fetched_at timestamp, engine version, and parameters.
+    - `audit_excerpt.json`: Cryptographic hash-chained audit log excerpt covering case actions with `prev_hash` and `entry_hash`.
+    - `verify.py`: Standalone, standard-library-only Python verification script.
+    - `README.txt`: Independent court verification and defensibility guide.
+    - `MANIFEST.tsr` (optional): RFC 3161 trusted timestamp token if `TSA_URL` is set; if unset, the report states `"not externally anchored"`.
+  - **Defensible Tamper-Evident Verification**:
+    - `verify.py` passes on clean packages.
+    - Detects and halts on single-byte corruption in any artifact.
+    - Detects and halts on audit log row or hash chain tampering.
+  - **Audit Logging**: Export action recorded as `EVIDENCE_PACKAGE_EXPORTED` in the database audit log.
+  - **Automated Tests**: Pytest test suite (`test_phase7_evidence_package.py`) with 8 tests covering packaging, verification, single-byte tamper detection, certificate stamping, and audit logging.
 
 ---
 
 ### Verification Checklist
-Run `python scripts/check.py` to run all test suites across backend and frontend.
+Run `python scripts/check.py` to run all test suites across backend (124 pytest tests) and frontend (28 vitest tests + production build).

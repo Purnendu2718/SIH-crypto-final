@@ -73,6 +73,7 @@ app.add_middleware(
 # Register API Routers
 app.include_router(auth.router)
 app.include_router(cases.router)
+app.include_router(cases.router_v1)
 app.include_router(analysis.router)
 app.include_router(evidence.router)
 app.include_router(evidence.audit_router)

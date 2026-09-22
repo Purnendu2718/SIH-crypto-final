@@ -5,6 +5,7 @@ Reference: SIH26183, Ministry of Home Affairs / I4C.
 from typing import List
 from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session, joinedload
 
 from app.database import get_db
@@ -25,8 +26,10 @@ from app.schemas import (
     AttributionSummary,
 )
 from app.security import get_current_officer
+from app.services.evidence_packager import build_evidence_package
 
 router = APIRouter(prefix="/api/cases", tags=["Cases & Caseload"])
+router_v1 = APIRouter(prefix="/api/v1/cases", tags=["Cases & Caseload (v1)"])
 
 
 @router.get("", response_model=List[CaseOut])
@@ -418,3 +421,54 @@ def seed_demo_cases(db: Session = Depends(get_db)):
 
     db.commit()
     return {"message": "Demo officers and cases successfully seeded.", "accounts": ["sharma@sentinel.gov.in", "patel@sentinel.gov.in", "verma@sentinel.gov.in"]}
+
+
+@router.get("/{case_id}/evidence-package")
+@router_v1.get("/{case_id}/evidence-package")
+def get_case_evidence_package(
+    case_id: str,
+    current_officer: Profile = Depends(get_current_officer),
+    db: Session = Depends(get_db),
+):
+    """Generate and export a court-defensible forensic evidence package (ZIP).
+    Contains: report.pdf, certificate_draft.pdf (Section 63 BSA 2023), graph.json,
+    artifacts/, MANIFEST.json, audit_excerpt.json, verify.py, and README.txt.
+    Requires investigator role. Audit-logs the export.
+    """
+    case = db.query(Case).filter(Case.case_id == case_id).first()
+    if not case:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Case with ID {case_id} not found.",
+        )
+
+    # RLS Check: Investigator must be assigned to case if case has assigned officer
+    if (
+        current_officer.role == "INVESTIGATOR"
+        and case.assigned_officer_id
+        and case.assigned_officer_id != current_officer.id
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Access unauthorized under current officer clearance. Case is assigned to another officer.",
+        )
+
+    try:
+        zip_path, zip_filename, _ = build_evidence_package(
+            case_id=case.case_id,
+            officer=current_officer,
+            db=db,
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to generate evidence package: {str(e)}",
+        )
+
+    return FileResponse(
+        path=zip_path,
+        media_type="application/zip",
+        filename=zip_filename,
+        headers={"Content-Disposition": f'attachment; filename="{zip_filename}"'},
+    )
+

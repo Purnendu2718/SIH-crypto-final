@@ -503,6 +503,24 @@ export class ApiClient {
     return `${this.base}/evidence/pdf/${runId}`;
   }
 
+  getEvidencePackageUrl(caseId: string): string {
+    return `${this.base}/v1/cases/${caseId}/evidence-package`;
+  }
+
+  async downloadEvidencePackage(token: string, caseId: string): Promise<Blob> {
+    const url = `${this.base}/v1/cases/${caseId}/evidence-package`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to download evidence package (${response.status})`);
+    }
+    return response.blob();
+  }
+
   async seedDemo(): Promise<any> {
     return this.request<any>('/cases/seed-demo', {
       method: 'POST',
