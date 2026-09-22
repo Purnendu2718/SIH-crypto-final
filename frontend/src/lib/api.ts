@@ -305,6 +305,71 @@ export interface LegalSuggestionsParams {
   trace_result?: Record<string, any> | null;
 }
 
+export interface AcceptedAddressItem {
+  address: string;
+  kind: string;
+  certainty: string;
+  primary_chain: string;
+  candidates: Array<{
+    chain: string;
+    address_type: string;
+    network: string;
+    checksum_verified: boolean;
+    note?: string | null;
+  }>;
+}
+
+export interface NearMissItem {
+  token: string;
+  error: string;
+  hint: string;
+}
+
+export interface ExtractedFactItem {
+  fact_type: string;
+  value: any;
+  evidence_quote: string;
+  label?: string;
+  verified: boolean;
+  category?: string;
+  amount?: number;
+  currency?: string;
+}
+
+export interface RejectedFactItem {
+  fact_type: string;
+  claimed_value: any;
+  evidence_quote?: string;
+  rejection_reason: string;
+}
+
+export interface IntakeResponse {
+  id: string;
+  provider: string;
+  is_deterministic: boolean;
+  mode_banner: string;
+  provider_note?: string;
+  masked_text: string;
+  pii_redacted_count: number;
+  accepted_addresses: AcceptedAddressItem[];
+  near_misses: NearMissItem[];
+  extracted_facts: ExtractedFactItem[];
+  rejected_facts: RejectedFactItem[];
+  summary: string;
+  translation_en?: string;
+  dpdp_notice: string;
+  created_case_id?: string;
+  created_at?: string;
+}
+
+export interface CreateCaseFromIntakeResponse {
+  case_id: string;
+  ncrp_ref: string;
+  message: string;
+  accepted_addresses_count: number;
+}
+
+
 
 export interface CandidateInfo {
   chain: string;
@@ -845,7 +910,38 @@ export class ApiClient {
       body: JSON.stringify(params),
     });
   }
+
+  async processIntake(
+    token: string,
+    complaintText: string,
+    language?: string,
+  ): Promise<IntakeResponse> {
+    return this.request<IntakeResponse>('/intake', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ complaint_text: complaintText, language }),
+    });
+  }
+
+  async createCaseFromIntake(
+    token: string,
+    intakeId: string,
+    acceptedAddresses?: string[],
+    selectedTypology?: string,
+    ncrpRef?: string,
+  ): Promise<CreateCaseFromIntakeResponse> {
+    return this.request<CreateCaseFromIntakeResponse>(`/intake/${intakeId}/create-case`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: JSON.stringify({
+        accepted_addresses: acceptedAddresses,
+        selected_typology: selectedTypology,
+        ncrp_ref: ncrpRef,
+      }),
+    });
+  }
 }
+
 
 
 export interface SearchResponse {

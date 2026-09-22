@@ -273,3 +273,25 @@ class TagPackSyncStatus(Base):
     source = Column(String, default="GITHUB_GRAPHSENSE_TAGPACKS")
     status = Column(String, default="COMPLETED")  # COMPLETED, FAILED, RUNNING
     error_message = Column(String, nullable=True)
+
+
+class ComplaintIntake(Base):
+    """Raw cybercrime complaint intake with PII masking and extracted evidence."""
+    __tablename__ = "complaint_intakes"
+
+    id = Column(String, primary_key=True, default=generate_uuid)
+    officer_id = Column(String, ForeignKey("profiles.id"), nullable=False)
+    original_text = Column(Text, nullable=False)  # Stored ONLY in DB per DPDP Act Section 8(4), never in logs
+    masked_text = Column(Text, nullable=False)
+    language = Column(String, nullable=True)
+    provider_used = Column(String, default="none")
+    extraction_mode = Column(String, default="deterministic")  # deterministic or ai_guarded
+    extracted_data = Column(JSON, nullable=False)  # Full verified extraction payload
+    accepted_addresses = Column(JSON, nullable=False)
+    near_misses = Column(JSON, nullable=False)
+    created_case_id = Column(String, ForeignKey("cases.case_id"), nullable=True)
+    created_at = Column(DateTime(timezone=True), default=utc_now)
+
+    officer = relationship("Profile")
+    case = relationship("Case")
+

@@ -23,7 +23,9 @@ from app.routers import (
     search,
     tagpack_admin,
     legal,
+    intake,
 )
+
 
 
 
@@ -90,6 +92,9 @@ app.include_router(search.router)
 app.include_router(tagpack_admin.router)
 app.include_router(legal.router)
 app.include_router(legal.router_v1)
+app.include_router(intake.router)
+app.include_router(intake.router_v1)
+
 
 
 

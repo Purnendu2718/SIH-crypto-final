@@ -28,7 +28,14 @@ class Settings(BaseSettings):
     # AI Co-pilot (Arjuna) Configuration
     GEMINI_API_KEY: str = ""
 
+    # Phase 9: Guarded LLM Complaint Intake Configuration
+    LLM_PROVIDER: str = "none"  # "none", "anthropic", "ollama"
+    LLM_MODEL: Optional[str] = None
+    ANTHROPIC_API_KEY: Optional[str] = None
+    OLLAMA_URL: str = "http://localhost:11434"
+
     # Phase 8: Multi-Chain Live Provider Configuration (Defaults to FixtureAdapter if LIVE_MODE=False)
+
     LIVE_MODE: bool = False
     EVM_RPC_URL: Optional[str] = None
     ETH_RPC_URL: Optional[str] = None  # Alias for EVM_RPC_URL

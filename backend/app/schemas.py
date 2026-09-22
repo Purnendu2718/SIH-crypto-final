@@ -314,3 +314,77 @@ class LegalSuggestionsResponse(BaseModel):
     ingredients_checklist: List[LegalChecklistItem]
 
 
+# ==============================================================================
+# Phase 9 — Complaint Intake & Guarded Extraction Schemas
+# ==============================================================================
+
+class IntakeRequest(BaseModel):
+    complaint_text: str
+    language: Optional[str] = None
+
+
+class AcceptedAddressOut(BaseModel):
+    address: str
+    kind: str
+    certainty: str
+    primary_chain: str
+    candidates: List[Dict[str, Any]] = []
+
+
+class NearMissOut(BaseModel):
+    token: str
+    error: str
+    hint: str
+
+
+class ExtractedFactOut(BaseModel):
+    fact_type: str
+    value: Any
+    evidence_quote: str
+    label: Optional[str] = None
+    verified: bool = True
+    category: Optional[str] = None
+    amount: Optional[float] = None
+    currency: Optional[str] = None
+
+
+class RejectedFactOut(BaseModel):
+    fact_type: str
+    claimed_value: Any
+    evidence_quote: Optional[str] = None
+    rejection_reason: str
+
+
+class IntakeResponse(BaseModel):
+    id: str
+    provider: str
+    is_deterministic: bool
+    mode_banner: str
+    provider_note: Optional[str] = None
+    masked_text: str
+    pii_redacted_count: int
+    accepted_addresses: List[AcceptedAddressOut] = []
+    near_misses: List[NearMissOut] = []
+    extracted_facts: List[ExtractedFactOut] = []
+    rejected_facts: List[RejectedFactOut] = []
+    summary: str
+    translation_en: Optional[str] = None
+    dpdp_notice: str
+    created_case_id: Optional[str] = None
+    created_at: Optional[datetime] = None
+
+
+class CreateCaseFromIntakeRequest(BaseModel):
+    accepted_addresses: Optional[List[str]] = None
+    selected_typology: Optional[str] = None
+    ncrp_ref: Optional[str] = None
+
+
+class CreateCaseFromIntakeResponse(BaseModel):
+    case_id: str
+    ncrp_ref: str
+    message: str
+    accepted_addresses_count: int
+
+
+

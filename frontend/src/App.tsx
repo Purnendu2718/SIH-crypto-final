@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { AuthProvider } from './lib/authContext';
 import { DashboardPage } from './pages/Dashboard';
 import { CaseDetailPage } from './pages/CaseDetail';
+import { IntakePage } from './pages/IntakePage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 const AppContent: React.FC = () => {
-  const [activeView, setActiveView] = useState<{ view: 'dashboard' | 'case_detail'; caseId?: string }>(() => {
+  const [activeView, setActiveView] = useState<{ view: 'dashboard' | 'case_detail' | 'intake'; caseId?: string }>(() => {
     const hash = window.location.hash;
+    if (hash === '#intake') {
+      return { view: 'intake' };
+    }
     if (hash.startsWith('#case/')) {
       return { view: 'case_detail', caseId: hash.replace('#case/', '') };
     }
@@ -16,7 +20,9 @@ const AppContent: React.FC = () => {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash.startsWith('#case/')) {
+      if (hash === '#intake') {
+        setActiveView({ view: 'intake' });
+      } else if (hash.startsWith('#case/')) {
         const id = hash.replace('#case/', '');
         setActiveView({ view: 'case_detail', caseId: id });
       } else {
@@ -40,7 +46,9 @@ const AppContent: React.FC = () => {
 
   return (
     <ProtectedRoute>
-      {activeView.view === 'case_detail' && activeView.caseId ? (
+      {activeView.view === 'intake' ? (
+        <IntakePage onCaseCreated={handleSelectCase} onBack={handleBackToDashboard} />
+      ) : activeView.view === 'case_detail' && activeView.caseId ? (
         <CaseDetailPage caseId={activeView.caseId} onBack={handleBackToDashboard} onSelectCase={handleSelectCase} />
       ) : (
         <DashboardPage onSelectCase={handleSelectCase} />
@@ -48,6 +56,7 @@ const AppContent: React.FC = () => {
     </ProtectedRoute>
   );
 };
+
 
 const App: React.FC = () => {
   return (

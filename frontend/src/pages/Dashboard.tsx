@@ -12,6 +12,7 @@ import {
   Building2,
   RefreshCw,
   Eye,
+  FileText,
 } from 'lucide-react';
 import { useAuth } from '../lib/authContext';
 import { api, CaseRecord } from '../lib/api';
@@ -316,6 +317,16 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onSelectCase }) =>
               <Search className="w-3.5 h-3.5 text-cyan-400" />
               <span>Multi-Chain Inspector</span>
             </button>
+
+            {/* Complaint Intake Button */}
+            <a
+              href="#intake"
+              className="flex items-center space-x-1.5 px-3 py-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 text-xs font-semibold transition-colors"
+              title="Victim Complaint Intake with Guarded Extraction"
+            >
+              <FileText className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Complaint Intake</span>
+            </a>
 
             {/* Police Intel Exchange Button */}
             <button
