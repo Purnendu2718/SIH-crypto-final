@@ -33,6 +33,8 @@ import { WatchlistModal } from '../components/WatchlistModal';
 import { HeaderSearchBar } from '../components/HeaderSearchBar';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { TraceFormComponent } from '../components/TraceFormComponent';
+import { LegalSuggestionsComponent } from '../components/LegalSuggestionsComponent';
+
 
 interface CaseDetailPageProps {
   caseId: string;
@@ -670,6 +672,21 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
           <button
             type="button"
             role="tab"
+            aria-selected={activeTab === 'legal'}
+            onClick={() => setActiveTab('legal')}
+            className={`px-4 py-2.5 font-bold border-b-2 transition-colors flex items-center gap-1.5 ${
+              activeTab === 'legal'
+                ? 'border-blue-500 text-blue-400 bg-blue-500/10'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Scale className="w-3.5 h-3.5" />
+            <span>Legal Provisions (BNS / IPC)</span>
+          </button>
+
+          <button
+            type="button"
+            role="tab"
             disabled
             title="Coming next in Phase 7"
             aria-disabled="true"
@@ -895,6 +912,26 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
                 </tbody>
               </table>
             </div>
+          </div>
+        )}
+
+
+        {/* Tab 3: Legal Suggestions (BNS / IPC / IT Act / PMLA) */}
+        {activeTab === 'legal' && (
+          <div className="space-y-4">
+            <LegalSuggestionsComponent
+              caseId={caseId}
+              initialOffenceDate={caseRecord.victim_utr_timestamp ? caseRecord.victim_utr_timestamp.slice(0, 10) : ''}
+              traceResult={forensicData ? {
+                paths: forensicData.trace?.paths || [],
+                typologies: forensicData.typologies || [],
+                cycles: (forensicData as any).cycles || [],
+                vasp_name: forensicData.attribution?.matched_entity,
+                reached_vasp: Boolean(forensicData.attribution?.matched_entity),
+                total_hops: forensicData.trace?.total_hops || (forensicData.trace?.paths || []).length,
+              } : null}
+              token={token}
+            />
           </div>
         )}
       </main>

@@ -22,7 +22,9 @@ from app.routers import (
     websocket_trace,
     search,
     tagpack_admin,
+    legal,
 )
+
 
 
 @asynccontextmanager
@@ -86,6 +88,9 @@ app.include_router(websocket_trace.router)
 app.include_router(websocket_trace.sse_router)
 app.include_router(search.router)
 app.include_router(tagpack_admin.router)
+app.include_router(legal.router)
+app.include_router(legal.router_v1)
+
 
 
 

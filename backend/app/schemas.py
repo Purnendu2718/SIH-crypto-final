@@ -269,3 +269,48 @@ class ArjunaSummaryResponse(BaseModel):
     factual_verification: Dict[str, Any]
     strict_containment_passed: bool
 
+
+# ==============================================================================
+# Phase 8 — Legal Mapping Engine Schemas
+# ==============================================================================
+
+class LegalSuggestionsRequest(BaseModel):
+    typology: str
+    offence_date: Optional[str] = None
+    trace_result: Optional[Dict[str, Any]] = None
+
+
+class LegalProvisionItem(BaseModel):
+    id: str
+    act: str
+    section: str
+    title: str
+    primary_display: str
+    secondary_display: str
+    ipc_equivalent: Optional[str] = None
+    verified: bool
+    badge: str
+    verify_at: str = "https://indiacode.nic.in"
+    notes: Optional[str] = None
+
+
+class LegalChecklistItem(BaseModel):
+    ingredient: str
+    source: str
+    signal: Optional[str] = None
+    status: str
+    details: str
+
+
+class LegalSuggestionsResponse(BaseModel):
+    rules_version: str
+    disclaimer: str
+    typology: str
+    typology_title: str
+    offence_date: Optional[str] = None
+    scheme: str  # "IPC", "BNS", or "BOTH"
+    scheme_note: str
+    provisions: List[LegalProvisionItem]
+    ingredients_checklist: List[LegalChecklistItem]
+
+

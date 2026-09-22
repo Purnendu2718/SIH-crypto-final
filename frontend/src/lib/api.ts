@@ -55,6 +55,7 @@ export interface CaseRecord {
   case_id: string;
   ncrp_ref?: string;
   victim_utr?: string;
+  victim_utr_timestamp?: string;
   amount_inr?: number;
   assigned_officer_id?: string;
   assigned_officer_name?: string;
@@ -263,6 +264,47 @@ export interface ArjunaSummaryResponse {
   factual_verification: Record<string, any>;
   strict_containment_passed: boolean;
 }
+
+export interface LegalProvisionItem {
+  id: string;
+  act: string;
+  section: string;
+  title: string;
+  primary_display: string;
+  secondary_display: string;
+  ipc_equivalent?: string | null;
+  verified: boolean;
+  badge: 'Cross-checked' | 'Unverified';
+  verify_at: string;
+  notes?: string | null;
+}
+
+export interface LegalChecklistItem {
+  ingredient: string;
+  source: 'complaint' | 'on_chain' | 'officer';
+  signal?: string | null;
+  status: 'present' | 'missing' | 'needs_officer_input';
+  details: string;
+}
+
+export interface LegalSuggestionsResponse {
+  rules_version: string;
+  disclaimer: string;
+  typology: string;
+  typology_title: string;
+  offence_date?: string | null;
+  scheme: 'IPC' | 'BNS' | 'BOTH';
+  scheme_note: string;
+  provisions: LegalProvisionItem[];
+  ingredients_checklist: LegalChecklistItem[];
+}
+
+export interface LegalSuggestionsParams {
+  typology: string;
+  offence_date?: string | null;
+  trace_result?: Record<string, any> | null;
+}
+
 
 export interface CandidateInfo {
   chain: string;
@@ -791,7 +833,20 @@ export class ApiClient {
       body: JSON.stringify({ query }),
     });
   }
+
+  async getLegalSuggestions(
+    token: string,
+    caseId: string,
+    params: LegalSuggestionsParams,
+  ): Promise<LegalSuggestionsResponse> {
+    return this.request<LegalSuggestionsResponse>(`/cases/${caseId}/legal-suggestions`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: JSON.stringify(params),
+    });
+  }
 }
+
 
 export interface SearchResponse {
   query: string;

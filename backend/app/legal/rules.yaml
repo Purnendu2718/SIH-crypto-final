@@ -1,0 +1,259 @@
+rules_version: "1.0.0"
+disclaimer: "Suggestions for review by the investigating officer and legal counsel; verify each section on indiacode.nic.in."
+
+provisions:
+  bns_318_4:
+    act: "BNS"
+    section: "318(4)"
+    title: "Cheating and dishonestly inducing delivery of property"
+    ipc_equivalent: "IPC 420"
+    verified: true
+    verify_at: "https://indiacode.nic.in"
+    notes: "Cheating and dishonestly inducing delivery of property"
+
+  bns_316:
+    act: "BNS"
+    section: "316"
+    title: "Criminal breach of trust"
+    ipc_equivalent: "IPC 406"
+    verified: true
+    verify_at: "https://indiacode.nic.in"
+
+  bns_61:
+    act: "BNS"
+    section: "61"
+    title: "Criminal conspiracy"
+    ipc_equivalent: "IPC 120B"
+    verified: true
+    verify_at: "https://indiacode.nic.in"
+
+  bns_303:
+    act: "BNS"
+    section: "303"
+    title: "Theft"
+    ipc_equivalent: "IPC 378/379"
+    verified: true
+    verify_at: "https://indiacode.nic.in"
+    notes: "applicability to crypto assets: officer to confirm"
+
+  bns_308:
+    act: "BNS"
+    section: "308"
+    title: "Extortion"
+    ipc_equivalent: "IPC 383/384"
+    verified: false
+    verify_at: "https://indiacode.nic.in"
+
+  bns_351:
+    act: "BNS"
+    section: "351"
+    title: "Criminal intimidation"
+    ipc_equivalent: "IPC 503/506"
+    verified: false
+    verify_at: "https://indiacode.nic.in"
+
+  bns_319:
+    act: "BNS"
+    section: "319"
+    title: "Cheating by personation"
+    ipc_equivalent: "IPC 416/419"
+    verified: false
+    verify_at: "https://indiacode.nic.in"
+
+  bns_317:
+    act: "BNS"
+    section: "317"
+    title: "Stolen property"
+    ipc_equivalent: "IPC 410/411"
+    verified: false
+    verify_at: "https://indiacode.nic.in"
+
+  bns_111:
+    act: "BNS"
+    section: "111"
+    title: "Organised crime"
+    ipc_equivalent: null
+    verified: false
+    verify_at: "https://indiacode.nic.in"
+    notes: "no IPC equivalent"
+
+  it_act_43_66:
+    act: "IT Act 2000"
+    section: "s.43 and s.66"
+    title: "Computer-related offences"
+    ipc_equivalent: null
+    verified: false
+    verify_at: "https://indiacode.nic.in"
+
+  it_act_66c:
+    act: "IT Act 2000"
+    section: "s.66C"
+    title: "Identity theft"
+    ipc_equivalent: null
+    verified: false
+    verify_at: "https://indiacode.nic.in"
+
+  it_act_66d:
+    act: "IT Act 2000"
+    section: "s.66D"
+    title: "Cheating by personation using a computer resource"
+    ipc_equivalent: null
+    verified: false
+    verify_at: "https://indiacode.nic.in"
+
+  pmla_3_4:
+    act: "PMLA 2002"
+    section: "s.3 and s.4"
+    title: "Money laundering"
+    ipc_equivalent: null
+    verified: false
+    verify_at: "https://indiacode.nic.in"
+    notes: "a referral to the Enforcement Directorate, requires a scheduled offence"
+
+typologies:
+  investment_scam:
+    title: "Investment & Ponzi Fraud Scheme"
+    provisions:
+      - "bns_318_4"
+      - "bns_61"
+      - "it_act_66d"
+      - "pmla_3_4"
+    checklist:
+      - ingredient: "Deceptive inducement to invest cryptocurrency or fiat into fictitious high-yield schemes"
+        source: "complaint"
+        signal: null
+      - ingredient: "Funds transferred to fraudulent multi-hop deposit or mule wallets"
+        source: "on_chain"
+        signal: "exchange_endpoint"
+      - ingredient: "Peeling chain or structuring observed to conceal illicit profits"
+        source: "on_chain"
+        signal: "peel_chain"
+      - ingredient: "Complainant payment receipts / bank UPI statements verified"
+        source: "officer"
+        signal: null
+
+  phishing_impersonation:
+    title: "Phishing & Fake Authority Impersonation"
+    provisions:
+      - "bns_319"
+      - "bns_318_4"
+      - "it_act_66c"
+      - "it_act_66d"
+    checklist:
+      - ingredient: "Impersonation of trusted entity, exchange, or government official"
+        source: "complaint"
+        signal: null
+      - ingredient: "Unauthorized credential theft or key compromise via malicious links/contracts"
+        source: "officer"
+        signal: null
+      - ingredient: "Exfiltration of crypto tokens to flagged destination wallet"
+        source: "on_chain"
+        signal: "exchange_endpoint"
+
+  hack_theft:
+    title: "Unauthorized Computer Access & Asset Theft"
+    provisions:
+      - "bns_303"
+      - "bns_317"
+      - "it_act_43_66"
+      - "pmla_3_4"
+    checklist:
+      - ingredient: "Unauthorized extraction or computer hacking without owner consent"
+        source: "complaint"
+        signal: null
+      - ingredient: "Applicability of theft provisions to crypto assets confirmed by officer"
+        source: "officer"
+        signal: null
+      - ingredient: "Rapid movement of stolen principal through multi-hop laundering or mixing"
+        source: "on_chain"
+        signal: "multi_hop_layering"
+      - ingredient: "Possession or receipt of stolen digital property by secondary recipients"
+        source: "on_chain"
+        signal: "exchange_endpoint"
+
+  ransomware_extortion:
+    title: "Ransomware & Digital Extortion"
+    provisions:
+      - "bns_308"
+      - "bns_351"
+      - "it_act_43_66"
+      - "pmla_3_4"
+    checklist:
+      - ingredient: "Intentionally putting victim in fear of injury, data destruction, or exposure"
+        source: "complaint"
+        signal: null
+      - ingredient: "Extortionate demand for cryptocurrency transfer as ransom"
+        source: "complaint"
+        signal: null
+      - ingredient: "Ransom funds laundered through privacy mixer or multi-hop path"
+        source: "on_chain"
+        signal: "mixer_exposure"
+      - ingredient: "System encryption or malware hash artifacts verified"
+        source: "officer"
+        signal: null
+
+  sextortion:
+    title: "Sextortion & Cyber Blackmail"
+    provisions:
+      - "bns_308"
+      - "bns_351"
+      - "it_act_66c"
+      - "bns_318_4"
+    checklist:
+      - ingredient: "Coercive threats to publish intimate images or fabricated media"
+        source: "complaint"
+        signal: null
+      - ingredient: "Demand for cryptocurrency or digital asset payment under intimidation"
+        source: "complaint"
+        signal: null
+      - ingredient: "Receipt of extortion proceeds at flagged address"
+        source: "on_chain"
+        signal: "exchange_endpoint"
+      - ingredient: "Digital chat logs or communication evidence archived by officer"
+        source: "officer"
+        signal: null
+
+  insider_misappropriation:
+    title: "Insider Misappropriation & Key Theft"
+    provisions:
+      - "bns_316"
+      - "bns_317"
+      - "bns_61"
+      - "it_act_43_66"
+    checklist:
+      - ingredient: "Custody, entrustment, or fiduciary dominion over private keys / treasury assets"
+        source: "complaint"
+        signal: null
+      - ingredient: "Dishonest misappropriation or unauthorized diversion of entrusted funds"
+        source: "officer"
+        signal: null
+      - ingredient: "Unauthorized on-chain transfer to unapproved or personal off-ramp wallets"
+        source: "on_chain"
+        signal: "exchange_endpoint"
+
+  layering_laundering:
+    title: "Professional Layering & Syndicate Laundering"
+    provisions:
+      - "pmla_3_4"
+      - "bns_111"
+      - "bns_317"
+      - "bns_61"
+    checklist:
+      - ingredient: "Predicate scheduled crime or predicate theft complaint established"
+        source: "officer"
+        signal: null
+      - ingredient: "Complex multi-hop layering to obscure criminal origin of crypto proceeds"
+        source: "on_chain"
+        signal: "multi_hop_layering"
+      - ingredient: "Use of mixer / tumbler protocols to sever transaction auditability"
+        source: "on_chain"
+        signal: "mixer_exposure"
+      - ingredient: "Circular flows or loops returning funds to associated entities"
+        source: "on_chain"
+        signal: "cycle_detected"
+      - ingredient: "Sanctioned entity or illicit protocol exposure detected in transaction graph"
+        source: "on_chain"
+        signal: "sanctioned_exposure"
+      - ingredient: "Peeling chain pattern observed with incremental off-ramping"
+        source: "on_chain"
+        signal: "peel_chain"
