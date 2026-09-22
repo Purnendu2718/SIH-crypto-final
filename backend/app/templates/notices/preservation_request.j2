@@ -1,0 +1,61 @@
+OFFICE OF THE INVESTIGATING OFFICER
+CYBER CRIME POLICE STATION / LAW ENFORCEMENT AGENCY
+GOVERNMENT OF INDIA
+
+Date: {{ current_date }}
+To:
+The Nodal Officer / Compliance Department
+{{ recipient_name }}
+Email: {{ recipient_email }}
+
+Subject: URGENT STATUTORY NOTICE FOR PRESERVATION OF DIGITAL LOGS AND CRYPTOCURRENCY RECORDS
+Case Reference (NCRP Ref): {{ case_reference }}
+FIR Reference: {{ fir_reference | default('Under Investigation / FIR Pending', true) }}
+
+Sir / Madam,
+
+1. This office is currently investigating a financial cybercrime involving fraudulent diversion of victim funds into virtual digital asset (VDA) ecosystems.
+
+2. In exercise of powers conferred {{ legal_basis_text }}, you are hereby directed to immediately PRESERVE and LOCK all associated electronic records, account metadata, transaction histories, and digital forensic artifacts pertaining to the suspect cryptocurrency identifier(s) and transaction hash(es) listed below for a minimum duration of 90 (ninety) days from receipt of this communication:
+
+SUSPECT WALLET ADDRESS(ES):
+{% for addr in addresses %}
+  - [{{ addr.chain | default('CRYPTO', true) }}] {{ addr.address | default(addr, true) }}
+{% else %}
+  - No specific wallet addresses specified
+{% endfor %}
+
+ASSOCIATED ON-CHAIN TRANSACTION HASH(ES):
+{% for tx in tx_hashes %}
+  - {{ tx }}
+{% else %}
+  - To be identified from incoming/outgoing ledger for specified wallet(s)
+{% endfor %}
+
+RELEVANT TIME WINDOW OF OFFENCE:
+  - From: {{ time_window_start | default('Beginning of Account Activity', true) }}
+  - To:   {{ time_window_end | default('Present Date / UTC', true) }}
+
+3. MANDATORY RECORDS TO BE PRESERVED:
+  a. Complete Account Registration & KYC Dossier: Registered full name, date of birth, residential address, verified government identity (Aadhaar/PAN/Passport), submitted selfies/video KYC, verified mobile number, and email address.
+  b. IP Access & Device Footprints: Historical login/session IP addresses, port numbers, VPN/proxy indicators, device IMEIs/MACs, User-Agent strings, and associated UTC timestamps.
+  c. Financial & Banking Ledgers: Linked fiat bank account numbers, IFSC codes, UPI VPAs, payment gateway reference numbers, and credit/debit card details utilized for fiat on-ramps/off-ramps.
+  d. VDA Transaction Ledger & Counterparty Addresses: Complete historical ledger of deposits and withdrawals, internal user-to-user transfers, destination withdrawal addresses, counterparty exchange IDs, and corresponding blockchain transaction hashes.
+
+4. EVIDENTIARY HASH INTEGRITY:
+The cryptographic evidence and trace graph supporting this requisition has been preserved with the following manifest digest:
+  - Evidence Manifest SHA-256: {{ evidence_manifest_hash | default('N/A (Pending Final Run Serialization)', true) }}
+
+5. SECURE REPLY CHANNEL & STATUTORY DEADLINE:
+  - You are requested to confirm receipt and compliance with this preservation directive within {{ reply_deadline | default('24 to 48 hours', true) }} (Due by: {{ due_date | default('Immediate', true) }}).
+  - All responsive records must be transmitted in encrypted format to the designated official government communication channel:
+    Official Secure Channel: {{ secure_reply_channel | default('cybercell-nodal@delhipolice.gov.in', true) }}
+
+6. Failure to comply with or destruction of preserved digital evidence may attract penal consequences under applicable Indian cyber crime and evidence protection statutes.
+
+Yours faithfully,
+
+{{ officer_name }}
+{{ officer_designation | default('Investigating Officer', true) }}
+Badge / ID: {{ officer_badge | default('LE-INSPECTOR', true) }}
+Cyber Crime Unit, {{ officer_district | default('State Police Headquarters', true) }}

@@ -24,6 +24,7 @@ from app.routers import (
     tagpack_admin,
     legal,
     intake,
+    notices,
 )
 
 
@@ -94,6 +95,9 @@ app.include_router(legal.router)
 app.include_router(legal.router_v1)
 app.include_router(intake.router)
 app.include_router(intake.router_v1)
+app.include_router(notices.router)
+app.include_router(notices.router_v1)
+
 
 
 

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "wazirx",
+    "exchange_name": "WazirX (Zanmai Labs Pvt Ltd)",
+    "nodal_name": "Nodal Compliance Officer",
+    "nodal_email": "nodal-officer@wazirx.example.invalid",
+    "secondary_email": "le-requests@wazirx.example.invalid",
+    "jurisdiction": "India (FIU-IND Registered)",
+    "portal_url": "https://compliance.wazirx.example.invalid",
+    "notes": "Accepts notices under Section 94 BNSS. Requires signed PDF and officer badge number."
+  },
+  {
+    "id": "coindcx",
+    "exchange_name": "CoinDCX (Neblio Technologies Pvt Ltd)",
+    "nodal_name": "Grievance & Law Enforcement Nodal Officer",
+    "nodal_email": "nodal-officer@coindcx.example.invalid",
+    "secondary_email": "law-enforcement@coindcx.example.invalid",
+    "jurisdiction": "India (FIU-IND Registered)",
+    "portal_url": "https://lea.coindcx.example.invalid",
+    "notes": "Accepts preservation requests and urgent freeze requisitions."
+  },
+  {
+    "id": "binance",
+    "exchange_name": "Binance Global (FIU-IND Reporting Entity)",
+    "nodal_name": "Binance Law Enforcement Liaison Desk",
+    "nodal_email": "nodal-liaison@binance.example.invalid",
+    "secondary_email": "lawenforcement@binance.example.invalid",
+    "jurisdiction": "International / India Desk",
+    "portal_url": "https://kodex.binance.example.invalid",
+    "notes": "Emergency freeze requests processed within 4 hours; mandatory evidence hash."
+  },
+  {
+    "id": "zebpay",
+    "exchange_name": "ZebPay (Awlencan Innovations India Ltd)",
+    "nodal_name": "Nodal Officer - Law Enforcement",
+    "nodal_email": "nodal-officer@zebpay.example.invalid",
+    "secondary_email": "legal@zebpay.example.invalid",
+    "jurisdiction": "India (FIU-IND Registered)",
+    "portal_url": "https://help.zebpay.example.invalid/le-requests",
+    "notes": "Requires NCRP acknowledgment number and FIR copy."
+  },
+  {
+    "id": "mudrex",
+    "exchange_name": "Mudrex (Techbins Solutions Pvt Ltd)",
+    "nodal_name": "Chief Compliance & Nodal Officer",
+    "nodal_email": "nodal-officer@mudrex.example.invalid",
+    "secondary_email": "compliance@mudrex.example.invalid",
+    "jurisdiction": "India (FIU-IND Registered)",
+    "portal_url": "https://mudrex.example.invalid/compliance",
+    "notes": "FIU-IND registered virtual digital asset service provider."
+  },
+  {
+    "id": "coinswitch",
+    "exchange_name": "CoinSwitch (Bitcipher Labs LLP)",
+    "nodal_name": "Nodal Support Officer",
+    "nodal_email": "nodal-officer@coinswitch.example.invalid",
+    "secondary_email": "le.support@coinswitch.example.invalid",
+    "jurisdiction": "India (FIU-IND Registered)",
+    "portal_url": "https://compliance.coinswitch.example.invalid",
+    "notes": "Direct response to registered police email domains (.gov.in / .nic.in)."
+  }
+]

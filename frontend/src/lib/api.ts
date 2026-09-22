@@ -442,7 +442,88 @@ export interface MultiChainSearchResponse {
   demo?: boolean;
 }
 
+// Phase 10: Statutory Notice & Email Drafter Interfaces
+export interface NoticeEventRecord {
+  id: string;
+  event_type: string;
+  from_status?: string | null;
+  to_status: string;
+  actor_id: string;
+  actor_name?: string | null;
+  notes?: string | null;
+  created_at: string;
+}
+
+export interface NoticeRecord {
+  id: string;
+  case_id: string;
+  kind: 'preservation' | 'freeze' | 'reminder';
+  recipient_name: string;
+  recipient_email: string;
+  subject: string;
+  body: string;
+  status: 'draft' | 'pending_approval' | 'approved' | 'sent' | 'replied' | 'cancelled';
+  created_by: string;
+  creator_name?: string | null;
+  approved_by?: string | null;
+  approver_name?: string | null;
+  legal_basis_text?: string | null;
+  attachments?: any[];
+  due_at?: string | null;
+  sent_at?: string | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+  events?: NoticeEventRecord[];
+}
+
+export interface ExchangeContact {
+  id: string;
+  exchange_name: string;
+  nodal_name: string;
+  nodal_email: string;
+  secondary_email?: string;
+  jurisdiction?: string;
+  portal_url?: string;
+  notes?: string;
+}
+
+export interface NoticeListResponse {
+  notices: NoticeRecord[];
+  contacts: ExchangeContact[];
+}
+
+export interface NoticeCreatePayload {
+  kind: 'preservation' | 'freeze' | 'reminder';
+  recipient_name: string;
+  recipient_email: string;
+  fir_reference?: string;
+  addresses?: Array<{ chain: string; address: string }>;
+  tx_hashes?: string[];
+  time_window_start?: string;
+  time_window_end?: string;
+  legal_basis_text?: string;
+  reply_deadline_hours?: number;
+  custom_body?: string;
+}
+
+export interface NoticeActionResponse {
+  notice_id: string;
+  status: string;
+  message: string;
+  eml_path?: string | null;
+  dry_run: boolean;
+}
+
+export interface NoticePolishResponse {
+  notice_id: string;
+  original_body: string;
+  polished_body: string;
+  is_polished: boolean;
+  note?: string | null;
+}
+
 import { fetchEventSource } from '@microsoft/fetch-event-source';
+
 
 const API_BASE = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || '/api';
 export const TOKEN_STORAGE_KEY = 'cryptotrace_sentinel_token';
@@ -940,7 +1021,101 @@ export class ApiClient {
       }),
     });
   }
+
+  // Phase 10: Notice & Statutory Requisition Drafter Methods
+  async getCaseNotices(token: string, caseId: string): Promise<NoticeListResponse> {
+    return this.request<NoticeListResponse>(`/cases/${caseId}/notices`, {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
+
+  async createNoticeDraft(
+    token: string,
+    caseId: string,
+    payload: NoticeCreatePayload,
+  ): Promise<NoticeRecord> {
+    return this.request<NoticeRecord>(`/cases/${caseId}/notices`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: JSON.stringify(payload),
+    });
+  }
+
+  async updateNoticeDraft(
+    token: string,
+    noticeId: string,
+    updates: {
+      subject?: string;
+      body?: string;
+      recipient_name?: string;
+      recipient_email?: string;
+      legal_basis_text?: string;
+    },
+  ): Promise<NoticeRecord> {
+    return this.request<NoticeRecord>(`/notices/${noticeId}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}` },
+      body: JSON.stringify(updates),
+    });
+  }
+
+  async polishNoticeTone(
+    token: string,
+    noticeId: string,
+    body?: string,
+  ): Promise<NoticePolishResponse> {
+    return this.request<NoticePolishResponse>(`/notices/${noticeId}/polish`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ body }),
+    });
+  }
+
+  async submitNoticeForApproval(token: string, noticeId: string): Promise<NoticeActionResponse> {
+    return this.request<NoticeActionResponse>(`/notices/${noticeId}/submit`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
+
+  async approveNotice(token: string, noticeId: string): Promise<NoticeActionResponse> {
+    return this.request<NoticeActionResponse>(`/notices/${noticeId}/approve`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
+
+  async sendNotice(token: string, noticeId: string): Promise<NoticeActionResponse> {
+    return this.request<NoticeActionResponse>(`/notices/${noticeId}/send`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
+
+  async updateNoticeStatus(
+    token: string,
+    noticeId: string,
+    targetStatus: string,
+    notes?: string,
+  ): Promise<NoticeActionResponse> {
+    return this.request<NoticeActionResponse>(`/notices/${noticeId}/status?target_status=${targetStatus}`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ notes }),
+    });
+  }
+
+  getNoticeEmlUrl(noticeId: string): string {
+    return `${this.base}/notices/${noticeId}/download-eml`;
+  }
+
+  getNoticePdfUrl(noticeId: string): string {
+    return `${this.base}/notices/${noticeId}/download-pdf`;
+  }
+
 }
+
 
 
 

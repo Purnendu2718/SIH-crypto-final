@@ -34,6 +34,17 @@ class Settings(BaseSettings):
     ANTHROPIC_API_KEY: Optional[str] = None
     OLLAMA_URL: str = "http://localhost:11434"
 
+    # Phase 10: Notice & Statutory Requisition Drafter / SMTP Outbox
+    MAIL_DRY_RUN: bool = True
+    OUTBOX_DIR: str = "./outbox"
+    SMTP_HOST: Optional[str] = "localhost"
+    SMTP_PORT: int = 587
+    SMTP_USER: Optional[str] = None
+    SMTP_PASSWORD: Optional[str] = None
+    SMTP_FROM: str = "cybercell-nodal@delhipolice.gov.in"
+    SMTP_USE_TLS: bool = True
+    ENABLE_FOLLOWUP_SCHEDULER: bool = False
+
     # Phase 8: Multi-Chain Live Provider Configuration (Defaults to FixtureAdapter if LIVE_MODE=False)
 
     LIVE_MODE: bool = False

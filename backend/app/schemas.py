@@ -387,4 +387,93 @@ class CreateCaseFromIntakeResponse(BaseModel):
     accepted_addresses_count: int
 
 
+# ==============================================================================
+# Phase 10: Statutory Notice & Email Drafter Schemas
+# ==============================================================================
+
+class NoticeCreateRequest(BaseModel):
+    kind: str  # "preservation", "freeze", "reminder"
+    recipient_name: str
+    recipient_email: str
+    fir_reference: Optional[str] = None
+    addresses: Optional[List[Any]] = None
+    tx_hashes: Optional[List[str]] = None
+    time_window_start: Optional[str] = None
+    time_window_end: Optional[str] = None
+    legal_basis_text: Optional[str] = None
+    reply_deadline_hours: Optional[int] = 48
+    custom_body: Optional[str] = None
+
+
+class NoticeUpdateRequest(BaseModel):
+    subject: Optional[str] = None
+    body: Optional[str] = None
+    recipient_name: Optional[str] = None
+    recipient_email: Optional[str] = None
+    legal_basis_text: Optional[str] = None
+    due_at: Optional[datetime] = None
+
+
+class NoticePolishRequest(BaseModel):
+    body: Optional[str] = None
+
+
+class NoticePolishResponse(BaseModel):
+    notice_id: str
+    original_body: str
+    polished_body: str
+    is_polished: bool
+    note: Optional[str] = None
+
+
+class NoticeEventOut(BaseModel):
+    id: str
+    event_type: str
+    from_status: Optional[str] = None
+    to_status: str
+    actor_id: str
+    actor_name: Optional[str] = None
+    notes: Optional[str] = None
+    created_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class NoticeOut(BaseModel):
+    id: str
+    case_id: str
+    kind: str
+    recipient_name: str
+    recipient_email: str
+    subject: str
+    body: str
+    status: str
+    created_by: str
+    creator_name: Optional[str] = None
+    approved_by: Optional[str] = None
+    approver_name: Optional[str] = None
+    legal_basis_text: Optional[str] = None
+    attachments: Optional[List[Any]] = []
+    due_at: Optional[datetime] = None
+    sent_at: Optional[datetime] = None
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
+    events: List[NoticeEventOut] = []
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class NoticeListResponse(BaseModel):
+    notices: List[NoticeOut]
+    contacts: List[Dict[str, Any]] = []
+
+
+class NoticeActionResponse(BaseModel):
+    notice_id: str
+    status: str
+    message: str
+    eml_path: Optional[str] = None
+    dry_run: bool = True
+
+
 

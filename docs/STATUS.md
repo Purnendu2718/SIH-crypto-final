@@ -60,8 +60,38 @@ CryptoTrace Sentinel is an open-source, self-hostable blockchain-forensics platf
   - **Automated Tests (`backend/tests/test_phase9_intake.py`)**:
     - 11 pytest test cases covering Hindi & English address extraction, near-miss hint diagnosis, quote verification rejecting fabricated facts, PII masking, provider `none`, provider error degradation, and end-to-end API case creation with audit logs.
 
+- **Phase 10 — Notice and Email Drafter with Approval Workflow**: Completed.
+  - **Database Models (`notices` & `notice_events`)**:
+    - `notices`: Requisitions table storing `case_id`, `kind` (`preservation`, `freeze`, `reminder`), `recipient_name`, `recipient_email`, `subject`, `body`, `status` (`draft`, `pending_approval`, `approved`, `sent`, `replied`, `cancelled`), `created_by`, `approved_by`, `legal_basis_text`, `attachments`, `due_at`, `sent_at`, and timestamps.
+    - `notice_events`: Immutable transition log tracking event types (`CREATED_DRAFT`, `SUBMITTED_FOR_APPROVAL`, `APPROVED`, `SENT`, `REPLIED`, `CANCELLED`, `REMINDER_CREATED`, `POLISHED`), old/new statuses, actor ID, and audit notes. All events append to the tamper-evident hash-chained audit log.
+  - **Recipient Directory (`data/exchange_contacts.example.json`)**:
+    - Placeholder contacts directory containing Indian and international exchange nodal desks (WazirX, CoinDCX, Binance, ZebPay, Mudrex, CoinSwitch) using `.example.invalid` placeholder domains. Real contact details are never invented.
+  - **Jinja2 Requisition Templates (`backend/app/templates/notices/`)**:
+    - Templates for Preservation Request, Debit-Freeze Directive, and Final Follow-up Reminder rendered with `autoescape=True` to prevent template and HTML injection.
+    - Includes case reference, FIR reference, suspect addresses, transaction hashes, time window of offence, four-tier record requisition (KYC/registration, IP & device footprints, fiat bank accounts/UPI, withdrawal addresses), evidence manifest SHA-256 hash, reply deadline, and secure reply channel.
+    - Legal basis defaults to: `"under the applicable provisions of the Bharatiya Nagarik Suraksha Sanhita, 2023 (section to be confirmed by the investigating officer)"` without auto-citing specific sections.
+  - **Guarded LLM Tone Polish & Safety Cross-Verification**:
+    - Optional tone polish using Phase 9 LLM abstraction.
+    - Strict evidentiary token verifier: extracts all cryptocurrency addresses, 64-char transaction/manifest hashes, dates, and monetary amounts before and after polish. If any token differs, the polished text is discarded and the original text is preserved.
+  - **Strict Multi-Stage Approval Workflow & RBAC**:
+    - Investigators can create and edit drafts, and submit them for approval (`draft` -> `pending_approval`).
+    - Only officers with `APPROVER`, `SUPERVISOR`, or `ADMIN` roles can approve notices (`pending_approval` -> `approved`). Attempts by investigators to approve return HTTP 403 Forbidden.
+    - Approval and dispatch are strictly decoupled.
+  - **Safe Dry-Run Dispatch & RFC-822 EML Generation**:
+    - `MAIL_DRY_RUN=True` by default. Dispatches construct RFC-822 compliant `.eml` files with standard headers, case headers, and ReportLab PDF requisition attachments, writing to `./outbox/`.
+    - Live SMTP configuration supported via environment variables (`SMTP_HOST`, `SMTP_PORT`, `SMTP_FROM`, etc.).
+  - **Automated Overdue Reminders (`scripts/run_followups.py`)**:
+    - Standalone scheduler script querying sent notices whose `due_at` has elapsed.
+    - Creates reminder notices strictly in `draft` status for investigating officer review. Reminders are never automatically sent.
+  - **Case Page UI Tab (`frontend/src/components/NoticeWorkflowTab.tsx` & `CaseDetail.tsx`)**:
+    - Interactive "Exchange Notices & Requisitions" tab on Case Detail view.
+    - Notice drafting modal with exchange directory selector, FIR input, address correlation, and deadline configuration.
+    - In-place text editor for draft notices, one-click AI tone polish, approval button (role-gated for supervisors), dispatch button, `.eml` and PDF direct download links, and status event timeline.
+  - **Automated Tests (`backend/tests/test_phase10_notices.py`)**:
+    - 10 pytest test cases verifying investigator approval rejection (HTTP 403), supervisor approval, dry-run `.eml` outbox generation, Jinja2 autoescaping security, hash/address polish rejection, and draft-only reminder creation.
+
 ---
 
 ### Verification Checklist
-Run `python scripts/check.py` to run all test suites across backend (151 pytest tests), address validator (29 unittests), and frontend (28 vitest tests + production build).
+Run `python scripts/check.py` to run all test suites across backend (161 pytest tests), address validator (29 unittests), and frontend (28 vitest tests + production build).
 

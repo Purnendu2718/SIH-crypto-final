@@ -34,6 +34,7 @@ import { HeaderSearchBar } from '../components/HeaderSearchBar';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { TraceFormComponent } from '../components/TraceFormComponent';
 import { LegalSuggestionsComponent } from '../components/LegalSuggestionsComponent';
+import { NoticeWorkflowTab } from '../components/NoticeWorkflowTab';
 
 
 interface CaseDetailPageProps {
@@ -702,17 +703,18 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
           <button
             type="button"
             role="tab"
-            disabled
-            title="Coming next in Phase 7"
-            aria-disabled="true"
-            className="px-4 py-2.5 border-b-2 border-transparent text-slate-600 cursor-not-allowed flex items-center gap-1.5 opacity-60"
+            aria-selected={activeTab === 'notices'}
+            onClick={() => setActiveTab('notices')}
+            className={`px-4 py-2.5 font-bold border-b-2 transition-colors flex items-center gap-1.5 ${
+              activeTab === 'notices'
+                ? 'border-blue-500 text-blue-400 bg-blue-500/10'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
           >
             <Gavel className="w-3.5 h-3.5" />
-            <span>Legal Notices</span>
-            <span className="text-[9px] bg-slate-800 text-slate-400 px-1.5 py-0.2 rounded border border-slate-700">
-              coming next
-            </span>
+            <span>Exchange Notices &amp; Requisitions</span>
           </button>
+
 
           <button
             type="button"
@@ -933,6 +935,16 @@ export const CaseDetailPage: React.FC<CaseDetailPageProps> = ({ caseId, onBack, 
               token={token}
             />
           </div>
+        )}
+
+        {/* Tab 4: Statutory Notices & Exchange Requisitions */}
+        {activeTab === 'notices' && (
+          <NoticeWorkflowTab
+            caseId={caseId}
+            ncrpRef={caseRecord.ncrp_ref || undefined}
+            submissions={caseRecord.submissions || []}
+            token={token}
+          />
         )}
       </main>
 

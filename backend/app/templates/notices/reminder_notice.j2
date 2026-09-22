@@ -1,0 +1,52 @@
+OFFICE OF THE INVESTIGATING OFFICER
+CYBER CRIME POLICE STATION / LAW ENFORCEMENT AGENCY
+GOVERNMENT OF INDIA
+
+Date: {{ current_date }}
+To:
+The Nodal Officer / Compliance Department
+{{ recipient_name }}
+Email: {{ recipient_email }}
+
+Subject: FINAL REMINDER — NON-COMPLIANCE WITH STATUTORY DIRECTIVE (CASE REF: {{ case_reference }})
+Prior Notice Reference: {{ prior_notice_id | default('LE-NOTICE-PRIOR', true) }}
+Original Subject: {{ original_subject | default('Statutory Notice for Information / Action', true) }}
+FIR Reference: {{ fir_reference | default('Under Investigation / FIR Pending', true) }}
+
+Sir / Madam,
+
+1. This office issued a statutory directive dated {{ prior_notice_date | default('Earlier', true) }} regarding suspect cryptocurrency transactions involving:
+
+SUSPECT IDENTIFIER(S):
+{% for addr in addresses %}
+  - [{{ addr.chain | default('CRYPTO', true) }}] {{ addr.address | default(addr, true) }}
+{% else %}
+  - See prior notice records
+{% endfor %}
+
+ASSOCIATED TRANSACTION HASH(ES):
+{% for tx in tx_hashes %}
+  - {{ tx }}
+{% else %}
+  - As detailed in initial requisition
+{% endfor %}
+
+2. As per the timeline specified in our earlier notice, your compliance report was due on or before {{ due_date }}. As of the date of this communication, the statutory deadline has ELAPSED without the receipt of the required compliance certification or data package.
+
+3. Under authority {{ legal_basis_text }}, you are granted a FINAL GRACE PERIOD of 24 hours to comply and furnish:
+  a. Proof of digital record preservation / account freeze.
+  b. KYC and registration dossiers.
+  c. IP and session logs.
+  d. Comprehensive deposit/withdrawal ledgers and counterparty addresses.
+
+4. Transmit all compliance records securely to:
+  Official Secure Channel: {{ secure_reply_channel | default('cybercell-nodal@delhipolice.gov.in', true) }}
+
+5. Failure to respond may compel this office to initiate statutory non-compliance proceedings before the competent jurisdictional court.
+
+Yours faithfully,
+
+{{ officer_name }}
+{{ officer_designation | default('Investigating Officer', true) }}
+Badge / ID: {{ officer_badge | default('LE-INSPECTOR', true) }}
+Cyber Crime Unit, {{ officer_district | default('State Police Headquarters', true) }}

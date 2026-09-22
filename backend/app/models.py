@@ -58,6 +58,8 @@ class Case(Base):
     created_at = Column(DateTime(timezone=True), default=utc_now)
 
     assigned_officer = relationship("Profile", back_populates="cases")
+    notices = relationship("Notice", back_populates="case", cascade="all, delete-orphan")
+
     wallet_submissions = relationship("WalletSubmission", back_populates="case", cascade="all, delete-orphan")
     watchlist_entries = relationship("WatchlistEntry", back_populates="case", cascade="all, delete-orphan")
 
@@ -294,4 +296,52 @@ class ComplaintIntake(Base):
 
     officer = relationship("Profile")
     case = relationship("Case")
+
+
+class Notice(Base):
+    """Statutory preservation, freeze, or reminder notice dispatched to VASPs/exchanges."""
+    __tablename__ = "notices"
+
+    id = Column(String, primary_key=True, default=generate_uuid)
+    case_id = Column(String, ForeignKey("cases.case_id"), nullable=False, index=True)
+    kind = Column(String, nullable=False)  # "preservation", "freeze", "reminder"
+    recipient_name = Column(String, nullable=False)
+    recipient_email = Column(String, nullable=False)
+    subject = Column(String, nullable=False)
+    body = Column(Text, nullable=False)
+    status = Column(String, nullable=False, default="draft")  # draft, pending_approval, approved, sent, replied, cancelled
+    created_by = Column(String, ForeignKey("profiles.id"), nullable=False)
+    approved_by = Column(String, ForeignKey("profiles.id"), nullable=True)
+    legal_basis_text = Column(
+        Text,
+        nullable=True,
+        default="under the applicable provisions of the Bharatiya Nagarik Suraksha Sanhita, 2023 (section to be confirmed by the investigating officer)",
+    )
+    attachments = Column(JSON, default=list)
+    due_at = Column(DateTime(timezone=True), nullable=True)
+    sent_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), default=utc_now)
+    updated_at = Column(DateTime(timezone=True), default=utc_now, onupdate=utc_now)
+
+    case = relationship("Case", back_populates="notices")
+    creator = relationship("Profile", foreign_keys=[created_by])
+    approver = relationship("Profile", foreign_keys=[approved_by])
+    events = relationship("NoticeEvent", back_populates="notice", cascade="all, delete-orphan", order_by="NoticeEvent.created_at.asc()")
+
+
+class NoticeEvent(Base):
+    """Immutable audit trail of status transitions and actions for a notice."""
+    __tablename__ = "notice_events"
+
+    id = Column(String, primary_key=True, default=generate_uuid)
+    notice_id = Column(String, ForeignKey("notices.id"), nullable=False, index=True)
+    event_type = Column(String, nullable=False)  # CREATED_DRAFT, SUBMITTED_FOR_APPROVAL, APPROVED, SENT, REPLIED, CANCELLED, REMINDER_CREATED, POLISHED
+    from_status = Column(String, nullable=True)
+    to_status = Column(String, nullable=False)
+    actor_id = Column(String, ForeignKey("profiles.id"), nullable=False)
+    notes = Column(Text, nullable=True)
+    created_at = Column(DateTime(timezone=True), default=utc_now)
+
+    notice = relationship("Notice", back_populates="events")
+    actor = relationship("Profile")
 
